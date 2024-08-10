@@ -388,19 +388,34 @@
         "confpassword": "NIYAS3",
         "cart": [
           {
-            "id": "16",
-            "name": "Three door Modern Wooden Dresser",
+            "id": "17",
+            "name": "Hot Upholstered Storage Bench",
             "category": "bedroom",
-            "image": "https://img.freepik.com/free-photo/beautiful-shot-modern-wooden-furniture-isolated-white_181624-22671.jpg?t=st=1719940406~exp=1719944006~hmac=733731b648cf27745745174a0c7caa5fd080f1204ba374e7ae859851c30360ad&w=740",
-            "new_price": 950,
-            "old_price": 1200,
-            "description": "A modern wooden dresser with ample storage.",
-            "rating": 4.5,
-            "reviews": 26,
-            "topTrends": false,
-            "newCollections": true,
-            "detailOne": "Organize your bedroom with this modern wooden dresser. It features multiple drawers and compartments for storing clothing, accessories, and personal items. The sleek design and clean lines add a contemporary touch to your bedroom decor.",
-            "qty": 2
+            "image": "https://img.freepik.com/free-photo/still-life-shoe-rack-indoors_23-2150960714.jpg?t=st=1719940454~exp=1719944054~hmac=bb8c4d1702e93ec61c72d030117d24df94930522f2e5c578a7946bd29d23c62d&w=740",
+            "new_price": 350,
+            "old_price": 450,
+            "description": "An upholstered storage bench for practical and stylish seating.",
+            "rating": 4.3,
+            "reviews": 22,
+            "topTrends": true,
+            "newCollections": false,
+            "detailOne": "Add versatility to your bedroom with this upholstered storage bench. It features a cushioned seat upholstered in fabric for comfort and style. The storage compartment beneath the seat offers ample space for blankets, pillows, or other essentials.",
+            "qty": 1
+          },
+          {
+            "id": "8",
+            "name": "Extendable Wood Dining Table",
+            "category": "dining",
+            "image": "https://img.freepik.com/free-photo/view-table-arrangement-by-wedding-planner_23-2150167202.jpg?t=st=1719940117~exp=1719943717~hmac=93a65f882f68dbea8c6b74c78d87c4d5671829b17e24576a5ef25b01103104d9&w=740",
+            "new_price": "800",
+            "old_price": 2000,
+            "description": "An extendable wood dining table that adapts to your dining needs.",
+            "rating": 4.6,
+            "reviews": 22,
+            "topTrends": true,
+            "newCollections": false,
+            "detailOne": "This versatile dining table features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor.",
+            "qty": 1
           }
         ]
       }

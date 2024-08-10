@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { FaUser } from 'react-icons/fa'; 
 import { UserContext } from './context/Usercontext';
-import { Link,Navigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 
 

@@ -2,15 +2,15 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Cartcon } from './context/Cartcontext'
 import { UserContext } from './context/Usercontext';
 import axios from 'axios';
+import { FaUser } from 'react-icons/fa'; 
 
 
 function Cart() {
 
     const { cartitem, deletecart } = useContext(Cartcon)
     const { activeuser } = useContext(UserContext)
-
     const [quantities, setQuantities] = useState({});
-    const [price,setPrice]=useState({})
+    const [price, setPrice] = useState(0)
 
     useEffect(() => {
         const initialQuantities = cartitem.reduce((acc, item) => {
@@ -18,19 +18,30 @@ function Cart() {
             return acc;
         }, {});
         setQuantities(initialQuantities);
-        const initialprice =cartitem.reduce((acc,item)=>{
-            acc[item.id]=item.new_price*(item.qty||1)
-            return acc
-        },{});
-        setPrice(initialprice)
-    }, [cartitem]);
+    },[cartitem])
+    //     const initialprice = cartitem.reduce((acc, item) => {
+    //         acc[item.id] = item.new_price * (item.qty || 1)
+    //         return acc
+    //     }, {});
+    //     setPrice(initialprice)
+    // }, [cartitem]);
+    useEffect(()=>{
+        const pricetotal=()=>{
+            const total=cartitem.reduce((acc,item)=>{
+                const quantity=quantities[item.id]||1;
+                return acc+item.new_price* quantity
+            },0)
+            setPrice(total)
+        }
+        pricetotal()
+    },[quantities,cartitem])
 
     const increament = async (item) => {
         const newCount = (quantities[item.id] || 1) + 1;
         setQuantities({ ...quantities, [item.id]: newCount });
 
-        const newPrice=item.new_price * newCount
-        setPrice({...price,[item.id]:newPrice})
+        // const newPrice = item.new_price * newCount
+        // setPrice({ ...price, [item.id]: newPrice })
         const itemID = item.id
 
         try {
@@ -39,7 +50,8 @@ function Cart() {
             const cart = resp.data.input.cart
             const index = cart.findIndex((item) => item.id == itemID)
             cart[index].qty += 1
-            
+            // cart[index].new_price=newPrice
+
             await axios.patch(`http://localhost:5000/user/${activeuser.id}`, {
                 input: { ...input, cart: cart }
             });
@@ -48,13 +60,16 @@ function Cart() {
         }
     };
 
-    // Function to handle decrement
+    
     const decreament = async (item) => {
         const currentCount = quantities[item.id] || 1;
         if (currentCount > 1) {
+            
             const newCount = currentCount - 1;
             setQuantities({ ...quantities, [item.id]: newCount });
             const itemID = item.id
+            // const newPrice = item.new_price * newCount
+            // setPrice({ ...price, [item.id]: newPrice })
 
             try {
                 const resp = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
@@ -71,20 +86,24 @@ function Cart() {
             }
         }
     };
+    const pay=async()=>{
+        alert('are you sure want to make payment')
+        await setTimeout(() => {
+            alert('payment succesfull')
+        }, 5000);
+    }
 
     return (
-
         <div >
-
             <div className="flex">
-                <div id='1' className="w-1/2 bg-red-100  pl-14"> 
-                    <div className="flex justify-center flex-row">
+                <div id='1' className="w-1/2 bg-red-100  pl-14">
+                    <div className="flex justify-center flex-row pb-10">
                         <div className=" md:w-11/12">
                             <div>
                                 <div className="flex flex-row items-center justify-start relative top-4">
-                                <p className="mr-1 font-semibold">cart page of: {activeuser?.input?.username}</p>
+                                    <p className="mr-1 font-semibold">cart page of: {activeuser?.input?.username}</p>
                                 </div>
-                                
+
                                 <div className="flex flex-row items-center justify-end">
                                     <p className="mr-1">Sort by:</p>
                                     <p className="mr-1 font-bold">items</p>
@@ -111,40 +130,28 @@ function Cart() {
                                         <i className="fa fa-plus text-green-500"></i>
                                     </div>
                                     <div>
-                                        <h5 className="text-gray-500">{item.new_price}</h5>
+                                        <h5 className="text-gray-500">{(item.new_price * (quantities[item.id]))}</h5>
                                     </div>
                                     <div className="flex items-center">
                                         <button className=" text-white bg-red-500 rounded-sm p-1 " onClick={() => { deletecart(item, index) }}>Delete</button>
                                     </div>
                                 </div>
                             ))}
-                            <div className="flex flex-row items-center mt-3 p-2 bg-slate-400 rounded">
-                                <div className="form-control border-0 flex-1">amount paid</div>
-                                <button className="btn btn-outline-warning btn-sm ml-2" type="button">Apply</button>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div id='2' className="w-1/2 bg-red-100 min-h- flex items-center justify-center ">
-                    <div className="bg-white w-[400px] shadow-lg rounded-lg flex max-w-2xl">
+                    <div className="bg-white w-[400px] shadow-lg rounded-lg flex max-w-lg">
                         <div className="w-full p-1">
-                            <form className="space-y-4">
-                                <h2 className="text-xl font-medium mb-4 justify-center">Payment Information</h2>
-                                <div>
-                                    <h1 className="font-medium text-gray-400">User:{activeuser?.input?.username}</h1>
+                            <form className="space-y-3">
+                                <div> 
+                                    <h1 className="font-medium text-gray-400 text-center pt-2 font-serif"> User:{activeuser?.input?.username}</h1>
                                 </div>
                                 <div>
-                                    <p className="font-medium">Amount Payable</p>
-                                    <input
-                                        type="text"
-                                        className="mt-1 p-2 border border-gray-300 rounded w-full"
-                                        name="card_number"
-                                        id="card_number"
-                                        required
-                                    />
+                                    <p className="font-bold text-lg text-center">Amount Payable:{price}</p>
                                 </div>
                                 <div>
-                                    <p className="font-medium">Card Type</p>
+                                    <p className="font-medium text-center">Select Apps</p>
                                     <select
                                         className="mt-1 p-2 border border-gray-300 rounded w-full"
                                         name="card_type"
@@ -152,19 +159,30 @@ function Cart() {
                                         required
                                     >
                                         <option value="">--Select a Card Type--</option>
-                                        <option value="Visa">Visa</option>
-                                        <option value="RuPay">RuPay</option>
-                                        <option value="MasterCard">MasterCard</option>
+                                        <option value="Visa">G-PAY</option>
+                                        <option value="RuPay">Paytm</option>
+                                        <option value="MasterCard">PhonePe</option>
                                     </select>
                                 </div>
-                                <div className="flex justify-between">
-                                    {/* Add any additional content here if needed */}
-                                </div>
+                                    <p className="font-medium text-center">enter phone number</p>
+                                    <input className="mt-1 p-2 border border-gray-300 rounded w-full"
+                                    type='text'
+                                    placeholder='phone number'
+                                    required
+                                    />
+                                    <p className="font-medium text-center">password</p>
+                                    <input className="mt-1 p-2 border border-gray-300 rounded w-full"
+                                    type='password'
+                                    placeholder='pin'
+                                    required
+                                    />
+                                
+                            
+                                
                                 <button
                                     type="submit"
-                                    className="mt-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
-                                >
-                                    CheckOut
+                                    className="mt-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"onClick={()=>{pay()}} >
+                                    PAY 
                                 </button>
                             </form>
                         </div>
