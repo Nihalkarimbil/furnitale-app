@@ -386,39 +386,113 @@
         "email": "SIUDGSIUH@D",
         "password": "NIYAS3",
         "confpassword": "NIYAS3",
+        "cart": []
+      }
+    },
+    {
+      "id": "e328",
+      "input": {
+        "username": "KUNJANI",
+        "email": "IIUTYF@gmail",
+        "password": "KUNJANI1",
+        "confpassword": "KUNJANI1",
         "cart": [
           {
-            "id": "17",
-            "name": "Hot Upholstered Storage Bench",
-            "category": "bedroom",
-            "image": "https://img.freepik.com/free-photo/still-life-shoe-rack-indoors_23-2150960714.jpg?t=st=1719940454~exp=1719944054~hmac=bb8c4d1702e93ec61c72d030117d24df94930522f2e5c578a7946bd29d23c62d&w=740",
-            "new_price": 350,
-            "old_price": 450,
-            "description": "An upholstered storage bench for practical and stylish seating.",
-            "rating": 4.3,
-            "reviews": 22,
+            "id": "25",
+            "name": "New Modern Floor Lamp for Rooms",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-photo/digital-art-style-light-lamp-design_23-2151153863.jpg?t=st=1719940756~exp=1719944356~hmac=00ce0b97c7e77939a9a49b47b70769b58cbe5fadc8b43f110266194c80343f7e&w=826",
+            "new_price": 250,
+            "old_price": 300,
+            "description": "A modern floor lamp for contemporary living spaces.",
+            "rating": 4.5,
+            "reviews": 25,
             "topTrends": true,
             "newCollections": false,
-            "detailOne": "Add versatility to your bedroom with this upholstered storage bench. It features a cushioned seat upholstered in fabric for comfort and style. The storage compartment beneath the seat offers ample space for blankets, pillows, or other essentials.",
-            "qty": 1
+            "detailOne": "Illuminate your space with this modern floor lamp. Its sleek design and adjustable height make it ideal for reading nooks, living rooms, or home offices. The sturdy base ensures stability, while the fabric shade diffuses soft, ambient light.",
+            "qty": 2
           },
           {
-            "id": "8",
+            "id": "21",
+            "name": "yellow Rustic Wooden Wardrobe",
+            "category": "bedroom",
+            "image": "https://img.freepik.com/free-photo/retro-furniture-being-sold-yard-sale_23-2151216812.jpg?t=st=1719940582~exp=1719944182~hmac=533778254dee09a3712ce5f11b3d4018dfe037bb84c993288e2a5cdf38944fe3&w=740",
+            "new_price": 1500,
+            "old_price": 1800,
+            "description": "A rustic wooden wardrobe with ample storage space.",
+            "rating": 4.4,
+            "reviews": 24,
+            "topTrends": true,
+            "newCollections": false,
+            "detailOne": "Organize your clothing and accessories with this rustic wooden wardrobe. Its spacious interior features hanging rods, shelves, and drawers for efficient storage. The distressed wood finish adds character and charm to your bedroom decor.",
+            "qty": 4
+          },
+          {
+            "id": "28",
+            "name": "Bohemian Throw Pillow Set",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-photo/exterior-outdoors-garden-chair-gardens_1203-4805.jpg?t=st=1719940918~exp=1719944518~hmac=a901b84e687304791b4a68a3f7360ddc79a731407a8a237d701ab2472d3ac8c9&w=740",
+            "new_price": 80,
+            "old_price": 100,
+            "description": "A bohemian throw pillow set for eclectic home decor.",
+            "rating": 4.4,
+            "reviews": 22,
+            "topTrends": false,
+            "newCollections": false,
+            "detailOne": "Add a pop of color and texture to your living space with this bohemian throw pillow set. Its vibrant patterns and tassel accents create an eclectic look that complements various decor styles. The pillows are crafted from soft fabrics for comfort and style.",
+            "qty": 8
+          },
+          {
+            "id": "1",
             "name": "Extendable Wood Dining Table",
             "category": "dining",
-            "image": "https://img.freepik.com/free-photo/view-table-arrangement-by-wedding-planner_23-2150167202.jpg?t=st=1719940117~exp=1719943717~hmac=93a65f882f68dbea8c6b74c78d87c4d5671829b17e24576a5ef25b01103104d9&w=740",
+            "image": "https://img.freepik.com/free-photo/restaurant-table-with-wooden-chairs-placed-hall-decorated-classical-style_140725-8460.jpg?t=st=1722847538~exp=1722851138~hmac=b95c001b45aee552c3ff27dae6dc130de2bb9fd71e12023cf1d17bd2f7e23f0d&w=740",
             "new_price": "800",
-            "old_price": 2000,
+            "old_price": "2000",
             "description": "An extendable wood dining table that adapts to your dining needs.",
             "rating": 4.6,
             "reviews": 22,
             "topTrends": true,
             "newCollections": false,
-            "detailOne": "This versatile dining table features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor.",
+            "detailOne": "This Extendable wood dining table features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor.",
+            "qty": 9
+          },
+          {
+            "id": "30",
+            "name": " Botanical Framed Prints",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-vector/faded-foliage-banner_53876-91506.jpg?t=st=1719941010~exp=1719944610~hmac=b9a36202fe5b749c28b11c6f74e55a0b9b733fb9c42df6f4e1d1c5178a98b9b7&w=740",
+            "new_price": 100,
+            "old_price": 120,
+            "description": "Botanical framed prints for natural-inspired decor.",
+            "rating": 4.2,
+            "reviews": 20,
+            "topTrends": false,
+            "newCollections": false,
+            "detailOne": "Bring the beauty of nature indoors with these botanical framed prints. Featuring lush greenery and delicate florals, the artworks add a serene vibe to your living space. Each print is encased in a sleek frame for a polished presentation.",
+            "qty": 6
+          },
+          {
+            "id": "26",
+            "name": "Classic Art Deco big Wall Mirror",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-photo/ornate-mirror-art-nouveau-style_23-2150975623.jpg?t=st=1719940800~exp=1719944400~hmac=db036321b4a0ed213f7c54f3dae0dca59e1f0f5f664c10c14b759f14f986baf2&w=740",
+            "new_price": 350,
+            "old_price": 450,
+            "description": "An art deco wall mirror for adding glamour to your walls.",
+            "rating": 4.3,
+            "reviews": 20,
+            "topTrends": false,
+            "newCollections": true,
+            "detailOne": "Make a statement with this art deco wall mirror. Its geometric frame and mirrored panels create a striking visual effect on any wall. The sleek design adds glamour and sophistication to modern and eclectic interiors alike.",
             "qty": 1
           }
         ]
       }
+    },
+    {
+      "cart": [],
+      "id": "c711"
     }
   ]
 }

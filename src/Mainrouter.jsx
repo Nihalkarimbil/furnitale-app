@@ -12,14 +12,22 @@ import Footer from './component/First/footer'
 import Details from './component/Details'
 import Cart from './component/Cart'
 import User from './component/User'
+import ProtectedRoute from './component/ProtectedRoute'
+import Payment from './component/Payment'
 
 function Mainrouter() {
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Userreg />} />
+        <Route path='/login' element={
+          <ProtectedRoute>
+            <Login/>
+          </ProtectedRoute> } />
+        <Route path='/register' element={
+          <ProtectedRoute>
+            <Userreg />
+          </ProtectedRoute>} />
         <Route path='/' element={<Home />} />
         <Route path='/Livingroom' element={<Living />} />
         <Route path='/Bedroom' element={<Bed />} />
@@ -32,7 +40,7 @@ function Mainrouter() {
         <Route path='/:id' element={<Details />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/user' element={<User/>} />
-
+        <Route path='/payment' element={<Payment/>}/>
       </Routes>
       <Footer />
     </div>

@@ -14,7 +14,7 @@ function Details() {
     
 
     useEffect(()=>{
-        setPro(products.filter((items,index)=>items.id==id))
+        setPro(products.filter((items)=>items.id==id))
     },[products])
     
 
@@ -22,7 +22,6 @@ function Details() {
 
     const handlecart=(prod)=>{
          addtocart(prod)
-    
     }
 
   return (
@@ -38,7 +37,7 @@ function Details() {
                     />
                     <div className='flex flex-col items-center md:items-start text-center md:text-left'>
                         <h1 className='font-semibold text-gray-600 text-xl md:text-3xl mb-2'>{product.name}</h1>
-                        <h2 className='font-bold text-orange-900 text-lg md:text-2xl mb-2'>Type: {product.category}</h2>
+                        <h2 className='font-bold text-orange-900 text-lg md:text-2xl mb-2'>category: {product.category}</h2>
                         <h3 className='font-bold text-lg md:text-xl mb-2'>₹ {product.new_price} & free shipping</h3>
                         <p className='text-base  mb-4'>
                             {product.detailOne}

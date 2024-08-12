@@ -6,6 +6,7 @@ function Trending () {
   const { products } = useContext(Procontext);
   const [filt,setFilt]=useState([])
 
+  //filter products they pass condition toptrends true 
   useEffect(() => {
     if (products) {
       setFilt(products.filter(item => item.topTrends === true));
@@ -23,7 +24,7 @@ function Trending () {
       <div className="flex flex-wrap justify-center gap-6 p-6">
         {filt.map(product => (
          <Link to={product.id} key={product.id}>
-          <div  className="w-[300px] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
+          <div  className="w-[300px] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden hover:transition-transform transform scale-100 hover:scale-105">
             <img className="h-64 w-[300px]" src={product.image} alt={product.title} />
             <div className="px-5 py-4">
               <div className="font-serif text-xl mb-2 hover:text-red-700 text-center text-gray-600">{product.name}</div>

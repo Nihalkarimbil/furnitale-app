@@ -4,6 +4,8 @@ import axios from 'axios'
 
 export const Procontext=createContext()
 
+// fetching the products from the API
+
 function Productcontext({children}) {
    
   const [products,setProducts] =useState([])

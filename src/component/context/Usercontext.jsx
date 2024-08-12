@@ -6,24 +6,19 @@ import { useNavigate } from 'react-router-dom';
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
+    //set active user when user loggined 
     const stord = localStorage.getItem('activeuserdata')
-
     const [activeuser, setActivUser] = useState(stord ? JSON.parse(stord) : null);
     console.log(activeuser);
+    //
 
+    //login page setup functions 
     const [login, setLogin] = useState({
         username: ' ',
         password: ""
     })
     const navigate = useNavigate()
-    // useEffect(()=>{
-    //     const stord=localStorage.getItem('activeuserdata')
-    //     if(stord){
-    //         setActivUser(JSON.parse(stord))
-    //     }
-    // },[])
-
-
+ 
     const handlechange = (e) => {
         const { name, value } = e.target;
         setLogin({ ...login, [name]: value });
@@ -46,6 +41,7 @@ const UserProvider = ({ children }) => {
             alert("An error occurred" + error.message);
         }
     };
+    //logout function when user loged out the local storage data removed
     const handlelogout = async () => {
         localStorage.removeItem('activeuserdata');
         setActivUser(null)

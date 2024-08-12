@@ -2,46 +2,59 @@ import React, { useContext, useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { UserContext } from './Usercontext'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 export const Cartcon = createContext()
 
 function Cartcontext({ children }) {
+  const navigate=useNavigate()
 
   const { activeuser,userid } = useContext(UserContext)
   const [cartitem, setCartitem] = useState([])
+  const [notification,setNotification]=useState(0)
 
+// prevent the clearing of cart page when page refresh
   useEffect(()=>{
     const getCartItems = async ()=>{
-      // console.log(activeuser);
       const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
       setCartitem(res.data.input.cart)
     }
     getCartItems()
   },[])
-
-  
+// 
+  //functions for add and delete the cart item
   const addtocart = async (items) => {
     if (activeuser) {
       try {
-        const itemWithQTY={...items,qty:1}
-        const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
-        const user1 = res.data
-        const updatecart = [...user1.input.cart, itemWithQTY]
+        const itemWithQTY = { ...items, qty: 1 };
+        const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`);
+        const user1 = res.data;
+        
+        // Find if the product already exists in the cart
+        const existingitem = user1.input.cart.find((product) => product.id === items.id);
 
-        await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
-          ...user1, input: { ...user1.input, cart: updatecart }
-        })
-        setCartitem(updatecart)
+        if (existingitem) {
+          alert('Item already exists in your cart');
+        } else {
+          const updatecart = [...user1.input.cart, itemWithQTY];
+          
+          await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
+            ...user1, input: { ...user1.input, cart: updatecart }
+          });
+          
+          setCartitem(updatecart);
+          setNotification((prevCount) => prevCount + 1);
+        }
       } catch (error) {
-        console.error('fetching eror', error)
+        console.error('Fetching error', error);
       }
+    } else {
+      alert("Please login");
+      navigate('/login');
     }
-    else {
-      alert("login please")
-    }
-
-  }
+  };
+  
 
   const deletecart = async (item, index) => {
     try {
@@ -57,14 +70,16 @@ function Cartcontext({ children }) {
       const newCartItem = [...cartitem];
       newCartItem.splice(index, 1);
       setCartitem(newCartItem);
+      setNotification((prevCount)=>prevCount-1)
     } catch (error) {
       console.error("Error deleting item from cart:", error);
     }
   };
+// 
 
   return (
     <div>
-      <Cartcon.Provider value={{ cartitem, addtocart, deletecart }}>
+      <Cartcon.Provider value={{ cartitem, addtocart, deletecart,notification }}>
         {children}
       </Cartcon.Provider>
     </div>

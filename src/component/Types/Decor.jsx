@@ -21,7 +21,7 @@ function Decor() {
         {decor.map((product) => (
           <Link to={product.id} key={product.id}>
           <div 
-            className="w-[300px] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden"
+            className="w-[300px] bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden hover:transition-transform transform scale-100 hover:scale-105"
            
           >
             <img
