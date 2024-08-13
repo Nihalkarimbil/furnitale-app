@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Userreg from './component/Userreg'
 import Login from './component/Login'
@@ -14,36 +14,50 @@ import Cart from './component/Cart'
 import User from './component/User'
 import ProtectedRoute from './component/ProtectedRoute'
 import Payment from './component/Payment'
+import { UserContext } from './component/context/Usercontext'
+import Mainadmin from './component/Admin/Main'
+
 
 function Mainrouter() {
+  const { isadmin } = useContext(UserContext)
+
   return (
-    <div>
-      <Navbar />
-      <Routes>
-        <Route path='/login' element={
-          <ProtectedRoute>
-            <Login/>
-          </ProtectedRoute> } />
-        <Route path='/register' element={
-          <ProtectedRoute>
-            <Userreg />
-          </ProtectedRoute>} />
-        <Route path='/' element={<Home />} />
-        <Route path='/Livingroom' element={<Living />} />
-        <Route path='/Bedroom' element={<Bed />} />
-        <Route path='/Dining' element={<Dining />} />
-        <Route path='/Decor' element={<Decor />} />
-        <Route path='Livingroom/:id' element={<Details />} />
-        <Route path='Bedroom/:id' element={<Details />} />
-        <Route path='Dining/:id' element={<Details />} />
-        <Route path='Decor/:id' element={<Details />} />
-        <Route path='/:id' element={<Details />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/user' element={<User/>} />
-        <Route path='/payment' element={<Payment/>}/>
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      {!isadmin ? (
+        <>
+          <Navbar />
+          <Routes>
+            <Route path='/login' element={
+              <ProtectedRoute>
+                <Login />
+              </ProtectedRoute>} />
+            <Route path='/register' element={
+              <ProtectedRoute>
+                <Userreg />
+              </ProtectedRoute>} />
+            <Route path='/' element={<Home />} />
+            <Route path='/Livingroom' element={<Living />} />
+            <Route path='/Bedroom' element={<Bed />} />
+            <Route path='/Dining' element={<Dining />} />
+            <Route path='/Decor' element={<Decor />} />
+            <Route path='Livingroom/:id' element={<Details />} />
+            <Route path='Bedroom/:id' element={<Details />} />
+            <Route path='Dining/:id' element={<Details />} />
+            <Route path='Decor/:id' element={<Details />} />
+            <Route path='/:id' element={<Details />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/user' element={<User />} />
+            <Route path='/payment' element={<Payment />} />
+          </Routes>
+          <Footer />
+        </>
+      ) : (
+        <Routes>
+          <Route path='/admin' element={<Mainadmin />}/>
+        </Routes>
+      )}
+
+    </>
   )
 }
 

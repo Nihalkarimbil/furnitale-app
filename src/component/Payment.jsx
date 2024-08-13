@@ -33,7 +33,7 @@ function Payment() {
 
     return (
         <div className=" bg-red-100 p-5">
-            <div className="card px-4 container font-sans md:max-w-lg max-md:max-w-xl mx-auto border bg-red-50 rounded ">
+            <div className="card px-4 container font-sans md:max-w-lg max-md:max-w-xl mx-auto border bg-red-50 rounded shadow">
                 <p className="text-lg font-semibold py-3">Payment Details</p>
                 <div className="grid grid-cols-12 gap-3">
                     <div className="col-span-12">
@@ -43,8 +43,7 @@ function Payment() {
                                 className="form-control mb-3 p-2 border border-gray-300 rounded"
                                 type="text"
                                 placeholder="Name"
-                                required
-                               
+                                required      
                             />
                         </div>
                     </div>

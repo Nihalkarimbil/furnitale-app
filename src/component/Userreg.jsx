@@ -10,6 +10,7 @@ function Userreg() {
     email: "",
     password: "",
     confpassword: "",
+    admin:false,
     cart:[]
   });
 
