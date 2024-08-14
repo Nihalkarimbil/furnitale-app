@@ -16,6 +16,10 @@ import ProtectedRoute from './component/ProtectedRoute'
 import Payment from './component/Payment'
 import { UserContext } from './component/context/Usercontext'
 import Mainadmin from './component/Admin/Main'
+import Sidenav from './component/Admin/Sidenav'
+import NAvbar from './component/Admin/Navbar'
+import Product from './component/Admin/Product'
+import Users from './component/Admin/Users'
 
 
 function Mainrouter() {
@@ -52,9 +56,17 @@ function Mainrouter() {
           <Footer />
         </>
       ) : (
-        <Routes>
-          <Route path='/admin' element={<Mainadmin />}/>
-        </Routes>
+        <div className='flex  bg-slate-50'
+        >
+          <NAvbar/>
+          <Sidenav/>
+          <Routes>
+            <Route path='/admin' element={<Mainadmin />} />
+            <Route path='/products' element={<Product />}/>
+            <Route path='/users' element={<Users/>}/>
+          </Routes>
+        </div>
+
       )}
 
     </>
