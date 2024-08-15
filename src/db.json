@@ -418,17 +418,6 @@
       }
     },
     {
-      "id": "2b5a",
-      "input": {
-        "username": "NAEEM",
-        "email": "naeem@gmail.com",
-        "password": "NAEEM2",
-        "confpassword": "NAEEM2",
-        "admin": false,
-        "cart": []
-      }
-    },
-    {
       "id": "95cb",
       "input": {
         "username": "NAEEM",
@@ -436,7 +425,68 @@
         "password": "NAEEM2",
         "confpassword": "NAEEM2",
         "admin": false,
-        "cart": []
+        "cart": [
+          {
+            "id": "25",
+            "name": "New Modern Floor Lamp for Rooms",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-photo/digital-art-style-light-lamp-design_23-2151153863.jpg?t=st=1719940756~exp=1719944356~hmac=00ce0b97c7e77939a9a49b47b70769b58cbe5fadc8b43f110266194c80343f7e&w=826",
+            "new_price": 250,
+            "old_price": 300,
+            "description": "A modern floor lamp for contemporary living spaces.",
+            "rating": 4.5,
+            "reviews": 25,
+            "topTrends": true,
+            "newCollections": false,
+            "detailOne": "Illuminate your space with this modern floor lamp. Its sleek design and adjustable height make it ideal for reading nooks, living rooms, or home offices. The sturdy base ensures stability, while the fabric shade diffuses soft, ambient light.",
+            "qty": 1
+          },
+          {
+            "id": "24",
+            "name": "Vintage wooden brown Wall Clock",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-vector/vintage-clock-vector-illustration-remixed-from-artwork-by-florence-stevenson_53876-125466.jpg?t=st=1719940720~exp=1719944320~hmac=79e9487183d194ac6e3ba8f1caa4f25761f3f4d73d11739a2937243dab74e905&w=740",
+            "new_price": 150,
+            "old_price": 200,
+            "description": "A vintage wall clock with timeless appeal.",
+            "rating": 4.4,
+            "reviews": 23,
+            "topTrends": false,
+            "newCollections": true,
+            "detailOne": "Add charm to your walls with this vintage wall clock. Its classic design and antique finish create a nostalgic ambiance in any room. The large numbers and hands ensure easy visibility and accurate timekeeping.",
+            "qty": 1
+          },
+          {
+            "id": "22",
+            "name": " New Clear Mirrored Vanity Table ",
+            "category": "bedroom",
+            "image": "https://img.freepik.com/free-photo/view-modern-entryway-with-interior-decor_23-2150791082.jpg?t=st=1719940617~exp=1719944217~hmac=a22f726a36991ac983436611a5d154d867292bf12b8a5d0d1210517d6c0abe04&w=740",
+            "new_price": 600,
+            "old_price": 800,
+            "description": "A mirrored vanity table for glamorous bedroom settings.",
+            "rating": 4.5,
+            "reviews": 22,
+            "topTrends": false,
+            "newCollections": true,
+            "detailOne": "Create a glamorous space with this mirrored vanity table. Its reflective surface adds brightness and sophistication to your bedroom decor. The spacious tabletop and drawers provide ample storage for cosmetics, jewelry, and beauty essentials.",
+            "qty": 1
+          },
+          {
+            "id": "8",
+            "name": "Extendable Wood Dining Table",
+            "category": "dining",
+            "image": "https://img.freepik.com/free-photo/view-table-arrangement-by-wedding-planner_23-2150167202.jpg?t=st=1719940117~exp=1719943717~hmac=93a65f882f68dbea8c6b74c78d87c4d5671829b17e24576a5ef25b01103104d9&w=740",
+            "new_price": "800",
+            "old_price": 2000,
+            "description": "An extendable wood dining table that adapts to your dining needs.",
+            "rating": 4.6,
+            "reviews": 22,
+            "topTrends": true,
+            "newCollections": false,
+            "detailOne": "This versatile dining table features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor.",
+            "qty": 1
+          }
+        ]
       }
     },
     {
@@ -447,7 +497,68 @@
         "password": "KUNJAPU1",
         "confpassword": "KUNJAPU1",
         "admin": false,
-        "cart": []
+        "cart": [
+          {
+            "id": "23",
+            "name": "Yellow Warm Elegant Chandelier",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-photo/peles-castle-interior-romania_1268-20814.jpg?t=st=1719940679~exp=1719944279~hmac=edd1ea9fdd1a56cb16e789e579b1246445be138e4e75ec8786d1a085ee8e1398&w=740",
+            "new_price": 800,
+            "old_price": 1000,
+            "description": "An elegant chandelier for adding luxury to any room.",
+            "rating": 4.6,
+            "reviews": 28,
+            "topTrends": true,
+            "newCollections": false,
+            "detailOne": "Illuminate your space with this elegant chandelier. Its crystal accents and polished finish exude luxury and sophistication. The adjustable chain allows you to customize the hanging length for optimal placement in any room.",
+            "qty": 1
+          },
+          {
+            "id": "26",
+            "name": "Classic Art Deco big Wall Mirror",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-photo/ornate-mirror-art-nouveau-style_23-2150975623.jpg?t=st=1719940800~exp=1719944400~hmac=db036321b4a0ed213f7c54f3dae0dca59e1f0f5f664c10c14b759f14f986baf2&w=740",
+            "new_price": 350,
+            "old_price": 450,
+            "description": "An art deco wall mirror for adding glamour to your walls.",
+            "rating": 4.3,
+            "reviews": 20,
+            "topTrends": false,
+            "newCollections": true,
+            "detailOne": "Make a statement with this art deco wall mirror. Its geometric frame and mirrored panels create a striking visual effect on any wall. The sleek design adds glamour and sophistication to modern and eclectic interiors alike.",
+            "qty": 1
+          },
+          {
+            "id": "22",
+            "name": " New Clear Mirrored Vanity Table ",
+            "category": "bedroom",
+            "image": "https://img.freepik.com/free-photo/view-modern-entryway-with-interior-decor_23-2150791082.jpg?t=st=1719940617~exp=1719944217~hmac=a22f726a36991ac983436611a5d154d867292bf12b8a5d0d1210517d6c0abe04&w=740",
+            "new_price": 600,
+            "old_price": 800,
+            "description": "A mirrored vanity table for glamorous bedroom settings.",
+            "rating": 4.5,
+            "reviews": 22,
+            "topTrends": false,
+            "newCollections": true,
+            "detailOne": "Create a glamorous space with this mirrored vanity table. Its reflective surface adds brightness and sophistication to your bedroom decor. The spacious tabletop and drawers provide ample storage for cosmetics, jewelry, and beauty essentials.",
+            "qty": 1
+          },
+          {
+            "id": "29",
+            "name": "Geometric Wall Art Set",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-vector/abstract-watercolor-shapes-covers-collection_23-2148649030.jpg?t=st=1719940976~exp=1719944576~hmac=44bbb94f3fa1a6f1ebfbbd02f26b52a2112c29b74773ba0ecea2373b329dee4f&w=2000",
+            "new_price": 120,
+            "old_price": 150,
+            "description": "A geometric wall art set for modern interiors.",
+            "rating": 4.3,
+            "reviews": 21,
+            "topTrends": false,
+            "newCollections": false,
+            "detailOne": "Update your walls with this geometric wall art set. Its minimalist designs and monochromatic palette add a modern touch to any room. The artworks are framed for a polished look that enhances contemporary interiors.",
+            "qty": 1
+          }
+        ]
       }
     }
   ]
