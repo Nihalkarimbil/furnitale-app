@@ -7,7 +7,7 @@ export const Procontext=createContext()
 // fetching the products from the API
 
 function Productcontext({children}) {
-   
+  const [Costomers,setCostomers]=useState([])
   const [products,setProducts] =useState([])
   useEffect(()=>{
     const fetch= async ()=>{
@@ -20,10 +20,24 @@ function Productcontext({children}) {
     }
     fetch()
   },[])
+
+  
+
+  useEffect(()=>{
+      const fetchuser= async ()=>{
+        try {
+          const respons=await axios.get("http://localhost:5000/user")
+          setCostomers(respons.data);
+        } catch (error) {
+          console.error("eror fetching data",error)        
+        }
+      }
+      fetchuser()
+  },[])
   
   return (
     <div>
-        <Procontext.Provider value={{products}}>
+        <Procontext.Provider value={{products,Costomers}}>
             {children}
         </Procontext.Provider>
     </div>

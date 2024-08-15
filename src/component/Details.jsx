@@ -2,15 +2,14 @@ import React, { useContext, useEffect,useState } from 'react'
 import { Procontext } from './context/Productcontext'
 import { Link,useParams } from 'react-router-dom'
 import { Cartcon } from './context/Cartcontext';
-import { UserContext } from './context/Usercontext';
+
 
 
 function Details() {
     const {id}=useParams();
     const {products}=useContext(Procontext)
     const [pro,setPro]=useState([])
-    const {activeuser}=useContext(UserContext)
-    console.log(activeuser);
+   
     
 
     useEffect(()=>{
@@ -38,6 +37,7 @@ function Details() {
                     <div className='flex flex-col items-center md:items-start text-center md:text-left'>
                         <h1 className='font-semibold text-gray-600 text-xl md:text-3xl mb-2'>{product.name}</h1>
                         <h2 className='font-bold text-orange-900 text-lg md:text-2xl mb-2'>category: {product.category}</h2>
+                        <h5 className="text-xl font-semibold text-gray-500 mb-2 line-through text-center">₹ {product.old_price}</h5>
                         <h3 className='font-bold text-lg md:text-xl mb-2'>₹ {product.new_price} & free shipping</h3>
                         <p className='text-base  mb-4'>
                             {product.detailOne}

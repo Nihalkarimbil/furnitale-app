@@ -416,6 +416,39 @@
           }
         ]
       }
+    },
+    {
+      "id": "2b5a",
+      "input": {
+        "username": "NAEEM",
+        "email": "naeem@gmail.com",
+        "password": "NAEEM2",
+        "confpassword": "NAEEM2",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "95cb",
+      "input": {
+        "username": "NAEEM",
+        "email": "naeem@gmail.com",
+        "password": "NAEEM2",
+        "confpassword": "NAEEM2",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "531d",
+      "input": {
+        "username": "kunjapu",
+        "email": "kunjapu@gmail.com",
+        "password": "KUNJAPU1",
+        "confpassword": "KUNJAPU1",
+        "admin": false,
+        "cart": []
+      }
     }
   ]
 }

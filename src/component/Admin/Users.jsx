@@ -1,32 +1,19 @@
-import React, { useState,useEffect } from 'react'
-import axios from 'axios'
+import React, {  useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { Procontext } from '../context/Productcontext'
 
 
 function Users() {
-    const [Costomers,setCostomers]=useState([])
-
-    useEffect(()=>{
-        const fetchuser= async ()=>{
-          try {
-            const respons=await axios.get("http://localhost:5000/user")
-            setCostomers(respons.data);
-          } catch (error) {
-            console.error("eror fetching data",error)        
-          }
-        }
-        fetchuser()
-    },[])
-    console.log(Costomers);
-    
+   const{Costomers}=useContext(Procontext)
 
   return (
     <div>
-    <section className="w-screen bg-gray-100 text-gray-600 h-screen px-4">
-    <div className="flex flex-col pt-28 h-full">
+    <section className="w-screen text-gray-600 h-screen px-4">
+    <div className="flex flex-col pt-28 h-full ">
       {/* Table */}
-      <div className="w-full max-w-2xl  bg-white shadow-lg rounded-sm border border-gray-200">
+      <div className="w-[1000px] bg-gray-100 shadow-lg hs border border-gray-300 rounded-xl overflow-hidden ">
         <header className="px-5 py-4 border-b border-gray-100">
-          <h2 className="font-semibold text-gray-800">Customers</h2>
+          <h2 className="font-serif text-emerald-500 text-center text-lg">Customers</h2>
         </header>
         <div className="p-3">
           <div className="overflow-x-auto">
@@ -45,16 +32,19 @@ function Users() {
                   <th className="p-2 whitespace-nowrap">
                     <div className="font-semibold text-center">Country</div>
                   </th>
+                   <th className="p-2 whitespace-nowrap">
+                    <div className="font-semibold text-center">Details</div>
+                  </th>
                 </tr>
               </thead>
               <tbody className="text-sm divide-y divide-gray-100">
+
                 {Costomers.map((customer, index) => (
-                  <tr key={index}>
+                  
+                    <tr key={index}>
                     <td className="p-2 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="w-10 h-10 flex-shrink-0 mr-2 sm:mr-3">
-                          <img className="rounded-full" src={customer.image} width="40" height="40" alt={customer.name} />
-                        </div>
+                        
                         <div className="font-medium text-gray-800">{customer?.input?.username}</div>
                       </div>
                     </td>
@@ -65,9 +55,17 @@ function Users() {
                       <div className="text-left font-medium text-green-500">{customer?.id}</div>
                     </td>
                     <td className="p-2 whitespace-nowrap">
-                      <div className="text-lg text-center">{customer.country}</div>
+                      <div className="text-lg text-center text-amber-300">India</div>
                     </td>
+                    <td className="p-2 whitespace-nowrap">
+                      <Link to={customer.id}>
+                      <div className="text-lg text-center text-white border   rounded-lg bg-sky-950">Details</div>
+                      </Link>
+                     
+                    </td>
+                    
                   </tr>
+                  
                 ))}
               </tbody>
             </table>

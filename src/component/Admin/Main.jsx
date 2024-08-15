@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function Mainadmin() {
   return (
-    <div className='flex'>
+    <div className='flex '>
 
       <Link to={'/users'}
        className='bg-slate-100 w-[450px] mt-20 ml-5 h-48 rounded-lg shadow-lg hover:transition-transform transform scale-100 hover:scale-105'>

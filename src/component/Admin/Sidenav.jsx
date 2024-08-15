@@ -8,7 +8,7 @@ function Sidenav() {
 	const { handleadminlogout } = useContext(UserContext)
 	return (
 		<div className="min-h-screen flex flex-row sticky">
-			<div className="flex flex-col w-56 bg-slate-100 rounded-r-3xl overflow-hidden">
+			<div className="flex flex-col w-56 bg-slate-200 rounded-r-3xl overflow-hidden">
 				<div className="flex items-center justify-center h-16 shadow-md">
 					<h1 className="text-3xl  text-red-500">FurnisH</h1>
 				</div>

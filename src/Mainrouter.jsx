@@ -20,6 +20,7 @@ import Sidenav from './component/Admin/Sidenav'
 import NAvbar from './component/Admin/Navbar'
 import Product from './component/Admin/Product'
 import Users from './component/Admin/Users'
+import UserDetails from './component/Admin/UserDetails'
 
 
 function Mainrouter() {
@@ -56,7 +57,7 @@ function Mainrouter() {
           <Footer />
         </>
       ) : (
-        <div className='flex  bg-slate-50'
+        <div className='flex  bg-slate-50 overflow-hidden'
         >
           <NAvbar/>
           <Sidenav/>
@@ -64,6 +65,7 @@ function Mainrouter() {
             <Route path='/admin' element={<Mainadmin />} />
             <Route path='/products' element={<Product />}/>
             <Route path='/users' element={<Users/>}/>
+            <Route path='users/:id' element={<UserDetails/>}/>
           </Routes>
         </div>
 
