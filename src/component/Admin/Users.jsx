@@ -15,69 +15,50 @@ function Users() {
 
   return (
     <div>
-      <section className="w-screen text-gray-600 h-screen px-4">
-        <div className="flex flex-col pt-28 h-full ">
-          {/* Table */}
-          <div className="w-[1000px] bg-gray-100 shadow-lg hs border border-gray-300 rounded-xl overflow-hidden ">
-            <header className="px-5 py-4 border-b border-gray-100">
-              <h2 className="font-serif text-emerald-500 text-center text-lg">Customers</h2>
-            </header>
-            <div className="p-3">
-              <div className="overflow-x-auto">
-                <table className="table-auto w-full">
-                  <thead className="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
-                    <tr>
-                      <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-left">Name</div>
-                      </th>
-                      <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-left">Email</div>
-                      </th>
-                      <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-left">ID</div>
-                      </th>
-                      <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-center">Country</div>
-                      </th>
-                      <th className="p-2 whitespace-nowrap">
-                        <div className="font-semibold text-center">Details</div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-sm divide-y divide-gray-100">
+      <div className='mt-24 pb-20 pl-24 w-[1000px]'>
+      
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+          <thead className="text-xs uppercase  bg-green-400 text-white">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                User name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Email
+              </th>
+              <th scope="col" className="px-6 py-3">
+                ID
+              </th>
+             
+              <th scope="col" className="px-6 py-3">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {Costomers.map((item) => (
 
-                    {Costomers.map((customer, index) => (
-
-                      <tr key={index}>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="flex items-center">
-
-                            <div className="font-medium text-gray-800">{customer?.input?.username}</div>
-                          </div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left">{customer?.input?.email}</div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-left font-medium text-green-500">{customer?.id}</div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <div className="text-lg text-center text-amber-300">India</div>
-                        </td>
-                        <td className="p-2 whitespace-nowrap">
-                          <Link to={customer.id}>
-                            <div className="text-lg text-center text-white border   rounded-lg bg-sky-950">Details</div>
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-500  whitespace-nowrap dark:text-white">
+                  {item?.input?.username}
+                </th>
+                
+                <td className="px-6 py-4">
+                  {item?.input?.email}
+                </td>
+                <td className="px-6 py-4">
+                  {item.id}
+                </td>
+                <td className="px-6 py-4">
+                  <Link to={item.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">details</Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
     </div>
   )
 }

@@ -4,9 +4,11 @@ import { Navigate } from 'react-router-dom';
 
 function ProtectedRoute({children}) {
    
-    const{activeuser}=useContext(UserContext)
+    const{activeuser,isadmin}=useContext(UserContext)
     if(activeuser){
         return <Navigate to={"/"}/>
+    }if (isadmin) {
+  
     }
 
   return (

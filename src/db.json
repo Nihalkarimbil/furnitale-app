@@ -15,20 +15,6 @@
       "detailOne": "This Extendable wood dining table features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor."
     },
     {
-      "id": "2",
-      "name": "Classic Upholstered Dining Chair",
-      "category": "dining",
-      "image": "https://img.freepik.com/free-photo/served-table-restaurant_93675-129581.jpg?t=st=1722847715~exp=1722851315~hmac=43e92886b9f52e26ca81e48410bc747c91313a7ec3f980d5f5ae498dde57bf13&w=740",
-      "new_price": "150",
-      "old_price": "250",
-      "description": "A classic dining chair with comfortable upholstery.",
-      "rating": 4.2,
-      "reviews": 18,
-      "topTrends": false,
-      "newCollections": false,
-      "detailOne": "This classic Upholsterd dining chair features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor."
-    },
-    {
       "id": "4",
       "name": "Simple Rustic Wooden Dining Bench",
       "category": "dining",
@@ -365,17 +351,17 @@
     },
     {
       "id": "30",
-      "name": " Botanical Framed Prints",
+      "name": "Abstract Canvas Art",
       "category": "decor",
-      "image": "https://img.freepik.com/free-vector/faded-foliage-banner_53876-91506.jpg?t=st=1719941010~exp=1719944610~hmac=b9a36202fe5b749c28b11c6f74e55a0b9b733fb9c42df6f4e1d1c5178a98b9b7&w=740",
-      "new_price": 100,
-      "old_price": 120,
-      "description": "Botanical framed prints for natural-inspired decor.",
-      "rating": 4.2,
-      "reviews": 20,
+      "image": "https://img.freepik.com/free-vector/abstract-modern-backgrounds-collection_52683-60151.jpg?w=2000",
+      "new_price": 130,
+      "old_price": 160,
+      "description": "A beautiful abstract canvas art piece.",
+      "rating": 4.5,
+      "reviews": 18,
       "topTrends": false,
       "newCollections": false,
-      "detailOne": "Bring the beauty of nature indoors with these botanical framed prints. Featuring lush greenery and delicate florals, the artworks add a serene vibe to your living space. Each print is encased in a sleek frame for a polished presentation."
+      "detailOne": "An abstract canvas art piece that adds color and sophistication to your living space. The bold strokes and dynamic composition make it a focal point in any room."
     }
   ],
   "user": [
@@ -388,33 +374,6 @@
         "confpassword": "NIHAL3",
         "admin": true,
         "cart": []
-      }
-    },
-    {
-      "id": "db5d",
-      "input": {
-        "username": "heyu",
-        "email": "D?s.kjhg@g",
-        "password": "Heyu1",
-        "confpassword": "Heyu1",
-        "admin": false,
-        "cart": [
-          {
-            "id": "11",
-            "name": "beutifull Leather Sectional Sofa",
-            "category": "livingroom",
-            "image": "https://img.freepik.com/free-photo/close-up-sofa-with-three-cushions_1203-527.jpg?t=st=1719939902~exp=1719943502~hmac=dbbe7dea6408edf253257d479bbe548eb9a659f24676bab0b8d0b7557ad98f0f&w=740",
-            "new_price": 2200,
-            "old_price": 2600,
-            "description": "A luxurious leather sectional sofa for spacious seating.",
-            "rating": 4.8,
-            "reviews": 30,
-            "topTrends": true,
-            "newCollections": false,
-            "detailOne": "Transform your living room with this luxurious leather sectional sofa. Its L-shaped design offers ample seating space, perfect for hosting guests or lounging with family. The premium leather upholstery adds sophistication to your decor while providing exceptional comfort.",
-            "qty": 1
-          }
-        ]
       }
     },
     {
@@ -511,7 +470,7 @@
             "topTrends": true,
             "newCollections": false,
             "detailOne": "Illuminate your space with this elegant chandelier. Its crystal accents and polished finish exude luxury and sophistication. The adjustable chain allows you to customize the hanging length for optimal placement in any room.",
-            "qty": 1
+            "qty": 6
           },
           {
             "id": "26",
@@ -557,8 +516,119 @@
             "newCollections": false,
             "detailOne": "Update your walls with this geometric wall art set. Its minimalist designs and monochromatic palette add a modern touch to any room. The artworks are framed for a polished look that enhances contemporary interiors.",
             "qty": 1
+          },
+          {
+            "id": "13",
+            "name": "New Marble Top Coffee Table gray color",
+            "category": "livingroom",
+            "image": "https://img.freepik.com/free-photo/morning-cup-coffee-white-table_23-2148251658.jpg?t=st=1719940286~exp=1719943886~hmac=49e3d2a5f78082bf2f655f06b50fd13e36492abc188b131108916f719cf8bbfe&w=740",
+            "new_price": 950,
+            "old_price": 1200,
+            "description": "A sophisticated marble top coffee table for elegant living rooms.",
+            "rating": 4.6,
+            "reviews": 24,
+            "topTrends": true,
+            "newCollections": false,
+            "detailOne": "Enhance your living room with this sophisticated marble top coffee table. The genuine marble surface exudes elegance and luxury, creating a focal point in your decor. Its sturdy base ensures stability while adding a contemporary touch to your interior.",
+            "qty": 1
+          },
+          {
+            "id": "10",
+            "name": " Wooden Classic Wooden Coffee Table",
+            "category": "livingroom",
+            "image": "https://woodsala.com/cdn/shop/files/1_8d48d5be-7221-473f-99ec-215ea51dcf68.jpg?v=1693899275",
+            "new_price": "600",
+            "old_price": 700,
+            "description": "A classic wooden coffee table for a timeless look.",
+            "rating": 4.4,
+            "reviews": 25,
+            "topTrends": false,
+            "newCollections": true,
+            "detailOne": "Enhance your living room with this classic wooden coffee table. Crafted from solid wood, it features a timeless design that blends seamlessly with traditional and transitional decor styles. The sturdy construction ensures durability and longevity, making it a lasting addition to your home.",
+            "qty": 1
+          },
+          {
+            "id": "30",
+            "name": " Botanical Framed Prints",
+            "category": "decor",
+            "image": "https://img.freepik.com/free-vector/faded-foliage-banner_53876-91506.jpg?t=st=1719941010~exp=1719944610~hmac=b9a36202fe5b749c28b11c6f74e55a0b9b733fb9c42df6f4e1d1c5178a98b9b7&w=740",
+            "new_price": 100,
+            "old_price": 120,
+            "description": "Botanical framed prints for natural-inspired decor.",
+            "rating": 4.2,
+            "reviews": 20,
+            "topTrends": false,
+            "newCollections": false,
+            "detailOne": "Bring the beauty of nature indoors with these botanical framed prints. Featuring lush greenery and delicate florals, the artworks add a serene vibe to your living space. Each print is encased in a sleek frame for a polished presentation.",
+            "qty": 1
           }
         ]
+      }
+    },
+    {
+      "id": "671c",
+      "input": {
+        "username": "Alan",
+        "email": "alan@gmail.com",
+        "password": "ALAN12",
+        "confpassword": "ALAN12",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "15a4",
+      "input": {
+        "username": "BOBY",
+        "email": "Boby@gmail.com",
+        "password": "BOBY1",
+        "confpassword": "BOBY1",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "dcd5",
+      "input": {
+        "username": "KRISHNAN",
+        "email": "krishnan@gmail.com",
+        "password": "KRISH2",
+        "confpassword": "KRISH2",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "b20d",
+      "input": {
+        "username": "Ronaldo",
+        "email": "CR7@gmail.com",
+        "password": "CR712",
+        "confpassword": "CR712",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "c81d",
+      "input": {
+        "username": "Messi",
+        "email": "messi@gmail.com",
+        "password": "MESSI1",
+        "confpassword": "MESSI1",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "11d9",
+      "input": {
+        "username": "Mo Salah",
+        "email": "mo@gmail.com",
+        "password": "SALAH3",
+        "confpassword": "SALAH3",
+        "admin": false,
+        "cart": []
       }
     }
   ]

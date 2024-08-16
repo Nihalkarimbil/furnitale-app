@@ -21,6 +21,8 @@ import NAvbar from './component/Admin/Navbar'
 import Product from './component/Admin/Product'
 import Users from './component/Admin/Users'
 import UserDetails from './component/Admin/UserDetails'
+import Prodetails from './component/Admin/Prodetails'
+import Newpro from './component/Admin/Newpro'
 
 
 function Mainrouter() {
@@ -66,6 +68,8 @@ function Mainrouter() {
             <Route path='/products' element={<Product />}/>
             <Route path='/users' element={<Users/>}/>
             <Route path='users/:id' element={<UserDetails/>}/>
+            <Route path='products/:id' element={<Prodetails />}/>
+            <Route path='/add' element={<Newpro />}/>
           </Routes>
         </div>
 

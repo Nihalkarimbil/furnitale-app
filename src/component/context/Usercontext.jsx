@@ -8,7 +8,8 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     
-   const [isadmin,setIsadmin]=useState(null)
+    const ad=localStorage.getItem('adminData')
+   const [isadmin,setIsadmin]=useState(ad? JSON.parse(ad):null)
     //set active user when user loggined 
     const stord = localStorage.getItem('activeuserdata')
     const [activeuser, setActivUser] = useState(stord ? JSON.parse(stord) : null);
@@ -20,12 +21,10 @@ const UserProvider = ({ children }) => {
         password: ""
     })
     const navigate = useNavigate()
- 
     const handlechange = (e) => {
         const { name, value } = e.target;
         setLogin({ ...login, [name]: value });
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -53,9 +52,13 @@ const UserProvider = ({ children }) => {
         localStorage.removeItem('activeuserdata');
         setActivUser(null)
     };
-
+    const addminlogout= async()=>{
+        localStorage.removeItem('adminData')
+        setIsadmin(null)
+        navigate('/')
+    }
     return (
-        <UserContext.Provider value={{ activeuser, handleSubmit, handlechange, login, userid: activeuser?.id, handlelogout,isadmin }}>
+        <UserContext.Provider value={{ activeuser, handleSubmit, handlechange, login, userid: activeuser?.id, handlelogout,isadmin ,addminlogout }}>
             {children}
         </UserContext.Provider>
     );

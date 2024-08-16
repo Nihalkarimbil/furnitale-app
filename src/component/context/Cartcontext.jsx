@@ -29,20 +29,16 @@ function Cartcontext({ children }) {
       try {
         const itemWithQTY = { ...items, qty: 1 };
         const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`);
-        const user1 = res.data;
-        
+        const user1 = res.data;       
         // Find if the product already exists in the cart
         const existingitem = user1.input.cart.find((product) => product.id === items.id);
-
         if (existingitem) {
           alert('Item already exists in your cart');
         } else {
           const updatecart = [...user1.input.cart, itemWithQTY];
-          
           await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
             ...user1, input: { ...user1.input, cart: updatecart }
           });
-          
           setCartitem(updatecart);
           setNotification((prevCount) => prevCount + 1);
         }
