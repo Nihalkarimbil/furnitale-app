@@ -40,7 +40,7 @@ function Productcontext({children}) {
     if(deleteconform){
       try {
         const pr=await axios.delete(`http://localhost:5000/products/${item.id}`)
-        console.log(pr)
+        
         alert("product succesfully deteted")
         navigate('/products')
       } catch (error) {

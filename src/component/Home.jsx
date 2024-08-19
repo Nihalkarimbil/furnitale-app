@@ -7,8 +7,9 @@ function Home() {
   return (
     <div>
       <Image />
-      <Trending />
+
       <Newcoll />
+      <Trending />
     </div>
   )
 }

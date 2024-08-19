@@ -23,6 +23,7 @@ import Users from './component/Admin/Users'
 import UserDetails from './component/Admin/UserDetails'
 import Prodetails from './component/Admin/Prodetails'
 import Newpro from './component/Admin/Newpro'
+import Editpro from './component/Admin/Editpro'
 
 
 function Mainrouter() {
@@ -70,6 +71,7 @@ function Mainrouter() {
             <Route path='users/:id' element={<UserDetails/>}/>
             <Route path='products/:id' element={<Prodetails />}/>
             <Route path='/add' element={<Newpro />}/>
+            <Route path='/products/:id/edit' element={<Editpro/>}/>
           </Routes>
         </div>
 

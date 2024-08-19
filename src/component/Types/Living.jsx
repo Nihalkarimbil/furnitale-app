@@ -14,7 +14,7 @@ function Living() {
   console.log(living);
   
   return (
-    <div className='bg-red-100'>
+    <div className='bg-orange-100'>
        <br/>
       <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800'>Living Room furniture</h1>
       <p className='flex justify-center font-sans text-base text-gray-700 '>Transform Your Living Room, with the best</p>

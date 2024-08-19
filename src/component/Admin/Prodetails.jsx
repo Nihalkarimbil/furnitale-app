@@ -1,8 +1,9 @@
 import React,{useContext,useState,useEffect} from 'react'
-import { useParams,Link } from 'react-router-dom'
+import { useParams,useNavigate, Link } from 'react-router-dom'
 import { Procontext } from '../context/Productcontext'
 
 function Prodetails() {
+    
     const{id}=useParams()
     const {products,deletepro}=useContext(Procontext)
     const [pro,setPro]=useState([])
@@ -37,9 +38,11 @@ function Prodetails() {
                            <p className='text-yellow-700 font-medium'>Rating: {product.rating}</p>
                            <br/>
                         <div>
+                        <Link to={`/products/${product.id}/edit`}>
                         <button className='bg-blue-950 text-white rounded-md py-2 px-4 hover:bg-black' >
                             Edit
                         </button>
+                        </Link>
                         
                         <button className='bg-blue-950 text-white rounded-md py-2 px-4 hover:bg-black ml-4' onClick={()=>deletepro(product)} >
                             Delete

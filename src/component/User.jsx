@@ -12,12 +12,12 @@ function User() {
     const id=activeuser?.id
     if (!activeuser) {
         return (
-           <div className='bg-red-100 '>
+           <div className='bg-red-100 h-[310px]'>
             <div >
-            <p className='flex justify-center p-[90px] font-semibold text-3xl'>User Not Available!
+            <p className='flex justify-center p-[90px] font-serif text-gray-400 text-3xl'>User Not Available!
                 </p>
                 <Link to={'/login'}>
-                <button className='bg-red-500 relative left-[620px] p-1 rounded bottom-16 text-white font-semibold'>
+                <button className=' relative left-[620px] p-1 rounded bottom-16 text-blue-700 font-semibold'>
                     Please Login
                 </button>
                 </Link>

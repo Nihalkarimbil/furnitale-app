@@ -1,49 +1,61 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import React, { useEffect,useState } from 'react'
+import { useParams,useNavigate } from 'react-router-dom'
 
 
-function Newpro() {
+function Editpro() {
     const navigate=useNavigate()
-    const [product, setProducts] = useState({
-        name: "",
-        category: "",
-        image: "",
-        new_price: "",
-        old_price: "",
-        description: "",
-        rating: "",
-        reviews: "",
-        topTrends: false,
-        newCollections: false,
-        detailOne: ""
+   const {id}=useParams()
+   console.log(id
+   )
+   const [product, setProduct] = useState({
+    name: '',
+    category: '',
+    image: '',
+    new_price: '',
+    old_price: '',
+    description: '',
+    rating: '',
+    reviews: '',
+    topTrends: false,
+    newCollections: false,
+    detailOne: '',
+  });
+
+   useEffect(()=>{
+    axios.get(`http://localhost:5000/products/${id}`)
+    .then(res=>{
+        setProduct(res.data)
     })
-    const handlechange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setProducts((prevProduct) => ({
-            ...prevProduct,
-            [name]: type === "checkbox" ? checked : value,
-        }));
+    .catch(error => {
+        console.error('Error fetching product data:', error);
+    })
+   },[id])
+
+   const handlechange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setProduct((prevProduct) => ({
+        ...prevProduct,
+        [name]: type === "checkbox" ? checked : value,
+    }));
     }
-
-
+    
     const handlesubmit = async (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/products",product)
+        axios.put(`http://localhost:5000/products/${id}`,product)
         .then((res)=>{
-            console.log(res)
-            alert('product added')
+            alert('product add')
         })
-        .then( navigate('/products'))
+        .then( navigate(`/products/${id}`))
 
         .catch((error) => {
             console.error("There was an error adding the product!", error);
         });
     }
-
+    
 return (
-    <div className='mt-24 pb-20 pl-11' >
-        <form className='space-y-3' onSubmit={handlesubmit}>
+   <div className='mt-24 pb-20 pl-11' >
+        <form className='space-y-3' onSubmit={handlesubmit} >
             <input
                 type='text'
                 name='name'
@@ -51,60 +63,54 @@ return (
                 value={product.name}
                 onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
+          
             />
             <input
                 type='text'
                 name='category'
                 placeholder='product catogary'
                 value={product.category}
-                onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
+                onChange={handlechange}
             />
             <input
                 type='text'
                 name='image'
                 placeholder='image URL'
                 value={product.image}
-                onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
+                onChange={handlechange}
             />
             <input
                 type='number'
                 name='new_price'
                 placeholder='new price'
                 value={product.new_price}
-                onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
+                onChange={handlechange}
             />
             <input
                 type='number'
                 name='old_price'
                 placeholder='old price'
                 value={product.old_price}
-                onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
+                onChange={handlechange}
             />
             <textarea
                 name='description'
                 placeholder='description of the product'
                 value={product.description}
-                onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
+                onChange={handlechange}
             />
             <input
                 type='number'
                 name='rating'
                 placeholder='rating of product'
                 value={product.rating}
-                onChange={handlechange}
                 className="border border-solid p-2 w-[800px]"
-                required
+                onChange={handlechange}
 
             />
             <input
@@ -112,9 +118,8 @@ return (
                 name='reviews'
                 placeholder='review of the product'
                 value={product.reviews}
-                onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
+                onChange={handlechange}
             />
             <br />
             <label className='mr-3 font-semibold'>
@@ -123,7 +128,6 @@ return (
                     name='topTrends'
                     checked={product.topTrends}
                     onChange={handlechange}
-                    
                 />
                 Top trends
             </label>
@@ -131,9 +135,8 @@ return (
                 <input
                     type='checkbox'
                     name='newCollections'
-                    checked={product.newCollections}
-                    onChange={handlechange}
-                    
+                   checked={product.newCollections}
+                   onChange={handlechange}
                 />
                 New collection
             </label>
@@ -142,17 +145,15 @@ return (
                 name='detailOne'
                 placeholder='details of the product'
                 value={product.detailOne}
-                onChange={handlechange}
                 className="border p-2 w-[800px]"
-                required
-
+                onChange={handlechange}
             />
             <br />
-            <button type='submit' className="bg-blue-500 text-white p-2 rounded hover:bg-black">Add product</button>
+            <button type='submit' className="bg-blue-500 text-white p-2 rounded hover:bg-black">Update</button>
         </form>
 
     </div>
-)
+  )
 }
 
-export default Newpro
+export default Editpro

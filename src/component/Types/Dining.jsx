@@ -14,7 +14,7 @@ function Dining() {
   
   return (
   
-    <div className='bg-red-100'>
+    <div className='bg-orange-100'>
       <br/>
       <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800'>Dinind Area furniture</h1>
       <p className='flex justify-center font-sans text-base text-gray-700 '>Dining in Comfort, Dining in Elegance</p>
