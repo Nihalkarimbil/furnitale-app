@@ -19,6 +19,7 @@ function Cartcontext({ children }) {
     const getCartItems = async ()=>{
       const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
       setCartitem(res.data.input.cart)
+      setNotification(res.data.input.cart.length)
     }
     getCartItems()
   },[])

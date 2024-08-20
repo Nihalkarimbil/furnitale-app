@@ -11,6 +11,7 @@ function Productcontext({children}) {
   const navigate=useNavigate()
   const [Costomers,setCostomers]=useState([])
   const [products,setProducts] =useState([])
+
   useEffect(()=>{
     const fetch= async ()=>{
       try {
@@ -23,6 +24,7 @@ function Productcontext({children}) {
     fetch()
   },[])
 
+//fetching user from API
   useEffect(()=>{
       const fetchuser= async ()=>{
         try {
@@ -35,12 +37,12 @@ function Productcontext({children}) {
       fetchuser()
   },[])
   
+  //admin delete product function
   const deletepro=async(item)=>{
     const deleteconform=window.confirm("are you sure to delete this product")
     if(deleteconform){
       try {
         const pr=await axios.delete(`http://localhost:5000/products/${item.id}`)
-        
         alert("product succesfully deteted")
         navigate('/products')
       } catch (error) {

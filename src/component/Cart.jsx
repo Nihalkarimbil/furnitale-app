@@ -4,8 +4,6 @@ import { UserContext } from './context/Usercontext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
-
 function Cart() {
 
     const { cartitem, deletecart } = useContext(Cartcon)
@@ -61,7 +59,6 @@ function Cart() {
             const newCount = currentCount - 1;
             setQuantities({ ...quantities, [item.id]: newCount });
             const itemID = item.id
-           
 
             try {
                 const resp = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
@@ -80,15 +77,12 @@ function Cart() {
     };
     // 
 
-    
-
-
     return (
         <div className='bg-red-100'>
             <div className="font-sans md:max-w-4xl max-md:max-w-xl mx-auto bg-red-100 py-4">
                 <div className="grid md:grid-cols-3 gap-4">
                     <div className="md:col-span-2 bg-red-50 p-4 rounded-md">
-                        <h2 className="text-2xl font-bold text-gray-800">Cart page of {activeuser?.input?.username}</h2>
+                        <h2 className="text-2xl font-bold text-gray-800">Cart: </h2>
                         <hr className="border-gray-300 mt-4 mb-8" />
 
                         <div className="space-y-4">
@@ -136,32 +130,24 @@ function Cart() {
                                     <h4 className="text-base font-bold text-gray-800">₹{(item.new_price * (quantities[item.id]))}</h4>
                                 </div>
                             </div>
-                            ))}
-                            
+                            ))}                            
                         </div>
-
                         <hr className="border-gray-300 mt-4 mb-8" />
-
                     </div>
 
                     <div className="bg-red-50 p-4 rounded-md">
                         <h2 className="text-2xl font-bold text-gray-800">Summary</h2>
                         <hr className="border-gray-300 mt-4 mb-8" />
-
-
                         <div className="flex justify-between items-center">
                             <p className="text-base font-light text-gray-800">shipping charge</p>
                             <p className="text-base font-semibold text-gray-800">₹0.00</p>
                         </div>
                         <hr className="border-gray-300 mt-4 mb-8" />
-
                         <div className="flex justify-between items-center">
                             <p className="text-base font-semibold text-gray-800">Total</p>
                             <p className="text-lg font-bold text-gray-800">₹{price}</p>
                         </div>
-
-                        <button
-                            
+                        <button                          
                             type="button"
                             className="w-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md mt-8" onClick={()=>navigate('/payment')}
                         >

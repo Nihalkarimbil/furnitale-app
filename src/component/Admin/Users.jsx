@@ -5,13 +5,13 @@ import { Procontext } from '../context/Productcontext'
 
 function Users() {
   const { Costomers } = useContext(Procontext)
-  const [user, setuser] = useState([])
+  const [user, setuser]=useState([])
 
   useEffect(() => {
     if (Costomers) {
-      setuser(Costomers.filter(use => use.admin === false))
+      setuser(Costomers.filter(customer => customer.input.admin === false));
     }
-  }, [Costomers])
+  }, [Costomers]);
 
   return (
     <div>
@@ -37,7 +37,7 @@ function Users() {
             </tr>
           </thead>
           <tbody>
-            {Costomers.map((item) => (
+            {user.map((item) => (
 
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-500  whitespace-nowrap dark:text-white">

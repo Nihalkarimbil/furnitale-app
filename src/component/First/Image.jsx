@@ -12,7 +12,6 @@ function Image() {
           <div className="absolute inset-x-0">
           <button className="text-xl h-10 sm:h-8 md:h-10 lg:h-12 xl:h-15  border rounded px-4 ml-11 hover:bg-red-400" >Explore</button>
           </div>
-          
         </div>
       </div>
     </div>

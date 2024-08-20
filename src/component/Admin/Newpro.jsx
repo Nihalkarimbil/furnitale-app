@@ -32,9 +32,13 @@ function Newpro() {
         axios.post("http://localhost:5000/products",product)
         .then((res)=>{
             console.log(res)
-            alert('product added')
+            setTimeout(() => {
+                alert('product added')
+                navigate('/products')
+            }, 1000);
+            
         })
-        .then( navigate('/products'))
+       
 
         .catch((error) => {
             console.error("There was an error adding the product!", error);

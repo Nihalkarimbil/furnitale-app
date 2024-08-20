@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Payment() {
     const Navigate=useNavigate()
-    const { activeuser } = useContext(UserContext)
+    const { activeuser ,setActivUser} = useContext(UserContext)
 
     const pay = async () => {
         const confirmPayment = window.confirm('Are you sure you want to make the payment?');
@@ -13,9 +13,10 @@ function Payment() {
             try {
                 const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`);
                 const user1 = res.data;
-                await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
+              let result=  await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
                     ...user1, input: { ...user1.input, cart: [] }
                 });
+                setActivUser(result.data.input)
                 
                 setTimeout(() => {
                     alert('Payment successful,Thank you for shopping');

@@ -42,11 +42,13 @@ function Editpro() {
     
     const handlesubmit = async (e) => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/products/${id}`,product)
-        .then((res)=>{
-            alert('product add')
+        axios.patch(`http://localhost:5000/products/${id}`,product)
+        .then(()=>{
+           setTimeout(() => {
+            alert('product updated')
+            navigate(`/products/${id}`)
+           }, 1000);          
         })
-        .then( navigate(`/products/${id}`))
 
         .catch((error) => {
             console.error("There was an error adding the product!", error);

@@ -1,15 +1,38 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Procontext } from '../context/Productcontext';
+import axios from 'axios';
+import User from '../User';
 
 function UserDetails() {
   const { id } = useParams();
   const { Costomers } = useContext(Procontext);
   const [use, setUse] = useState([]);
+  const [blocked,setBlocked]=useState(false)
 
   useEffect(() => {
-    setUse(Costomers.filter((items) => items.id == id));
+    const User=Costomers.find((items) => items.id == id);
+    console.log(User)
+    if(User){
+      setUse([User])
+      setBlocked(User?.blocked);
+    } 
   }, [Costomers, id]);
+
+  const toggleBlock = async () => {
+    const blockupdate=!blocked
+    setBlocked(blockupdate)
+    try {
+      await axios.patch(`http://localhost:5000/user/${id}`, {
+        blocked: blockupdate
+      });
+
+    } catch (error) {
+      console.error('Error updating block status:', error);
+    }
+
+  };
+
 
   return (
     <div>
@@ -54,7 +77,12 @@ function UserDetails() {
                           </div>
                         ))}
                       </div>
-                    </div>
+                        
+                          <button className='bg-blue-950 text-white rounded-md py-2 px-4 hover:bg-black ml-4' onClick={toggleBlock}>
+                          {blocked ? 'Unblock' : 'Block'}
+                      </button>
+                        
+                    </div>                   
                   </div>
                 ))}
               </div>

@@ -10,8 +10,8 @@
       "description": "An extendable wood dining table that adapts to your dining needs.",
       "rating": 4.6,
       "reviews": 22,
-      "topTrends": true,
-      "newCollections": false,
+      "topTrends": false,
+      "newCollections": true,
       "detailOne": "This Extendable wood dining table features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor."
     },
     {
@@ -81,7 +81,7 @@
       "rating": 4.4,
       "reviews": 25,
       "topTrends": false,
-      "newCollections": true,
+      "newCollections": false,
       "detailOne": "Enhance your living room with this classic wooden coffee table. Crafted from solid wood, it features a timeless design that blends seamlessly with traditional and transitional decor styles. The sturdy construction ensures durability and longevity, making it a lasting addition to your home."
     },
     {
@@ -115,7 +115,7 @@
     {
       "id": "13",
       "name": "New Marble Top Coffee Table gray color",
-      "category": "livingroom",
+      "category": "dining",
       "image": "https://img.freepik.com/free-photo/morning-cup-coffee-white-table_23-2148251658.jpg?t=st=1719940286~exp=1719943886~hmac=49e3d2a5f78082bf2f655f06b50fd13e36492abc188b131108916f719cf8bbfe&w=740",
       "new_price": 950,
       "old_price": 1200,
@@ -164,7 +164,7 @@
       "rating": 4.5,
       "reviews": 26,
       "topTrends": false,
-      "newCollections": true,
+      "newCollections": false,
       "detailOne": "Organize your bedroom with this modern wooden dresser. It features multiple drawers and compartments for storing clothing, accessories, and personal items. The sleek design and clean lines add a contemporary touch to your bedroom decor."
     },
     {
@@ -186,10 +186,10 @@
       "name": "Wooden Vintage Bedside Table",
       "category": "bedroom",
       "image": "https://img.freepik.com/free-photo/luxury-retro-broadcast-radio-receiver_23-2148695304.jpg?t=st=1719940490~exp=1719944090~hmac=646bb3f19fb4eb53e95a01225497d8195de6d94c874be4f44bea889b5cf811a1&w=740",
-      "new_price": 250,
-      "old_price": 300,
+      "new_price": "50000",
+      "old_price": "400",
       "description": "A vintage bedside table with timeless appeal.",
-      "rating": 4.4,
+      "rating": "4.5",
       "reviews": 20,
       "topTrends": false,
       "newCollections": true,
@@ -200,12 +200,12 @@
       "name": "Chic Upholstered Headboard with elegent design",
       "category": "bedroom",
       "image": "https://img.freepik.com/free-photo/ornate-bed-art-nouveau-style_23-2150975499.jpg?t=st=1719940524~exp=1719944124~hmac=d39e458dded7a31fbbfd11edeb27761c270f383666c19ec3480b9cc9ec74b997&w=740",
-      "new_price": 400,
-      "old_price": 500,
+      "new_price": "3000",
+      "old_price": "4998",
       "description": "A chic upholstered headboard for stylish bedroom decor.",
       "rating": 4.2,
       "reviews": 18,
-      "topTrends": false,
+      "topTrends": true,
       "newCollections": false,
       "detailOne": "Transform your bedroom with this chic upholstered headboard. Its padded design offers comfort and support while adding a touch of elegance to your bed. The upholstered fabric is soft to the touch and available in various colors to suit your decor."
     },
@@ -362,6 +362,34 @@
       "topTrends": false,
       "newCollections": false,
       "detailOne": "An abstract canvas art piece that adds color and sophistication to your living space. The bold strokes and dynamic composition make it a focal point in any room."
+    },
+    {
+      "id": "2eb5",
+      "name": "Turoy ivory swivel chair",
+      "category": "livingroom",
+      "image": "https://i.pinimg.com/564x/bc/ea/89/bcea896786826d048bdb6f4d486fc241.jpg",
+      "new_price": "5000",
+      "old_price": "6000",
+      "description": "scandinavian living room design",
+      "rating": "4.9",
+      "reviews": "21",
+      "topTrends": false,
+      "newCollections": true,
+      "detailOne": "Sit like a Bond villain whose only real diabolical concern is comfort. Photo by @amyepeters: lounge chair, chair, scandinavian, scandinavian living room, living room, living room designs, living room inspo, decor home living room, neutral living room, cozy corner, reading nook"
+    },
+    {
+      "id": "84a1",
+      "name": "new table",
+      "category": "dining",
+      "image": "https://i.pinimg.com/564x/e7/01/16/e70116707de7a767525832c19225fa54.jpg",
+      "new_price": "5000",
+      "old_price": "30000",
+      "description": "a wonder full table",
+      "rating": "4.9",
+      "reviews": "34",
+      "topTrends": true,
+      "newCollections": false,
+      "detailOne": "nshodhlghofihoiosdaf"
     }
   ],
   "user": [
@@ -369,7 +397,7 @@
       "id": "8245",
       "input": {
         "username": "NIHAL",
-        "email": "SIUDGSIUH@D",
+        "email": "nihalk@gmail.com",
         "password": "NIHAL3",
         "confpassword": "NIHAL3",
         "admin": true,
@@ -378,6 +406,7 @@
     },
     {
       "id": "95cb",
+      "blocked": false,
       "input": {
         "username": "NAEEM",
         "email": "naeem@gmail.com",
@@ -399,57 +428,14 @@
             "newCollections": false,
             "detailOne": "Illuminate your space with this modern floor lamp. Its sleek design and adjustable height make it ideal for reading nooks, living rooms, or home offices. The sturdy base ensures stability, while the fabric shade diffuses soft, ambient light.",
             "qty": 1
-          },
-          {
-            "id": "24",
-            "name": "Vintage wooden brown Wall Clock",
-            "category": "decor",
-            "image": "https://img.freepik.com/free-vector/vintage-clock-vector-illustration-remixed-from-artwork-by-florence-stevenson_53876-125466.jpg?t=st=1719940720~exp=1719944320~hmac=79e9487183d194ac6e3ba8f1caa4f25761f3f4d73d11739a2937243dab74e905&w=740",
-            "new_price": 150,
-            "old_price": 200,
-            "description": "A vintage wall clock with timeless appeal.",
-            "rating": 4.4,
-            "reviews": 23,
-            "topTrends": false,
-            "newCollections": true,
-            "detailOne": "Add charm to your walls with this vintage wall clock. Its classic design and antique finish create a nostalgic ambiance in any room. The large numbers and hands ensure easy visibility and accurate timekeeping.",
-            "qty": 1
-          },
-          {
-            "id": "22",
-            "name": " New Clear Mirrored Vanity Table ",
-            "category": "bedroom",
-            "image": "https://img.freepik.com/free-photo/view-modern-entryway-with-interior-decor_23-2150791082.jpg?t=st=1719940617~exp=1719944217~hmac=a22f726a36991ac983436611a5d154d867292bf12b8a5d0d1210517d6c0abe04&w=740",
-            "new_price": 600,
-            "old_price": 800,
-            "description": "A mirrored vanity table for glamorous bedroom settings.",
-            "rating": 4.5,
-            "reviews": 22,
-            "topTrends": false,
-            "newCollections": true,
-            "detailOne": "Create a glamorous space with this mirrored vanity table. Its reflective surface adds brightness and sophistication to your bedroom decor. The spacious tabletop and drawers provide ample storage for cosmetics, jewelry, and beauty essentials.",
-            "qty": 1
-          },
-          {
-            "id": "8",
-            "name": "Extendable Wood Dining Table",
-            "category": "dining",
-            "image": "https://img.freepik.com/free-photo/view-table-arrangement-by-wedding-planner_23-2150167202.jpg?t=st=1719940117~exp=1719943717~hmac=93a65f882f68dbea8c6b74c78d87c4d5671829b17e24576a5ef25b01103104d9&w=740",
-            "new_price": "800",
-            "old_price": 2000,
-            "description": "An extendable wood dining table that adapts to your dining needs.",
-            "rating": 4.6,
-            "reviews": 22,
-            "topTrends": true,
-            "newCollections": false,
-            "detailOne": "This versatile dining table features an extendable design, allowing you to accommodate extra guests or create more space for serving food. Crafted from solid wood, it offers durability and a classic look that complements any dining room decor.",
-            "qty": 1
           }
+          
         ]
       }
     },
     {
       "id": "531d",
+      "blocked": false,
       "input": {
         "username": "kunjapu",
         "email": "kunjapu@gmail.com",
@@ -471,102 +457,13 @@
             "newCollections": false,
             "detailOne": "Illuminate your space with this elegant chandelier. Its crystal accents and polished finish exude luxury and sophistication. The adjustable chain allows you to customize the hanging length for optimal placement in any room.",
             "qty": 6
-          },
-          {
-            "id": "26",
-            "name": "Classic Art Deco big Wall Mirror",
-            "category": "decor",
-            "image": "https://img.freepik.com/free-photo/ornate-mirror-art-nouveau-style_23-2150975623.jpg?t=st=1719940800~exp=1719944400~hmac=db036321b4a0ed213f7c54f3dae0dca59e1f0f5f664c10c14b759f14f986baf2&w=740",
-            "new_price": 350,
-            "old_price": 450,
-            "description": "An art deco wall mirror for adding glamour to your walls.",
-            "rating": 4.3,
-            "reviews": 20,
-            "topTrends": false,
-            "newCollections": true,
-            "detailOne": "Make a statement with this art deco wall mirror. Its geometric frame and mirrored panels create a striking visual effect on any wall. The sleek design adds glamour and sophistication to modern and eclectic interiors alike.",
-            "qty": 1
-          },
-          {
-            "id": "22",
-            "name": " New Clear Mirrored Vanity Table ",
-            "category": "bedroom",
-            "image": "https://img.freepik.com/free-photo/view-modern-entryway-with-interior-decor_23-2150791082.jpg?t=st=1719940617~exp=1719944217~hmac=a22f726a36991ac983436611a5d154d867292bf12b8a5d0d1210517d6c0abe04&w=740",
-            "new_price": 600,
-            "old_price": 800,
-            "description": "A mirrored vanity table for glamorous bedroom settings.",
-            "rating": 4.5,
-            "reviews": 22,
-            "topTrends": false,
-            "newCollections": true,
-            "detailOne": "Create a glamorous space with this mirrored vanity table. Its reflective surface adds brightness and sophistication to your bedroom decor. The spacious tabletop and drawers provide ample storage for cosmetics, jewelry, and beauty essentials.",
-            "qty": 1
-          },
-          {
-            "id": "29",
-            "name": "Geometric Wall Art Set",
-            "category": "decor",
-            "image": "https://img.freepik.com/free-vector/abstract-watercolor-shapes-covers-collection_23-2148649030.jpg?t=st=1719940976~exp=1719944576~hmac=44bbb94f3fa1a6f1ebfbbd02f26b52a2112c29b74773ba0ecea2373b329dee4f&w=2000",
-            "new_price": 120,
-            "old_price": 150,
-            "description": "A geometric wall art set for modern interiors.",
-            "rating": 4.3,
-            "reviews": 21,
-            "topTrends": false,
-            "newCollections": false,
-            "detailOne": "Update your walls with this geometric wall art set. Its minimalist designs and monochromatic palette add a modern touch to any room. The artworks are framed for a polished look that enhances contemporary interiors.",
-            "qty": 1
-          },
-          {
-            "id": "13",
-            "name": "New Marble Top Coffee Table gray color",
-            "category": "livingroom",
-            "image": "https://img.freepik.com/free-photo/morning-cup-coffee-white-table_23-2148251658.jpg?t=st=1719940286~exp=1719943886~hmac=49e3d2a5f78082bf2f655f06b50fd13e36492abc188b131108916f719cf8bbfe&w=740",
-            "new_price": 950,
-            "old_price": 1200,
-            "description": "A sophisticated marble top coffee table for elegant living rooms.",
-            "rating": 4.6,
-            "reviews": 24,
-            "topTrends": true,
-            "newCollections": false,
-            "detailOne": "Enhance your living room with this sophisticated marble top coffee table. The genuine marble surface exudes elegance and luxury, creating a focal point in your decor. Its sturdy base ensures stability while adding a contemporary touch to your interior.",
-            "qty": 1
-          },
-          {
-            "id": "10",
-            "name": " Wooden Classic Wooden Coffee Table",
-            "category": "livingroom",
-            "image": "https://woodsala.com/cdn/shop/files/1_8d48d5be-7221-473f-99ec-215ea51dcf68.jpg?v=1693899275",
-            "new_price": "600",
-            "old_price": 700,
-            "description": "A classic wooden coffee table for a timeless look.",
-            "rating": 4.4,
-            "reviews": 25,
-            "topTrends": false,
-            "newCollections": true,
-            "detailOne": "Enhance your living room with this classic wooden coffee table. Crafted from solid wood, it features a timeless design that blends seamlessly with traditional and transitional decor styles. The sturdy construction ensures durability and longevity, making it a lasting addition to your home.",
-            "qty": 1
-          },
-          {
-            "id": "30",
-            "name": " Botanical Framed Prints",
-            "category": "decor",
-            "image": "https://img.freepik.com/free-vector/faded-foliage-banner_53876-91506.jpg?t=st=1719941010~exp=1719944610~hmac=b9a36202fe5b749c28b11c6f74e55a0b9b733fb9c42df6f4e1d1c5178a98b9b7&w=740",
-            "new_price": 100,
-            "old_price": 120,
-            "description": "Botanical framed prints for natural-inspired decor.",
-            "rating": 4.2,
-            "reviews": 20,
-            "topTrends": false,
-            "newCollections": false,
-            "detailOne": "Bring the beauty of nature indoors with these botanical framed prints. Featuring lush greenery and delicate florals, the artworks add a serene vibe to your living space. Each print is encased in a sleek frame for a polished presentation.",
-            "qty": 1
           }
         ]
       }
     },
     {
       "id": "671c",
+      "blocked": false,
       "input": {
         "username": "Alan",
         "email": "alan@gmail.com",
@@ -578,6 +475,7 @@
     },
     {
       "id": "15a4",
+      "blocked": false,
       "input": {
         "username": "BOBY",
         "email": "Boby@gmail.com",
@@ -589,6 +487,7 @@
     },
     {
       "id": "dcd5",
+      "blocked": true,
       "input": {
         "username": "KRISHNAN",
         "email": "krishnan@gmail.com",
@@ -600,6 +499,7 @@
     },
     {
       "id": "b20d",
+      "blocked": false,
       "input": {
         "username": "Ronaldo",
         "email": "CR7@gmail.com",
@@ -611,6 +511,7 @@
     },
     {
       "id": "c81d",
+      "blocked": false,
       "input": {
         "username": "Messi",
         "email": "messi@gmail.com",
@@ -622,11 +523,24 @@
     },
     {
       "id": "11d9",
+      "blocked": false,
       "input": {
         "username": "Mo Salah",
         "email": "mo@gmail.com",
         "password": "SALAH3",
         "confpassword": "SALAH3",
+        "admin": false,
+        "cart": []
+      }
+    },
+    {
+      "id": "f947",
+      "blocked": false,
+      "input": {
+        "username": "Muhammed",
+        "email": "nihal@gmail.com",
+        "password": "Muha1",
+        "confpassword": "Muha1",
         "admin": false,
         "cart": []
       }
