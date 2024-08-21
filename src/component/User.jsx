@@ -8,7 +8,7 @@ import { Link} from 'react-router-dom';
 function User() {
 
     const { activeuser,handlelogout } = useContext(UserContext)
-    const username = activeuser?.input?.username;
+    const username = activeuser?.username;
     const id=activeuser?.id
     if (!activeuser) {
         return (

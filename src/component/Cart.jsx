@@ -10,7 +10,7 @@ function Cart() {
     const { activeuser } = useContext(UserContext)
     const [quantities, setQuantities] = useState({});
     const [price, setPrice] = useState(0)
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     useEffect(() => {
         const initialQuantities = cartitem.reduce((acc, item) => {
@@ -39,12 +39,13 @@ function Cart() {
 
         try {
             const resp = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
-            const input = resp.data.input
-            const cart = resp.data.input.cart
+            const Auser = resp.data
+            const cart = resp.data.cart
             const index = cart.findIndex((item) => item.id == itemID)
             cart[index].qty += 1
             await axios.patch(`http://localhost:5000/user/${activeuser.id}`, {
-                input: { ...input, cart: cart }
+                ...Auser,
+                cart: Auser.cart,
             });
         } catch (error) {
             console.error('Error updating quantity:', error);
@@ -62,13 +63,14 @@ function Cart() {
 
             try {
                 const resp = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
-                const input = resp.data.input
-                const cart = resp.data.input.cart
+                const Auser = resp.data
+                const cart = resp.data.cart
                 const index = cart.findIndex((item) => item.id == itemID)
                 cart[index].qty -= 1
                 console.log(cart[index]);
                 await axios.patch(`http://localhost:5000/user/${activeuser.id}`, {
-                    input: { ...input, cart: cart }
+                    ...Auser,
+                    cart: Auser.cart,
                 });
             } catch (error) {
                 console.error('Error updating quantity:', error);
@@ -86,51 +88,51 @@ function Cart() {
                         <hr className="border-gray-300 mt-4 mb-8" />
 
                         <div className="space-y-4">
-                            {cartitem.map((item,index)=>(
+                            {cartitem.map((item, index) => (
                                 <div className="grid grid-cols-3 items-center gap-4">
-                                <div className="col-span-2 flex items-center gap-4">
-                                    
-                                    <div className="w-24 h-24 shrink-0 bg-white p-1 rounded-md">
-                                        <img className='w-24 h-24 '
-                                           src={item.image}
-                                           alt={item.name}
-                                        />
-                                    </div>
+                                    <div className="col-span-2 flex items-center gap-4">
 
-                                    <div>
-                                        <h3 className="text-base font-bold text-gray-800">
-                                            {item.name}
-                                        </h3>
-                                        <button className="text-xs text-red-500 cursor-pointer mt-0.5" onClick={() => { deletecart(item, index) }}>
-                                            Remove
-                                        </button>
+                                        <div className="w-24 h-24 shrink-0 bg-white p-1 rounded-md">
+                                            <img className='w-24 h-24 '
+                                                src={item.image}
+                                                alt={item.name}
+                                            />
+                                        </div>
 
-                                        <div className="flex gap-4 mt-4">
-                                            <div className="relative group">
-                                                <button
-                                                    type="button"
-                                                    className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md"onClick={() => { increament(item) }}
-                                                >
-                                                    +
-                                                </button>
-                                            </div>
-                                            <p>{quantities[item.id] || 1}</p>
-                                            <div>
-                                                <button
-                                                    type="button"
+                                        <div>
+                                            <h3 className="text-base font-bold text-gray-800">
+                                                {item.name}
+                                            </h3>
+                                            <button className="text-xs text-red-500 cursor-pointer mt-0.5" onClick={() => { deletecart(item, index) }}>
+                                                Remove
+                                            </button>
 
-                                                    className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md"onClick={() => { decreament(item) }}
-                                                >-
-                                                </button>
+                                            <div className="flex gap-4 mt-4">
+                                                <div className="relative group">
+                                                    <button
+                                                        type="button"
+                                                        className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md" onClick={() => { increament(item) }}
+                                                    >
+                                                        +
+                                                    </button>
+                                                </div>
+                                                <p>{quantities[item.id] || 1}</p>
+                                                <div>
+                                                    <button
+                                                        type="button"
+
+                                                        className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md" onClick={() => { decreament(item) }}
+                                                    >-
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="ml-auto">
+                                        <h4 className="text-base font-bold text-gray-800">₹{(item.new_price * (quantities[item.id]))}</h4>
+                                    </div>
                                 </div>
-                                <div className="ml-auto">
-                                    <h4 className="text-base font-bold text-gray-800">₹{(item.new_price * (quantities[item.id]))}</h4>
-                                </div>
-                            </div>
-                            ))}                            
+                            ))}
                         </div>
                         <hr className="border-gray-300 mt-4 mb-8" />
                     </div>
@@ -147,9 +149,9 @@ function Cart() {
                             <p className="text-base font-semibold text-gray-800">Total</p>
                             <p className="text-lg font-bold text-gray-800">₹{price}</p>
                         </div>
-                        <button                          
+                        <button
                             type="button"
-                            className="w-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md mt-8" onClick={()=>navigate('/payment')}
+                            className="w-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md mt-8" onClick={() => navigate('/payment')}
                         >
                             Checkout
                         </button>

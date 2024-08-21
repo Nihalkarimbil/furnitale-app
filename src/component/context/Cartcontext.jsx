@@ -18,8 +18,8 @@ function Cartcontext({ children }) {
   useEffect(()=>{
     const getCartItems = async ()=>{
       const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
-      setCartitem(res.data.input.cart)
-      setNotification(res.data.input.cart.length)
+      setCartitem(res.data.cart)
+      setNotification(res.data.cart.length)
     }
     getCartItems()
   },[])
@@ -32,13 +32,13 @@ function Cartcontext({ children }) {
         const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`);
         const user1 = res.data;       
         // Find if the product already exists in the cart
-        const existingitem = user1.input.cart.find((product) => product.id === items.id);
+        const existingitem = user1.cart.find((product) => product.id === items.id);
         if (existingitem) {
           alert('Item already exists in your cart');
         } else {
-          const updatecart = [...user1.input.cart, itemWithQTY];
+          const updatecart = [...user1.cart, itemWithQTY];
           await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
-            ...user1, input: { ...user1.input, cart: updatecart }
+            ...user1, cart: updatecart
           });
           setCartitem(updatecart);
           setNotification((prevCount) => prevCount + 1);
@@ -57,11 +57,11 @@ function Cartcontext({ children }) {
     try {
       const response = await axios.get(`http://localhost:5000/user/${userid}`);
       const userData = response.data;
-      const updatedCart = userData.input.cart.filter(cartItem => cartItem.id !== item.id);
+      const updatedCart = userData.cart.filter(cartItem => cartItem.id !== item.id);
       await axios.patch(`http://localhost:5000/user/${userid}`, {
         input: {
-          ...userData.input,
-          cart: updatedCart
+          ...userData.
+          cart, updatedCart
         }
       });
       const newCartItem = [...cartitem];

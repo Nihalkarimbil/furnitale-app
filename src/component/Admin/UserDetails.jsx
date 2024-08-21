@@ -19,7 +19,7 @@ function UserDetails() {
     } 
   }, [Costomers, id]);
 
-  const toggleBlock = async () => {
+  const Block = async () => {
     const blockupdate=!blocked
     setBlocked(blockupdate)
     try {
@@ -30,7 +30,6 @@ function UserDetails() {
     } catch (error) {
       console.error('Error updating block status:', error);
     }
-
   };
 
 
@@ -49,7 +48,7 @@ function UserDetails() {
                         alt="Avatar"
                         className="w-20 mx-auto my-5 rounded-full"
                       />
-                      <h5 className="text-lg font-semibold">{user?.input?.username}</h5>
+                      <h5 className="text-lg font-semibold">{user?.username}</h5>
                       <p className="text-sm">Registered user</p>
                       <i className="far fa-edit mb-5 text-xl"></i>
                     </div>
@@ -60,7 +59,7 @@ function UserDetails() {
                       <div className="flex flex-wrap">
                         <div className="w-1/2 mb-3">
                           <h6 className="text-sm font-semibold">Email</h6>
-                          <p className="text-gray-500">{user?.input?.email}</p>
+                          <p className="text-gray-500">{user?.email}</p>
                         </div>
                         <div className="w-1/2 mb-3">
                           <h6 className="text-sm font-semibold">ID</h6>
@@ -70,15 +69,14 @@ function UserDetails() {
                       <h6 className="text-lg font-mono text-gray-400">Cart</h6>
                       <hr className="mt-0 mb-4" />
                       <div className="flex flex-wrap">
-                        {user?.input?.cart?.map((item) => (
+                        {user?.cart?.map((item) => (
                           <div className="w-full mb-3" key={item.id}>
                             <h6 className="text-sm font-semibold">{item.name}</h6>
                             <p className="text-gray-500">Quantity: {item.qty}</p>
                           </div>
                         ))}
                       </div>
-                        
-                          <button className='bg-blue-950 text-white rounded-md py-2 px-4 hover:bg-black ml-4' onClick={toggleBlock}>
+                          <button className='bg-blue-950 text-white rounded-md py-2 px-4 hover:bg-black ml-4' onClick={Block}>
                           {blocked ? 'Unblock' : 'Block'}
                       </button>
                         

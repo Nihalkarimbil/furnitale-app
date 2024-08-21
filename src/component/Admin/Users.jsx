@@ -9,7 +9,7 @@ function Users() {
 
   useEffect(() => {
     if (Costomers) {
-      setuser(Costomers.filter(customer => customer.input.admin === false));
+      setuser(Costomers.filter(customer => customer.admin === false));
     }
   }, [Costomers]);
 
@@ -41,11 +41,11 @@ function Users() {
 
               <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-500  whitespace-nowrap dark:text-white">
-                  {item?.input?.username}
+                  {item?.username}
                 </th>
                 
                 <td className="px-6 py-4">
-                  {item?.input?.email}
+                  {item?.email}
                 </td>
                 <td className="px-6 py-4">
                   {item.id}

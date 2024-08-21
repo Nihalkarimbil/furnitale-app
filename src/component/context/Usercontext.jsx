@@ -31,8 +31,8 @@ const UserProvider = ({ children }) => {
         try {
             const res = await axios.get("http://localhost:5000/user");
             const users = res.data;
-            const user = users.find(user => user.input.username === login.username && user.input.password === login.password&&user.input.admin==false&& user.blocked==false);
-            const admin= users.find(user=>user.input.username===login.username&&user.input.password===login.password&&user.input.admin==true)
+            const user = users.find(user => user.username === login.username && user.password === login.password&&user.admin==false&& user.blocked==false);
+            const admin= users.find(user=>user.username===login.username&&user.password===login.password&&user.admin==true)
             
             if (user) {
                 localStorage.setItem('activeuserdata', JSON.stringify(user));

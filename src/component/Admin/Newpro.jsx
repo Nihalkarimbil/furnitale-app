@@ -25,7 +25,8 @@ function Newpro() {
             [name]: type === "checkbox" ? checked : value,
         }));
     }
-
+    
+ 
 
     const handlesubmit = async (e) => {
         e.preventDefault();
