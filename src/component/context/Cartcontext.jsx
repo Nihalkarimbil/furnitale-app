@@ -16,12 +16,15 @@ function Cartcontext({ children }) {
 
 // prevent the clearing of cart page when page refresh
   useEffect(()=>{
-    const getCartItems = async ()=>{
-      const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
-      setCartitem(res.data.cart)
-      setNotification(res.data.cart.length)
+    if (activeuser) {
+      const getCartItems = async ()=>{
+        const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
+        setCartitem(res.data.cart)
+        setNotification(res.data.cart.length)
+      }
+      getCartItems()
     }
-    getCartItems()
+   
   },[])
 // 
   //functions for add and delete the cart item
