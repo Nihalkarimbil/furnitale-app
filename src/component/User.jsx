@@ -38,7 +38,7 @@ function User() {
                         <p className="px-5 text-xs sm:text-base dark:text-gray-600"> an active user</p>
                         <p>id:{id}</p>
                         <button className='bg-red-300 rounded-sm p-1 font-semibold m-2'onClick={handlelogout}>Log out</button>
-                        <Link to={'/n'}>
+                        <Link to={'/'}>
                         <button className='bg-blue-800 text-white rounded-sm p-1 font-semibold'>Back to Home</button>
                         </Link>
                     </div>

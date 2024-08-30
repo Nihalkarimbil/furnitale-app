@@ -7,7 +7,6 @@ function Home() {
   return (
     <div>
       <Image />
-
       <Newcoll />
       <Trending />
     </div>
