@@ -2,8 +2,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {  NavLink } from 'react-router-dom';
 import { FaUser, FaShoppingCart } from 'react-icons/fa';
-import { UserContext } from './context/Usercontext';
-import { Cartcon } from './context/Cartcontext'
+import { UserContext } from '../context/Usercontext';
+import { Cartcon } from '../context/Cartcontext'
 
 const Navbar = () => {
   const { notification } = useContext(Cartcon)

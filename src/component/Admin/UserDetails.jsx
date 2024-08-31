@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Procontext } from '../context/Productcontext';
 import axios from 'axios';
-import User from '../User';
+import User from '../essentials/User';
 
 function UserDetails() {
   const { id } = useParams();

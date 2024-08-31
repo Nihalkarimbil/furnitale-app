@@ -1,7 +1,7 @@
 import React, { useContext, useEffect,useState } from 'react'
-import { Procontext } from './context/Productcontext'
+import { Procontext } from '../context/Productcontext';
 import { Link,useParams } from 'react-router-dom'
-import { Cartcon } from './context/Cartcontext';
+import { Cartcon } from '../context/Cartcontext';
 
 
 

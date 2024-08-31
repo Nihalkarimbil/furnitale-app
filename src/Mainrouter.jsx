@@ -1,19 +1,19 @@
 import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Userreg from './component/Userreg'
-import Login from './component/Login'
-import Home from './component/Home'
-import Navbar from './component/Navbar'
+import Userreg from './component/essentials/Userreg'
+import Login from './component/essentials/Login'
+import Home from './component/essentials/Home'
+import Navbar from './component/essentials/Navbar'
 import Living from './component/Types/Living'
 import Bed from './component/Types/Bed'
 import Dining from './component/Types/Dining'
 import Decor from './component/Types/Decor'
 import Footer from './component/First/footer'
-import Details from './component/Details'
-import Cart from './component/Cart'
-import User from './component/User'
-import ProtectedRoute from './component/ProtectedRoute'
-import Payment from './component/Payment'
+import Details from './component/essentials/Details'
+import Cart from './component/essentials/Cart'
+import User from './component/essentials/User'
+import ProtectedRoute from './component/essentials/ProtectedRoute'
+import Payment from './component/essentials/Payment'
 import { UserContext } from './component/context/Usercontext'
 import Mainadmin from './component/Admin/Main'
 import Sidenav from './component/Admin/Sidenav'
@@ -53,7 +53,7 @@ function Mainrouter() {
             <Route path='Dining/:id' element={<Details />} />
             <Route path='Decor/:id' element={<Details />} />
             <Route path='/:id' element={<Details />} />
-            <Route path='/cart' element={<Cart />} />
+            <Route path='/cart' element={<Cart /> } />
             <Route path='/user' element={<User />} />
             <Route path='/payment' element={<Payment />} />
           </Routes>

@@ -404,13 +404,44 @@
     },
     {
       "id": "95cb",
-      "blocked": true,
+      "blocked": false,
       "username": "NAEEM",
       "email": "naeem@gmail.com",
       "password": "NAEEM2",
       "confpassword": "NAEEM2",
       "admin": false,
-      "cart": []
+      "cart": [
+        {
+          "id": "12",
+          "name": "Mid-Century Modern Armchair",
+          "category": "livingroom",
+          "image": "https://img.freepik.com/free-photo/realistic-interior-design-with-furniture_23-2151439801.jpg?t=st=1719940247~exp=1719943847~hmac=600f82ed58c0a29d6d7aaa47c294442739283bb43e557aadd66f9c98ec20cdf7&w=740",
+          "new_price": "900",
+          "old_price": 1100,
+          "description": "A mid-century modern armchair with retro charm.",
+          "rating": "5.0",
+          "reviews": 28,
+          "topTrends": false,
+          "newCollections": true,
+          "detailOne": "Add a touch of retro charm to your living space with this mid-century modern armchair. Its sleek silhouette and tapered legs capture the essence of mid-century design, making it a stylish addition to any room. The upholstered seat and backrest offer comfort and support for relaxation.",
+          "qty": 1
+        },
+        {
+          "id": "17",
+          "name": "Hot Upholstered Storage Bench",
+          "category": "bedroom",
+          "image": "https://img.freepik.com/free-photo/still-life-shoe-rack-indoors_23-2150960714.jpg?t=st=1719940454~exp=1719944054~hmac=bb8c4d1702e93ec61c72d030117d24df94930522f2e5c578a7946bd29d23c62d&w=740",
+          "new_price": 350,
+          "old_price": 450,
+          "description": "An upholstered storage bench for practical and stylish seating.",
+          "rating": 4.3,
+          "reviews": 22,
+          "topTrends": true,
+          "newCollections": false,
+          "detailOne": "Add versatility to your bedroom with this upholstered storage bench. It features a cushioned seat upholstered in fabric for comfort and style. The storage compartment beneath the seat offers ample space for blankets, pillows, or other essentials.",
+          "qty": 1
+        }
+      ]
     }
   ]
 }
