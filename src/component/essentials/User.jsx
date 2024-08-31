@@ -12,7 +12,7 @@ function User() {
     const id=activeuser?.id
     if (!activeuser) {
         return (
-           <div className='bg-red-100 h-[310px]'>
+           <div className='bg-orange-100 h-[310px]'>
             <div >
             <p className='flex justify-center p-[90px] font-serif text-gray-400 text-3xl'>User Not Available!
                 </p>
@@ -29,17 +29,16 @@ function User() {
     }
 
     return (
-        <div className='flex items-center justify-center min-h-[100px] p-8 bg-red-100'>
+        <div className='flex items-center justify-center min-h-[100px] p-8 bg-orange-100'>
             <div className="w-full max-w-md p-8 bg-red-50 shadow-md rounded-lg">
                 <FaUser className="w-32 h-32 mx-auto rounded dark:bg-gray-500 aspect-square" />
                 <div className="space-y-4 text-center divide-y dark:divide-gray-300">
                     <div className="my-2 space-y-1">
                         <h2 className="text-xl font-semibold sm:text-2xl text-gray-500">{username}</h2>
-                        <p className="px-5 text-xs sm:text-base dark:text-gray-600"> an active user</p>
                         <p>id:{id}</p>
-                        <button className='bg-red-300 rounded-sm p-1 font-semibold m-2'onClick={handlelogout}>Log out</button>
+                        <button className='bg-slate-300 rounded-lg p-1 font-semibold m-2 mt-3'onClick={handlelogout}>Log out</button>
                         <Link to={'/'}>
-                        <button className='bg-blue-800 text-white rounded-sm p-1 font-semibold'>Back to Home</button>
+                        <button className='bg-gray-500 text-white rounded-lg p-1 font-semibold mt-3'>Back to Home</button>
                         </Link>
                     </div>
                 </div>

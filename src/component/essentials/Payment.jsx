@@ -13,10 +13,10 @@ function Payment() {
             try {
                 const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`);
                 const user1 = res.data;
-              let result=  await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
-                    ...user1, input: { ...user1.input, cart: [] }
+                let result=  await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
+                    ...user1,cart: [] 
                 });
-                setActivUser(result.data.input)
+                setActivUser(result.data)
                 
                 setTimeout(() => {
                     alert('Payment successful,Thank you for shopping');
@@ -33,7 +33,7 @@ function Payment() {
     };
 
     return (
-        <div className=" bg-red-100 p-5">
+        <div className=" bg-orange-100 p-5">
             <div className="card px-4 container font-sans md:max-w-lg max-md:max-w-xl mx-auto border bg-red-50 rounded shadow">
                 <p className="text-lg font-semibold py-3">Payment Details</p>
                 <div className="grid grid-cols-12 gap-3">
