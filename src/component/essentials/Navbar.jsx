@@ -22,7 +22,7 @@ const Navbar = () => {
         <nav className="flex justify-between bg-red-50 text-gray-600 shadow-md  w-full sticky top-0 z-50">
           <div className="px-4 xl:px-12 py-3 flex w-full items-center justify-between">
             <NavLink to="/" className="text-2xl font-serif font-heading text-red-700">
-              FurnisH
+              FurniTale
             </NavLink>
             {/* Nav Links */}
             <ul className={`md:flex ${isOpen ? 'block' : 'hidden'} px-4 mx-auto font-semibold font-heading space-x-12`}>

@@ -25,7 +25,7 @@ function Cartcontext({ children }) {
       getCartItems()
     }
 
-  }, [])
+  }, [activeuser])
   // 
   //functions for add and delete the cart item
   const addtocart = async (items) => {
