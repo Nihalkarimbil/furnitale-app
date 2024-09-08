@@ -12,9 +12,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  useEffect(() => {
 
-  })
 
   return (
     <div className="flex flex-wrap ">

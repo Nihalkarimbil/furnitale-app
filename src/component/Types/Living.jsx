@@ -11,7 +11,7 @@ function Living() {
       setLiving(products.filter((items)=>items.category=== "livingroom"))
     }
   },[])
-  console.log(living);
+
   
   return (
     <div className='bg-orange-100'>

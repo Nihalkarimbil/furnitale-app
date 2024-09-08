@@ -67,7 +67,6 @@ function Cart() {
                 const cart = resp.data.cart
                 const index = cart.findIndex((item) => item.id == itemID)
                 cart[index].qty -= 1
-                console.log(cart[index]);
                 await axios.patch(`http://localhost:5000/user/${activeuser.id}`, {
                     ...Auser,
                     cart: Auser.cart,

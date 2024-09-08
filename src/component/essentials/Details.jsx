@@ -20,7 +20,7 @@ function Details() {
     const {addtocart}=useContext(Cartcon)
 
     const handlecart=(prod)=>{
-         addtocart(prod)
+        addtocart(prod)
     }
 
   return (

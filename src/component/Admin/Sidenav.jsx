@@ -8,7 +8,7 @@ function Sidenav() {
 		<div className="min-h-screen flex flex-row sticky">
 			<div className="flex flex-col w-56 bg-slate-200 rounded-r-3xl overflow-hidden">
 				<div className="flex items-center justify-center h-16 shadow-md">
-					<h1 className="text-3xl  text-red-500">FurnisH</h1>
+					<h1 className="text-3xl  text-red-500">FurniTale</h1>
 				</div>
 				<ul className="flex flex-col py-4">
 					<li>

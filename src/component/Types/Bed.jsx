@@ -11,7 +11,6 @@ function Bed() {
             setBed(products.filter((item)=>item.category==="bedroom"))
         }
     },[products])
-    console.log(bed);
     
   return (
     <div className='bg-orange-100'>
