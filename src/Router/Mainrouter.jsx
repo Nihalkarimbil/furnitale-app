@@ -1,29 +1,29 @@
 import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Userreg from './component/essentials/Userreg'
-import Login from './component/essentials/Login'
-import Home from './component/essentials/Home'
-import Navbar from './component/essentials/Navbar'
-import Living from './component/Types/Living'
-import Bed from './component/Types/Bed'
-import Dining from './component/Types/Dining'
-import Decor from './component/Types/Decor'
-import Footer from './component/First/footer'
-import Details from './component/essentials/Details'
-import Cart from './component/essentials/Cart'
-import User from './component/essentials/User'
-import ProtectedRoute from './component/essentials/ProtectedRoute'
-import Payment from './component/essentials/Payment'
-import { UserContext } from './component/context/Usercontext'
-import Mainadmin from './component/Admin/Main'
-import Sidenav from './component/Admin/Sidenav'
-import NAvbar from './component/Admin/Navbar'
-import Product from './component/Admin/Product'
-import Users from './component/Admin/Users'
-import UserDetails from './component/Admin/UserDetails'
-import Prodetails from './component/Admin/Prodetails'
-import Newpro from './component/Admin/Newpro'
-import Editpro from './component/Admin/Editpro'
+import Userreg from '../Components/Userreg'
+import Login from  '../Components/Login'
+import Home from '../Components/Home'
+import Navbar from '../Components/Navbar'
+import Living from '../Types/Living'
+import Bed from '../Types/Bed'
+import Dining from '../Types/Dining'
+import Decor from '../Types/Decor'
+import Footer from '../First/footer'
+import Details from '../Components/Details'
+import Cart from '../Components/Cart'
+import User from '../Components/User'
+import ProtectedRoute from '../Components/ProtectedRoute'
+import Payment from '../Components/Payment'
+import { UserContext } from '../context/Usercontext'
+import Mainadmin from '../Admin/Main'
+import Sidenav from '../Admin/Sidenav'
+import NAvbar from '../Admin/Navbar'
+import Product from '../Admin/Product'
+import Users from '../Admin/Users'
+import UserDetails from '../Admin/UserDetails'
+import Prodetails from '../Admin/Prodetails'
+import Newpro from '../Admin/Newpro'
+import Editpro from '../Admin/Editpro'
 
 
 function Mainrouter() {
@@ -42,7 +42,7 @@ function Mainrouter() {
             <Route path='/register' element={
               <ProtectedRoute>
                 <Userreg />
-              </ProtectedRoute>} />
+              </ProtectedRoute>}/>
             <Route path='/' element={<Home />} />
             <Route path='/Livingroom' element={<Living />} />
             <Route path='/Bedroom' element={<Bed />} />
@@ -76,7 +76,7 @@ function Mainrouter() {
         </div>
 
       )}
-
+ 
     </>
   )
 }
