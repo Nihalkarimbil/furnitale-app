@@ -13,6 +13,7 @@ function Cartcontext({ children }) {
   const { activeuser, userid } = useContext(UserContext)
   const [cartitem, setCartitem] = useState([])
   const [notification, setNotification] = useState(0)
+  const [wishitem,setwishitm]=useState([])
 
   // prevent the clearing of cart page when page refresh
   useEffect(() => {
@@ -74,10 +75,20 @@ function Cartcontext({ children }) {
     }
   };
   // 
+  const addtowishlist = (product) => {
+    // Check if the item is already in the wishlist
+    const alreadyInWishlist = wishitem.some(item => item.id === product.id);
+
+    if (!alreadyInWishlist) {
+      setwishitm([...wishitem, product]);
+    } else {
+      alert('Product is already in your wishlist!');
+    }
+  };
 
   return (
     <div>
-      <Cartcon.Provider value={{ cartitem, addtocart, deletecart, notification }}>
+      <Cartcon.Provider value={{ cartitem, addtocart, deletecart, notification,addtowishlist ,wishitem}}>
         {children}
       </Cartcon.Provider>
     </div>

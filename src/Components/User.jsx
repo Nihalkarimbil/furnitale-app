@@ -12,20 +12,17 @@ function User() {
     const id=activeuser?.id
     if (!activeuser) {
         return (
-           <div className='bg-orange-100 h-[310px]'>
-            <div >
-            <p className='flex justify-center p-[90px] font-serif text-gray-400 text-3xl'>User Not Available!
+            <div className="bg-orange-100 min-h-[310px] flex flex-col justify-center items-center">
+                <p className="text-center font-serif text-gray-400 text-xl sm:text-2xl md:text-3xl">
+                    User Not Available!
                 </p>
-                <Link to={'/login'}>
-                <button className=' relative left-[620px] p-1 rounded bottom-16 text-blue-700 font-semibold'>
-                    Please Login
-                </button>
+                <Link to="/login">
+                    <button className="mt-4 sm:mt-6 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg font-semibold">
+                        Please Login
+                    </button>
                 </Link>
             </div>
-            </div>
-       
-        )
-            
+        );
     }
 
     return (

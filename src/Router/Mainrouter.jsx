@@ -24,6 +24,7 @@ import UserDetails from '../Admin/UserDetails'
 import Prodetails from '../Admin/Prodetails'
 import Newpro from '../Admin/Newpro'
 import Editpro from '../Admin/Editpro'
+import Wishlist from '../Components/Wishlist'
 
 
 function Mainrouter() {
@@ -56,6 +57,7 @@ function Mainrouter() {
             <Route path='/cart' element={<Cart /> } />
             <Route path='/user' element={<User />} />
             <Route path='/payment' element={<Payment />} />
+            <Route path='/wishlist' element={<Wishlist/>} />
           </Routes>
           <Footer />
         </>

@@ -125,7 +125,7 @@ function Cart() {
                                                     </button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> 
                                     </div>
                                     <div className="ml-auto">
                                         <h4 className="text-base font-bold text-gray-800">₹{(item.new_price * (quantities[item.id]))}</h4>
