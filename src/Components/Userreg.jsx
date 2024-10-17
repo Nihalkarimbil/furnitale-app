@@ -42,9 +42,9 @@ function Userreg() {
 
 
   return (
-    <div className='bg-red-100'>
+    <div className='bg-red-100 p-5'>
       <div className="max-w-md  mx-auto p-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl mb-6 text-center font-serif text-gray-400">Sign Up</h1>
+        <h1 className="text-2xl text-center font-serif text-gray-400">Sign Up</h1>
         <form onSubmit={handlesubmit}>
           <div>
             <label className='font-mono text-gray-500'>User Name:</label>
