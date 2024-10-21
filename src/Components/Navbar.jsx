@@ -4,13 +4,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaUser, FaShoppingCart, FaHeart } from 'react-icons/fa';
 import { UserContext } from '../context/Usercontext';
 import { Cartcon } from '../context/Cartcontext';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const { notification } = useContext(Cartcon);
   const { activeuser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
+  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };

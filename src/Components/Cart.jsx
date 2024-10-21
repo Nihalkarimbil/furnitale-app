@@ -3,6 +3,7 @@ import { Cartcon } from '../context/Cartcontext'
 import { UserContext } from '../context/Usercontext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
 
 function Cart() {
 
@@ -49,6 +50,7 @@ function Cart() {
             });
         } catch (error) {
             console.error('Error updating quantity:', error);
+            toast.error('Error updating quantity')
         }
     };
 
@@ -73,6 +75,7 @@ function Cart() {
                 });
             } catch (error) {
                 console.error('Error updating quantity:', error);
+                toast.error('Error updating quantity')
             }
         }
     };

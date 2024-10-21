@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../context/Usercontext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Payment() {
     const Navigate=useNavigate()
@@ -19,7 +20,7 @@ function Payment() {
                 setActivUser(result.data)
                 
                 setTimeout(() => {
-                    alert('Payment successful,Thank you for shopping');
+                    toast.success('Payment successful,Thank you for shopping');
                     Navigate('/')
                 }, 3000);
                 
@@ -28,7 +29,7 @@ function Payment() {
 
             }
         } else {
-            alert('Payment canceled.');
+            toast.error('Payment canceled.');
         }
     };
 

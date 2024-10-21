@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function Newpro() {
@@ -34,7 +35,7 @@ function Newpro() {
         .then((res)=>{
             console.log(res)
             setTimeout(() => {
-                alert('product added')
+                toast.success('product added')
                 navigate('/products')
             }, 1000);
             

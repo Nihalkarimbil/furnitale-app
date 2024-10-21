@@ -3,7 +3,7 @@ import { createContext } from 'react'
 import { UserContext } from './Usercontext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import { toast } from 'react-toastify'
 
 export const Cartcon = createContext()
 
@@ -38,7 +38,7 @@ function Cartcontext({ children }) {
         // Find if the product already exists in the cart
         const existingitem = user1.cart.find((product) => product.id === items.id);
         if (existingitem) {
-          alert('Item already exists in your cart');
+          toast.error('Item already exists in your cart');
         } else {
           const updatecart = [...user1.cart, itemWithQTY];
           await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
@@ -46,12 +46,14 @@ function Cartcontext({ children }) {
           });
           setCartitem(updatecart);
           setNotification((prevCount) => prevCount + 1);
+          toast.success(`${items.name} added to cart`)
         }
       } catch (error) {
         console.error('Fetching error', error);
+        toast.error('Fetching error')
       }
     } else {
-      alert("Please login");
+      toast.error("Please login");
       navigate('/login');
     }
   };
@@ -81,8 +83,9 @@ function Cartcontext({ children }) {
 
     if (!alreadyInWishlist) {
       setwishitm([...wishitem, product]);
+      toast.success(`${items.name} added to wishlist`)
     } else {
-      alert('Product is already in your wishlist!');
+      toast.error('Product is already in your wishlist!');
     }
   };
 

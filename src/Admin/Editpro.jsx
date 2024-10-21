@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect,useState } from 'react'
 import { useParams,useNavigate } from 'react-router-dom'
-
+import { toast } from 'react-toastify'
 
 function Editpro() {
     const navigate=useNavigate()
@@ -29,6 +29,7 @@ function Editpro() {
     })
     .catch(error => {
         console.error('Error fetching product data:', error);
+        toast.error('error on fetching data')
     })
    },[id])
 
@@ -45,7 +46,7 @@ function Editpro() {
         axios.patch(`http://localhost:5000/products/${id}`,product)
         .then(()=>{
            setTimeout(() => {
-            alert('product updated')
+            toast.success('product updated')
             navigate(`/products/${id}`)
            }, 1000);          
         })

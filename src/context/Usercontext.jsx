@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 
@@ -38,21 +39,23 @@ const UserProvider = ({ children }) => {
                 localStorage.setItem('activeuserdata', JSON.stringify(user));
                 setActivUser(user)
                 navigate("/");
+                toast.success('user logged in')
             } else if (admin) {
                 setIsadmin(admin)
                 localStorage.setItem('adminData', JSON.stringify(admin));
                 navigate('/admin')
             } else {
-                alert("Please check the username or password you have entered.");
+                toast.error("Please check the username or password you have entered.");
             }
         } catch (error) {
-            alert("An error occurred" + error.message);
+            toast.error("An error occurred" + error.message);
         }
     };
     //logout function when user loged out the local storage data removed
     const handlelogout = async () => {
         localStorage.removeItem('activeuserdata');
         setActivUser(null)
+        toast.success('logout succesfully')
     };
 
     const addminlogout= async()=>{
@@ -60,6 +63,7 @@ const UserProvider = ({ children }) => {
         setIsadmin(null)
         navigate('/')
     }
+
     return (
         <UserContext.Provider value={{setActivUser, activeuser, handleSubmit, handlechange, login, userid: activeuser?.id, handlelogout,isadmin ,addminlogout }}>
             {children}

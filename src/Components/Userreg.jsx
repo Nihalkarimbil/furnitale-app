@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function Userreg() {
   const navigate = useNavigate()
@@ -25,11 +26,11 @@ function Userreg() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(reginput)
     }).then((res) => {
-      alert("registerd succesfully")
+      toast.success("registerd succesfully")
       navigate("/login");
       // localStorage.setItem('regdata',JSON.stringify(reginput))
     }).catch((err) => {
-      alert(err)
+      toast.error(err)
     })
 
   };
