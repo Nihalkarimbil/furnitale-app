@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaUser, FaShoppingCart, FaHeart } from 'react-icons/fa';
 import { UserContext } from '../context/Usercontext';
 import { Cartcon } from '../context/Cartcontext';
-import { toast } from 'react-toastify';
+
 
 const Navbar = () => {
   const { notification } = useContext(Cartcon);
@@ -27,8 +27,8 @@ const Navbar = () => {
       <section className="relative mx-auto w-full">
         <nav className="flex justify-between bg-red-50 text-gray-600 shadow-md w-full sticky top-0 z-50">
           <div className="px-4 xl:px-12 py-3 flex w-full items-center justify-between">
-            <NavLink to="/" className="text-2xl font-serif font-heading text-red-700">
-              FurniTale
+            <NavLink to="/" id='myhead' className="text-2xl font-serif font-heading text-red-700">
+              FurniTales
             </NavLink>
             {/* Nav Links */}
             <ul className={`md:flex ${isOpen ? 'block' : 'hidden'} px-4 mx-auto font-semibold font-heading space-x-12`}>
@@ -37,7 +37,7 @@ const Navbar = () => {
                   to="/"
                   className={({ isActive }) =>
                     `text-gray-800 ml-12 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
-                  }
+                  } id='navname'
                 >
                   Home
                 </NavLink>
@@ -47,7 +47,7 @@ const Navbar = () => {
                   to="/Livingroom"
                   className={({ isActive }) =>
                     `text-gray-800 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
-                  }
+                  } id='navname'
                 >
                   Living Room
                 </NavLink>
@@ -57,7 +57,7 @@ const Navbar = () => {
                   to="/Bedroom"
                   className={({ isActive }) =>
                     `text-gray-800 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
-                  }
+                  } id='navname'
                 >
                   Bed Room
                 </NavLink>
@@ -67,7 +67,7 @@ const Navbar = () => {
                   to="/Dining"
                   className={({ isActive }) =>
                     `text-gray-800 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
-                  }
+                  } id='navname'
                 >
                   Dining
                 </NavLink>
@@ -77,7 +77,7 @@ const Navbar = () => {
                   to="/Decor"
                   className={({ isActive }) =>
                     `text-gray-800 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
-                  }
+                  } id='navname'
                 >
                   Decor
                 </NavLink>
@@ -87,7 +87,9 @@ const Navbar = () => {
             <div className="flex items-center space-x-5">
               {activeuser && (
                 <>
-                  <NavLink className="flex items-center hover:text-gray-200" to="/cart">
+                  <NavLink className={({ isActive }) =>
+                    `text-gray-800 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
+                  } to="/cart">
                     <FaShoppingCart />
                     {notification > 0 && (
                       <span className="absolute w-4 ml-3 mb-4 flex items-center justify-center text-white bg-red-500 rounded-full text-xs">
@@ -95,7 +97,9 @@ const Navbar = () => {
                       </span>
                     )}
                   </NavLink>
-                  <NavLink className="flex items-center hover:text-gray-200" to="/wishlist">
+                  <NavLink className={({ isActive }) =>
+                    `text-gray-800 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
+                  } to="/wishlist">
                     <FaHeart />
                   </NavLink>
                 </>
@@ -104,7 +108,8 @@ const Navbar = () => {
               <NavLink
                 to={activeuser ? '/user' : '/login'}
                 className={({ isActive }) =>
-                  `text-gray-500 font-semibold ${isActive ? 'text-green-700' : 'hover:text-green-700'} transition duration-200 py-2`
+                  `text-gray-800 ${isActive ? 'text-red-500' : 'hover:text-green-500'} transition duration-200`
+                
                 }
                 onClick={handleUserClick}
               >

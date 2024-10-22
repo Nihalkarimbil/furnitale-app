@@ -1,3 +1,42 @@
+#myhead {
+    /* font-family: "Orbitron", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200px;
+    font-style: normal; */
+    font-family: "Jaro", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#category {
+    font-family: "Sacramento", cursive;
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+#navname {
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#sub {
+    font-family: "Playwrite IT Trad", cursive;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+#main {
+
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
 
 @tailwind base;
 @tailwind components;

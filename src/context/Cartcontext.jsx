@@ -83,7 +83,7 @@ function Cartcontext({ children }) {
 
     if (!alreadyInWishlist) {
       setwishitm([...wishitem, product]);
-      toast.success(`${items.name} added to wishlist`)
+      toast.success(`${product.name} added to wishlist`)
     } else {
       toast.error('Product is already in your wishlist!');
     }
