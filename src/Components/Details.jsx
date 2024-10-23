@@ -9,11 +9,12 @@ function Details() {
     const {id}=useParams();
     const {products}=useContext(Procontext)
     const [pro,setPro]=useState([])
+   console.log(pro);
    
     
 
     useEffect(()=>{
-        setPro(products.filter((items)=>items.id==id))
+        setPro(products.filter((items)=>items._id==id))
     },[products])
     
 
@@ -28,6 +29,7 @@ function Details() {
     <div className='flex flex-col items-center bg-red-100 p-4'>
         <br/>
             {pro.map((product,index) => (
+                
                 <div key={index} className='flex flex-col md:flex-row items-center bg-red-50 rounded-lg shadow-md mb-4 p-4 w-full max-w-4xl'>
                     <img
                         src={product.image}

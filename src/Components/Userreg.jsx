@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import axiosinstance from '../axiosinstance';
 
 function Userreg() {
   const navigate = useNavigate()
@@ -12,7 +13,6 @@ function Userreg() {
     confpassword: "",
     admin: false,
     blocked: false,
-    cart: []
   });
 
   const handlesubmit = (e) => {
@@ -21,11 +21,8 @@ function Userreg() {
       ...input,
       blocked: false
     };
-    fetch("http://localhost:5000/user", {
-      method: "POST",
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(reginput)
-    }).then((res) => {
+    axiosinstance.post("/user/signup",reginput) 
+    .then((res) => {
       toast.success("registerd succesfully")
       navigate("/login");
       // localStorage.setItem('regdata',JSON.stringify(reginput))

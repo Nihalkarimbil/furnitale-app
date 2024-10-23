@@ -6,15 +6,11 @@ import { Cartcon } from '../context/Cartcontext';
 
 
 function Decor() {
-  const { products } = useContext(Procontext)
-  const [decor, setDecor] = useState([])
+  const { decor } = useContext(Procontext)
+  
   const { addtowishlist,addtocart } = useContext(Cartcon)
 
-  useEffect(() => {
-    if (products) {
-      setDecor(products.filter((items) => items.category === "decor"))
-    }
-  }, [products])
+  
 
   const handlecart = (prod) => {
     addtocart(prod)
@@ -33,9 +29,9 @@ function Decor() {
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {decor.map((product) => (
-            <div key={product.id} className="group">
+            <div key={product._id} className="group">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 shadow-lg">
-                <Link to={product.id}>
+                <Link to={product._id}>
                   <img
                     src={product.image}
                     alt={product.discriptio}
