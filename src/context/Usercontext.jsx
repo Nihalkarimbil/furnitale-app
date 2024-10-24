@@ -40,17 +40,19 @@ const UserProvider = ({ children }) => {
             // Check if login is successful
             if (res.status === 200) {
                 const userData = res.data;
-    
+                console.log(userData)
                 if (userData.admin) {
                     // Admin login
                     setIsadmin(userData);
                     localStorage.setItem('adminData', JSON.stringify(userData));
+                    localStorage.setItem('token',userData.token)
                     navigate('/admin');
                     toast.success('Admin logged in');
                 } else {
                     // User login
                     setActivUser(userData);
                     localStorage.setItem('activeuserdata', JSON.stringify(userData));
+                    localStorage.setItem('token',userData.token)
                     navigate("/");
                     toast.success('User logged in');
                 }
@@ -67,12 +69,14 @@ const UserProvider = ({ children }) => {
     //logout function when user loged out the local storage data removed
     const handlelogout = async () => {
         localStorage.removeItem('activeuserdata');
+        localStorage.removeItem('token')
         setActivUser(null)
         toast.success('logout succesfully')
     };
 
     const addminlogout = async () => {
         localStorage.removeItem('adminData')
+        localStorage.removeItem('token')
         setIsadmin(null)
         navigate('/')
     }

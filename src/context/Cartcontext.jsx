@@ -4,6 +4,7 @@ import { UserContext } from './Usercontext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import axiosinstance from '../axiosinstance'
 
 export const Cartcon = createContext()
 
@@ -12,6 +13,7 @@ function Cartcontext({ children }) {
 
   const { activeuser, userid } = useContext(UserContext)
   const [cartitem, setCartitem] = useState([])
+  
   const [notification, setNotification] = useState(0)
   const [wishitem,setwishitm]=useState([])
 
@@ -19,8 +21,15 @@ function Cartcontext({ children }) {
   useEffect(() => {
     if (activeuser) {
       const getCartItems = async () => {
-        const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`)
-        setCartitem(res.data.cart)
+        const res = await axiosinstance.get('/user/cart')
+        // ,{
+        //   headers:{
+        //     Authorization:`Bearer ${activeuser.token}`
+        //   }
+        // })
+        console.log('fddgfnsdafdgh',res.data.products)
+        setCartitem(res.data.products)
+      
         setNotification(res.data.cart.length)
       }
       getCartItems()
@@ -91,7 +100,7 @@ function Cartcontext({ children }) {
 
   return (
     <div>
-      <Cartcon.Provider value={{ cartitem, addtocart, deletecart, notification,addtowishlist ,wishitem}}>
+      <Cartcon.Provider value={{cartitem, addtocart, deletecart, notification,addtowishlist ,wishitem}}>
         {children}
       </Cartcon.Provider>
     </div>
