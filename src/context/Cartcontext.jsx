@@ -13,50 +13,50 @@ function Cartcontext({ children }) {
 
   const { activeuser, userid } = useContext(UserContext)
   const [cartitem, setCartitem] = useState([])
-  
+
   const [notification, setNotification] = useState(0)
-  const [wishitem,setwishitm]=useState([])
+  const [wishitem, setwishitm] = useState([])
 
   // prevent the clearing of cart page when page refresh
   useEffect(() => {
-    if (activeuser) {
-      const getCartItems = async () => {
-        const res = await axiosinstance.get('/user/cart')
-        // ,{
-        //   headers:{
-        //     Authorization:`Bearer ${activeuser.token}`
-        //   }
-        // })
-        console.log('fddgfnsdafdgh',res.data.products)
-        setCartitem(res.data.products)
-      
-        setNotification(res.data.cart.length)
-      }
-      getCartItems()
-    }
+
+    getCartItems()
 
   }, [activeuser])
+
+  const getCartItems = async () => {
+    if (activeuser) {
+      try {
+        const res = await axiosinstance.get("/user/cart")
+
+        const products = res.data.products || [];
+        setCartitem(products);
+        setNotification(products.length);
+
+      } catch (error) {
+
+        console.error("Error fetching cart data:", error);
+        setCartitem([]);
+        setNotification(0);
+      }
+    }
+  }
   // 
   //functions for add and delete the cart item
   const addtocart = async (items) => {
+    console.log('kviub',items);
+    
     if (activeuser) {
       try {
-        const itemWithQTY = { ...items, qty: 1 };
-        const res = await axios.get(`http://localhost:5000/user/${activeuser.id}`);
-        const user1 = res.data;
-        // Find if the product already exists in the cart
-        const existingitem = user1.cart.find((product) => product.id === items.id);
-        if (existingitem) {
-          toast.error('Item already exists in your cart');
-        } else {
-          const updatecart = [...user1.cart, itemWithQTY];
-          await axios.put(`http://localhost:5000/user/${activeuser.id}`, {
-            ...user1, cart: updatecart
-          });
-          setCartitem(updatecart);
-          setNotification((prevCount) => prevCount + 1);
-          toast.success(`${items.name} added to cart`)
-        }
+        const res = await axiosinstance.post('/user/addtocart', {
+          productId: items._id,
+          quantity: 1
+        });
+
+        await getCartItems()
+        toast.success(`${items.name} added to cart`)
+        setNotification((prevCount) => prevCount + 1)
+
       } catch (error) {
         console.error('Fetching error', error);
         toast.error('Fetching error')
@@ -70,16 +70,10 @@ function Cartcontext({ children }) {
 
   const deletecart = async (item, index) => {
     try {
-      const response = await axios.get(`http://localhost:5000/user/${userid}`);
-      const userData = response.data;
-      const updatedCart = userData.cart.filter(cartItem => cartItem.id !== item.id);
-      await axios.patch(`http://localhost:5000/user/${userid}`, {
-        ...userData,
-        cart: updatedCart
+        await axiosinstance.delete('/user/deletecart',{
+        productId: item._id
       });
-      const newCartItem = [...cartitem];
-      newCartItem.splice(index, 1);
-      setCartitem(newCartItem);
+      await getCartItems()
       setNotification((prevCount) => prevCount - 1)
     } catch (error) {
       console.error("Error deleting item from cart:", error);
@@ -100,7 +94,7 @@ function Cartcontext({ children }) {
 
   return (
     <div>
-      <Cartcon.Provider value={{cartitem, addtocart, deletecart, notification,addtowishlist ,wishitem}}>
+      <Cartcon.Provider value={{ cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
         {children}
       </Cartcon.Provider>
     </div>

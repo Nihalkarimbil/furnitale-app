@@ -40,12 +40,13 @@ const UserProvider = ({ children }) => {
             // Check if login is successful
             if (res.status === 200) {
                 const userData = res.data;
+                const adminData=res.data.admin
                 console.log(userData)
-                if (userData.admin) {
+                if (adminData) {
                     // Admin login
-                    setIsadmin(userData);
-                    localStorage.setItem('adminData', JSON.stringify(userData));
-                    localStorage.setItem('token',userData.token)
+                    setIsadmin(adminData);
+                    localStorage.setItem('adminData', JSON.stringify(adminData));
+                    localStorage.setItem('token',adminData.token)
                     navigate('/admin');
                     toast.success('Admin logged in');
                 } else {
