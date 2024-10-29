@@ -13,7 +13,7 @@ function Cartcontext({ children }) {
 
   const { activeuser, userid } = useContext(UserContext)
   const [cartitem, setCartitem] = useState([])
-
+  const [wishnotification, setwishnoti] = useState(0)
   const [notification, setNotification] = useState(0)
   const [wishitem, setwishitm] = useState([])
 
@@ -21,6 +21,7 @@ function Cartcontext({ children }) {
   useEffect(() => {
 
     getCartItems()
+    getWishItems()
 
   }, [activeuser])
 
@@ -41,21 +42,39 @@ function Cartcontext({ children }) {
       }
     }
   }
+
+  const getWishItems = async () => {
+    if (activeuser) {
+      try {
+        const res = await axiosinstance.get("/user/wishlist")
+
+        const products = res.data.products || [];
+        setwishitm(products);
+        setwishnoti(products.length);
+
+      } catch (error) {
+
+        console.error("Error fetching cart data:", error);
+        setwishitm([]);
+        setwishnoti(0);
+      }
+    }
+  }
   // 
   //functions for add and delete the cart item
   const addtocart = async (items) => {
-    console.log('kviub',items);
-    
+    console.log('kviub', items);
+
     if (activeuser) {
       try {
-        const res = await axiosinstance.post('/user/addtocart', {
+        await axiosinstance.post('/user/addtocart', {
           productId: items._id,
           quantity: 1
         });
 
         await getCartItems()
         toast.success(`${items.name} added to cart`)
-        setNotification((prevCount) => prevCount + 1)
+        // setNotification((prevCount) => prevCount + 1)
 
       } catch (error) {
         console.error('Fetching error', error);
@@ -70,31 +89,59 @@ function Cartcontext({ children }) {
 
   const deletecart = async (item, index) => {
     try {
-        await axiosinstance.delete('/user/deletecart',{
+      await axiosinstance.delete('/user/deletecart', {
         productId: item._id
       });
       await getCartItems()
-      setNotification((prevCount) => prevCount - 1)
+
     } catch (error) {
       console.error("Error deleting item from cart:", error);
     }
   };
   // 
-  const addtowishlist = (product) => {
-    // Check if the item is already in the wishlist
-    const alreadyInWishlist = wishitem.some(item => item.id === product.id);
+  const addtowishlist = async (product) => {
+    if (activeuser) {
+      try {
+        // Check if the item already exists in the wishlist
+        const isAlreadyInWishlist = wishitem.some(item => item.productId === product._id);
 
-    if (!alreadyInWishlist) {
-      setwishitm([...wishitem, product]);
-      toast.success(`${product.name} added to wishlist`)
+        if (!isAlreadyInWishlist) {
+          // If not in wishlist, proceed to add
+          await axiosinstance.post('/user/addwish', {
+            productId: product._id
+          });
+          getWishItems(); // Refresh wishlist items
+        }
+
+      } catch (error) {
+        console.error('Error adding to wishlist:', error); // Log error for debugging
+        toast.error("Error adding to wishlist");
+      }
     } else {
-      toast.error('Product is already in your wishlist!');
+      toast.error("Please login");
+      navigate('/login');
     }
   };
 
+  const removewish = async (item) => {
+    try {
+      await axiosinstance.delete(`/user/removewish`, {
+        data: { productId: item }
+      });
+      await getWishItems(); // Refresh wishlist items after deletion
+    } catch (error) {
+      console.log('Error removing from wishlist:', error);
+    }
+};
+
+
+
+
+
+
   return (
     <div>
-      <Cartcon.Provider value={{ cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
+      <Cartcon.Provider value={{ removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
         {children}
       </Cartcon.Provider>
     </div>

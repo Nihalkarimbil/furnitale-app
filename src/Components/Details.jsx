@@ -26,7 +26,7 @@ function Details() {
 
   return (
     
-    <div className='flex flex-col items-center bg-red-100 p-4'>
+    <div className='flex flex-col items-center bg-red-100 p-4 pt-14'>
         <br/>
             {pro.map((product,index) => (
                 

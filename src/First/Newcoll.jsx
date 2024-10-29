@@ -25,7 +25,7 @@ function Newcoll() {
   }
 
   return (
-    <div className="bg-orange-100 py-8">
+    <div className="bg-orange-100 py-8 ">
       <h1 className="  flex justify-center  text-4xl text-gray-800" id='category'>New Collections</h1>
       <p className="flex justify-center font-sans text-base text-black mb-8" id='sub'>Explore Limitless Possibilities with Our New Collection</p>
       

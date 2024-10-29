@@ -7,23 +7,13 @@ import axiosinstance from '../axiosinstance';
 
 function Cart() {
 
-    const { cartitem, deletecart } = useContext(Cartcon)
+    const { cartitem, deletecart ,getCartItems} = useContext(Cartcon)
     console.log('htjyf', cartitem)
     const { activeuser } = useContext(UserContext)
     const [quantities, setQuantities] = useState({});
     const [price, setPrice] = useState(0)
     const navigate = useNavigate()
 
-    useEffect(() => {
-
-        const initialQuantities = cartitem.reduce((acc, item) => {
-            acc[item.productId?._id] = item.qty
-            return acc;
-        }, {});
-        setQuantities(initialQuantities);
-
-
-    }, [cartitem]);
 
     useEffect(() => {
         const pricetotal = () => {
@@ -35,8 +25,19 @@ function Cart() {
         }
         pricetotal()
     }, [quantities, cartitem])
+    useEffect(() => {
+
+        const initialQuantities = cartitem.reduce((acc, item) => {
+            acc[item.productId?._id] = item.qty
+            return acc;
+        }, {});
+        setQuantities(initialQuantities);
+
+    }, [cartitem]);
+
 
     const updateCart = async (item, action) => {
+        
         console.log('first', item)
         console.log('second', action);
 
@@ -59,12 +60,15 @@ function Cart() {
             }, {});
 
             setQuantities(updatedQuantities);
+            
 
         } catch (error) {
             console.error('Error updating cart item:', error);
             toast.error('Error updating cart item');
         }
+        
     };
+
 
     // Function to handle incrementing the item quantity
     const increment = (item) => {
@@ -77,11 +81,11 @@ function Cart() {
 
     };
 
-const map=cartitem.map((item)=>item)
-console.log("map :",map);
+    const map = cartitem.map((item) => item)
+    console.log("map :", map);
 
     return (
-        <div className='bg-red-100'>
+        <div className='bg-red-100 pt-14'>
             <div className="font-sans md:max-w-4xl max-md:max-w-xl mx-auto bg-red-100 py-4">
                 <div className="grid md:grid-cols-3 gap-4">
                     <div className="md:col-span-2 bg-red-50 p-4 rounded-md">
@@ -89,7 +93,7 @@ console.log("map :",map);
                         <hr className="border-gray-300 mt-4 mb-8" />
 
                         <div className="space-y-4">
-                            {cartitem.map((item, index) => (
+                             {cartitem.map((item, index) => (
                                 <div className="grid grid-cols-3 items-center gap-4" key={index}>
                                     <div className="col-span-2 flex items-center gap-4">
 
@@ -104,7 +108,7 @@ console.log("map :",map);
                                             <h3 className="text-base font-bold text-gray-800">
                                                 {item.productId?.name}
                                             </h3>
-                                            <button className="text-xs text-red-500 cursor-pointer mt-0.5" onClick={() => { deletecart(item, index) }}>
+                                            <button className="text-xs text-red-500 cursor-pointer mt-0.5" onClick={() => { deletecart(item) }}>
                                                 Remove
                                             </button>
 

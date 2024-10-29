@@ -5,7 +5,7 @@ function Image() {
   
   return (
     <div className="relative inline">
-      <img src={exampleImage} alt="Example" className="w-full shadow" />
+      <img src={exampleImage} alt="Example" className="w-full shadow pt-14" />
       <div className="absolute inset-0 flex flex-col justify-center">
         <div className="text-white sm:text-lg md:text-xl lg:text-2xl xl:text-5xl ml-10 " id='main'>
           Design Your Story...<br/>Frame by Frame          

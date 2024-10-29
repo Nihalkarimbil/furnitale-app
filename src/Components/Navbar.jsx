@@ -6,7 +6,7 @@ import { UserContext } from '../context/Usercontext';
 import { Cartcon } from '../context/Cartcontext';
 
 const Navbar = () => {
-  const { notification } = useContext(Cartcon);
+  const { notification,wishnotification } = useContext(Cartcon);
   const { activeuser } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -22,7 +22,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-wrap ">
+    <div className='position fixed w-full z-50 mb-11'>
+        <div className=" flex flex-wrap w-full">
       <section className="relative mx-auto w-full">
         <nav className="flex justify-between bg-red-50 text-gray-600 shadow-md w-full sticky top-0 z-50">
           <div className="px-4 xl:px-12 py-3 flex w-full items-center justify-between">
@@ -112,7 +113,15 @@ const Navbar = () => {
                     }
                     to="/wishlist"
                   >
+                    <div className="relative">
                     <FaHeart />
+                      {wishnotification > 0 && (
+                        <span className="absolute top-0 right-0 -mt-2 -mr-3 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                          {wishnotification}
+                        </span>
+                      )}
+                    </div>
+                    
                   </NavLink>
                 </>
               )}
@@ -138,6 +147,8 @@ const Navbar = () => {
         </nav>
       </section>
     </div>
+    </div>
+    
   );
 };
 

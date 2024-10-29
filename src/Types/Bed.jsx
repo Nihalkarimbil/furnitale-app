@@ -10,10 +10,6 @@ function Bed() {
   const { bed } = useContext(Procontext);
   const { addtowishlist, addtocart } = useContext(Cartcon)
 
-
-
-
-
   const handlecart = (prod) => {
     addtocart(prod)
   }
@@ -24,8 +20,9 @@ function Bed() {
 
 
   return (
-    <div className='bg-orange-100'>
+    <div className='bg-orange-100 pt-14'>
       <br />
+      
       <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800' id='category'>Bed Room Furnitures</h1>
 
       <p className='flex justify-center font-sans text-base text-gray-700 'id='sub'>Beautiful Bedrooms, Beautiful Lives</p>

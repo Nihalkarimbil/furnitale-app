@@ -21,7 +21,7 @@ function Decor() {
   }
 
   return (
-    <div className='bg-orange-100'>
+    <div className='bg-orange-100 pt-14'>
       <br />
       <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800' id='category'>Home Decorations</h1>
       <p className='flex justify-center font-sans text-base text-gray-700 ' id='sub'>Decorate with Passion, Live with Comfort</p>
