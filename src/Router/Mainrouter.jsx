@@ -25,7 +25,8 @@ import Prodetails from '../Admin/Prodetails'
 import Newpro from '../Admin/Newpro'
 import Editpro from '../Admin/Editpro'
 import Wishlist from '../Components/Wishlist'
-
+// import PaymentPage from '../Components/paymentpage'
+// import SuccessPage from '../Components/succesorder'
 
 function Mainrouter() {
   const { isadmin } = useContext(UserContext)
@@ -58,6 +59,7 @@ function Mainrouter() {
             <Route path='/user' element={<User />} />
             <Route path='/payment' element={<Payment />} />
             <Route path='/wishlist' element={<Wishlist/>} />
+            {/* <Route path="/success" element={<SuccessPage />} /> */}
           </Routes>
           <Footer />
         </>

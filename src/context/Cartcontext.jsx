@@ -9,6 +9,9 @@ import axiosinstance from '../axiosinstance'
 export const Cartcon = createContext()
 
 function Cartcontext({ children }) {
+  const [clientSecret, setClientSecret] = useState('');
+ 
+  
   const navigate = useNavigate()
 
   const { activeuser, userid } = useContext(UserContext)
@@ -134,6 +137,21 @@ function Cartcontext({ children }) {
     }
 };
 
+const createOrder=async()=>{
+  try{
+    const resp =await axiosinstance.post('/user/addOrder')
+    console.log(resp)
+    setClientSecret(resp.data.data.clientsecret)
+    console.log('nnn',clientSecret);
+    
+    toast.success('order created succesfully')
+    navigate('/payment')
+  }catch(error){
+    toast.error('failed to creating order')
+
+  }
+}
+
 
 
 
@@ -141,7 +159,7 @@ function Cartcontext({ children }) {
 
   return (
     <div>
-      <Cartcon.Provider value={{ removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
+      <Cartcon.Provider value={{ clientSecret,createOrder,removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
         {children}
       </Cartcon.Provider>
     </div>

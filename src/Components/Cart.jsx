@@ -4,10 +4,11 @@ import { UserContext } from '../context/Usercontext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import axiosinstance from '../axiosinstance';
+import Checkoutpayment from './Payment';
 
 function Cart() {
 
-    const { cartitem, deletecart ,getCartItems} = useContext(Cartcon)
+    const { cartitem, deletecart ,getCartItems,createOrder} = useContext(Cartcon)
     console.log('htjyf', cartitem)
     const { activeuser } = useContext(UserContext)
     const [quantities, setQuantities] = useState({});
@@ -81,8 +82,19 @@ function Cart() {
 
     };
 
-    const map = cartitem.map((item) => item)
-    console.log("map :", map);
+    const handlecheckout = async () => {
+        try {
+            
+            await createOrder();
+            
+            navigate('/payment');
+        } catch (error) {
+            // Handle any errors that occur during order creation
+            console.error('Error creating order:', error);
+            toast.error('Failed to create order. Please try again.');
+        }
+    };
+   
 
     return (
         <div className='bg-red-100 pt-14'>
@@ -159,7 +171,7 @@ function Cart() {
                         </div>
                         <button
                             type="button"
-                            className="w-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md mt-8" onClick={() => navigate('/payment')}
+                            className="w-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md mt-8" onClick={handlecheckout}
                         >
                             Checkout
                         </button>
