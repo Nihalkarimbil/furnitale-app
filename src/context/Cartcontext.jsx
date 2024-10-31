@@ -10,21 +10,20 @@ export const Cartcon = createContext()
 
 function Cartcontext({ children }) {
   const [clientSecret, setClientSecret] = useState('');
- 
-  
-  const navigate = useNavigate()
-
   const { activeuser, userid } = useContext(UserContext)
   const [cartitem, setCartitem] = useState([])
   const [wishnotification, setwishnoti] = useState(0)
   const [notification, setNotification] = useState(0)
   const [wishitem, setwishitm] = useState([])
+  const [orders,setOrders]=useState([])
 
+  const navigate = useNavigate()
   // prevent the clearing of cart page when page refresh
   useEffect(() => {
 
     getCartItems()
     getWishItems()
+    getAllorders()
 
   }, [activeuser])
 
@@ -143,8 +142,10 @@ const createOrder=async()=>{
     console.log(resp)
     setClientSecret(resp.data.data.clientsecret)
     console.log('nnn',clientSecret);
+  
     
     toast.success('order created succesfully')
+    await getCartItems()
     navigate('/payment')
   }catch(error){
     toast.error('failed to creating order')
@@ -153,13 +154,35 @@ const createOrder=async()=>{
 }
 
 
+const getAllorders = async () => {
+  try {
+    const response = await axiosinstance.get("/user/getAllorders");
+     setOrders(response.data)
 
+    
+    return orders;
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    return [];
+  }
+};
+
+const cancelOrder=async(orderID)=>{
+  try {
+    await axiosinstance.delete(`/user/order/${orderID}`)
+    toast.success('order canceled')
+
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
 
 
 
   return (
     <div>
-      <Cartcon.Provider value={{ clientSecret,createOrder,removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
+      <Cartcon.Provider value={{ cancelOrder,getAllorders,orders,clientSecret,createOrder,removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
         {children}
       </Cartcon.Provider>
     </div>

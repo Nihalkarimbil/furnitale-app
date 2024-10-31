@@ -1,49 +1,51 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { Cartcon } from '../context/Cartcontext'
+import React, { useContext, useState, useEffect } from 'react';
+import { Cartcon } from '../context/Cartcontext';
 import { UserContext } from '../context/Usercontext';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 import axiosinstance from '../axiosinstance';
 import Checkoutpayment from './Payment';
 
 function Cart() {
-
-    const { cartitem, deletecart ,getCartItems,createOrder} = useContext(Cartcon)
-    console.log('htjyf', cartitem)
-    const { activeuser } = useContext(UserContext)
+    const { cartitem, deletecart, getCartItems, createOrder } = useContext(Cartcon);
+    const { activeuser } = useContext(UserContext);
     const [quantities, setQuantities] = useState({});
-    const [price, setPrice] = useState(0)
-    const navigate = useNavigate()
+    const [price, setPrice] = useState(0);
+    const [loading, setLoading] = useState(true); // Loading state
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        const fetchCartItems = async () => {
+            await getCartItems(); // Ensure cart items are fetched
+            setLoading(false);
+        };
+
+        fetchCartItems();
+    }, []);
+
+    useEffect(() => {
+        if (cartitem.length) {
+            const initialQuantities = cartitem.reduce((acc, item) => {
+                acc[item.productId?._id] = item.productId.quantity || 1; // Default to 1 if quantity is undefined
+                return acc;
+            }, {});
+            setQuantities(initialQuantities);
+        }
+    }, [cartitem]);
 
     useEffect(() => {
         const pricetotal = () => {
             const total = cartitem.reduce((acc, item) => {
                 const quantity = quantities[item.productId?._id] || 1;
-                return acc + item.productId?.new_price * quantity
-            }, 0)
-            setPrice(total)
-        }
-        pricetotal()
-    }, [quantities, cartitem])
-    useEffect(() => {
-
-        const initialQuantities = cartitem.reduce((acc, item) => {
-            acc[item.productId?._id] = item.qty
-            return acc;
-        }, {});
-        setQuantities(initialQuantities);
-
-    }, [cartitem]);
-
+                return acc + item.productId?.new_price * quantity;
+            }, 0);
+            setPrice(total);
+        };
+        pricetotal();
+    }, [quantities, cartitem]);
 
     const updateCart = async (item, action) => {
-        
-        console.log('first', item)
-        console.log('second', action);
-
         const itemID = item.productId?._id;
-        console.log('third', itemID)
         try {
             const res = await axiosinstance.put('/user/updatecart', {
                 productId: itemID,
@@ -55,46 +57,37 @@ function Cart() {
             const updatedCart = res.data.products;
             const updatedQuantities = updatedCart.reduce((acc, product) => {
                 acc[product.productId?._id] = product.quantity;
-                console.log('acc', acc);
-
                 return acc;
             }, {});
 
             setQuantities(updatedQuantities);
-            
-
         } catch (error) {
             console.error('Error updating cart item:', error);
             toast.error('Error updating cart item');
         }
-        
     };
 
-
-    // Function to handle incrementing the item quantity
     const increment = (item) => {
         updateCart(item, 'increment');
     };
 
-    // Function to handle decrementing the item quantity
     const decrement = (item) => {
         updateCart(item, 'decrement');
-
     };
 
     const handlecheckout = async () => {
         try {
-            
             await createOrder();
-            
             navigate('/payment');
         } catch (error) {
-            // Handle any errors that occur during order creation
             console.error('Error creating order:', error);
             toast.error('Failed to create order. Please try again.');
         }
     };
-   
+
+    if (loading) {
+        return <div>Loading...</div>; // Show a loading indicator
+    }
 
     return (
         <div className='bg-red-100 pt-14'>
@@ -108,14 +101,12 @@ function Cart() {
                              {cartitem.map((item, index) => (
                                 <div className="grid grid-cols-3 items-center gap-4" key={index}>
                                     <div className="col-span-2 flex items-center gap-4">
-
                                         <div className="w-24 h-24 shrink-0 bg-white p-1 rounded-md">
                                             <img className='w-24 h-24 '
                                                 src={item.productId?.image}
                                                 alt={item.productId?.name}
                                             />
                                         </div>
-
                                         <div>
                                             <h3 className="text-base font-bold text-gray-800">
                                                 {item.productId?.name}
@@ -123,7 +114,6 @@ function Cart() {
                                             <button className="text-xs text-red-500 cursor-pointer mt-0.5" onClick={() => { deletecart(item) }}>
                                                 Remove
                                             </button>
-
                                             <div className="flex gap-4 mt-4">
                                                 <div className="relative group">
                                                     <button
@@ -134,11 +124,9 @@ function Cart() {
                                                     </button>
                                                 </div>
                                                 <p>{quantities[item.productId?._id]}</p>
-
                                                 <div>
                                                     <button
                                                         type="button"
-
                                                         className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md" onClick={() => { decrement(item) }}
                                                     >-
                                                     </button>
@@ -148,8 +136,6 @@ function Cart() {
                                     </div>
                                     <div className="ml-auto">
                                         <h4 className="text-base font-bold text-gray-800">₹{(item.productId?.new_price * (quantities[item.productId?._id]))}</h4>
-                                        {console.log((quantities[item.productId?._id]))}
-
                                     </div>
                                 </div>
                             ))}
@@ -171,7 +157,8 @@ function Cart() {
                         </div>
                         <button
                             type="button"
-                            className="w-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md mt-8" onClick={handlecheckout}
+                            className="w-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md mt-4"
+                            onClick={handlecheckout}
                         >
                             Checkout
                         </button>
@@ -179,8 +166,7 @@ function Cart() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Cart
-
+export default Cart;

@@ -25,6 +25,8 @@ import Prodetails from '../Admin/Prodetails'
 import Newpro from '../Admin/Newpro'
 import Editpro from '../Admin/Editpro'
 import Wishlist from '../Components/Wishlist'
+import SuccessPage from '../Components/succesorder'
+import Orders from '../Components/Orders'
 // import PaymentPage from '../Components/paymentpage'
 // import SuccessPage from '../Components/succesorder'
 
@@ -59,7 +61,8 @@ function Mainrouter() {
             <Route path='/user' element={<User />} />
             <Route path='/payment' element={<Payment />} />
             <Route path='/wishlist' element={<Wishlist/>} />
-            {/* <Route path="/success" element={<SuccessPage />} /> */}
+            <Route path="/success/:sessionID" element={<SuccessPage/>} />
+            <Route path='/myOrders' element={<Orders/>} />
           </Routes>
           <Footer />
         </>
