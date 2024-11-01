@@ -1,17 +1,21 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Procontext } from '../context/Productcontext';
-import axios from 'axios';
-import User from '../Components/User';
+import { admincontext } from '../context/Admincontext';
+import axiosinstance from '../axiosinstance';
+// import User from '../Components/User';
 
 function UserDetails() {
   const { id } = useParams();
-  const { Costomers } = useContext(Procontext);
+  const { Costomers,fetchuser } = useContext(admincontext);
   const [use, setUse] = useState([]);
   const [blocked,setBlocked]=useState(false)
 
   useEffect(() => {
-    const User=Costomers.find((items) => items.id == id);
+    fetchuser()
+  }, []);
+
+  useEffect(() => {
+    const User=Costomers.find((items) => items._id == id);
     console.log(User)
     if(User){
       setUse([User])
@@ -19,25 +23,30 @@ function UserDetails() {
     } 
   }, [Costomers, id]);
 
-  const Block = async () => {
-    const blockupdate=!blocked
-    setBlocked(blockupdate)
-    try {
-      await axios.patch(`http://localhost:5000/user/${id}`, {
-        blocked: blockupdate
-      });
 
+  const Block = async () => {
+    const blockupdate = !blocked;
+    try {
+      await axiosinstance.put(`/admin/isblock/${id}`);
+
+      setBlocked(blockupdate);
+     // Success message from backend
     } catch (error) {
       console.error('Error updating block status:', error);
+      alert('Failed to update block status');
     }
   };
+ 
+
+  
+
 
 
   return (
     <div>
       <section className="mt-20 w-full ">
         <div className="container h-full pb-7">
-          <div className="flex justify-center items-center h-full w-[1000px]">
+          <div className="flex justify-center items-center h-full w-[1200px]">
             <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
               <div className="bg-white shadow-md rounded-lg">
                 {use.map((user) => (
@@ -63,14 +72,14 @@ function UserDetails() {
                         </div>
                         <div className="w-1/2 mb-3">
                           <h6 className="text-sm font-semibold">ID</h6>
-                          <p className="text-gray-500">{user?.id}</p>
+                          <p className="text-gray-500">{user?._id}</p>
                         </div>
                       </div>
                       <h6 className="text-lg font-mono text-gray-400">Cart</h6>
                       <hr className="mt-0 mb-4" />
                       <div className="flex flex-wrap">
                         {user?.cart?.map((item) => (
-                          <div className="w-full mb-3" key={item.id}>
+                          <div className="w-full mb-3" key={item._id}>
                             <h6 className="text-sm font-semibold">{item.name}</h6>
                             <p className="text-gray-500">Quantity: {item.qty}</p>
                           </div>

@@ -8,29 +8,31 @@ import Cartcontext from './context/Cartcontext.jsx'
 import UserProvider from './context/Usercontext.jsx'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import AdminContext from './context/Admincontext.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-
     <BrowserRouter>
       <UserProvider>
         <Productcontext>
           <Cartcontext>
-            <App />
-            <ToastContainer
-              position="top-right"
-              autoClose={1000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-              transition:Bounce
-            />
+            <AdminContext>
+              <App />
+              <ToastContainer
+                position="top-right"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                transition:Bounce
+              />
+            </AdminContext>
           </Cartcontext>
         </Productcontext>
       </UserProvider>

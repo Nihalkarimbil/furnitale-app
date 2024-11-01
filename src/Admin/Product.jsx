@@ -1,10 +1,14 @@
-import React, { useContext } from 'react'
-import { Procontext } from '../context/Productcontext';
+import React, { useContext, useEffect } from 'react'
+import { admincontext } from '../context/Admincontext';
 import { Link } from 'react-router-dom';
 
 
 function Product() {
-  const { products } = useContext(Procontext)
+  const { products,fetchpro } = useContext(admincontext)
+
+  useEffect(()=>{
+    fetchpro()
+  },[])
 
   return (
     
@@ -51,7 +55,7 @@ function Product() {
                   {item.new_price}
                 </td>
                 <td className="px-6 py-4">
-                  <Link to={item.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">details</Link>
+                  <Link to={item._id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">details</Link>
                 </td>
               </tr>
             ))}

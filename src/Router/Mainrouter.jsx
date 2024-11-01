@@ -27,6 +27,7 @@ import Editpro from '../Admin/Editpro'
 import Wishlist from '../Components/Wishlist'
 import SuccessPage from '../Components/succesorder'
 import Orders from '../Components/Orders'
+import Fullorders from '../Admin/Fullorders'
 // import PaymentPage from '../Components/paymentpage'
 // import SuccessPage from '../Components/succesorder'
 
@@ -78,7 +79,8 @@ function Mainrouter() {
             <Route path='users/:id' element={<UserDetails/>}/>
             <Route path='products/:id' element={<Prodetails />}/>
             <Route path='/add' element={<Newpro />}/>
-            <Route path='/products/:id/edit' element={<Editpro/>}/>
+            <Route path='/products/:id/edit' element={<Editpro />}/>
+            <Route path='/Orders' element={<Fullorders/>}/>
           </Routes>
         </div>
 

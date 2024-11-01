@@ -34,34 +34,36 @@ const UserProvider = ({ children }) => {
             const res = await axiosinstance.post("/user/login", {
                 username: login.username,
                 password: login.password,
-
-            },{ withCredentials: true });
+            }, { withCredentials: true });
     
-            // Check if login is successful
             if (res.status === 200) {
                 const userData = res.data;
-                const adminData=res.data.admin
-                console.log(userData)
-                if (adminData) {
+    
+                // Check if user is blocked
+                if (userData.blocked) {
+                    toast.error("Your account is blocked");
+                    return;
+                }
+    
+                if (userData.admin) {
                     // Admin login
-                    setIsadmin(adminData);
-                    localStorage.setItem('adminData', JSON.stringify(adminData));
-                    localStorage.setItem('token',adminData.token)
+                    setIsadmin(userData);
+                    localStorage.setItem('adminData', JSON.stringify(userData));
+                    localStorage.setItem('token', userData.token);
                     navigate('/admin');
                     toast.success('Admin logged in');
                 } else {
                     // User login
                     setActivUser(userData);
                     localStorage.setItem('activeuserdata', JSON.stringify(userData));
-                    localStorage.setItem('token',userData.token)
+                    localStorage.setItem('token', userData.token);
                     navigate("/");
                     toast.success('User logged in');
                 }
             } else {
-                toast.error ("Please check the username or password you have entered.");
+                toast.error("Please check the username or password you have entered.");
             }
         } catch (error) {
-            // Handling network or unexpected errors
             console.error("Error during login:", error);
             toast.error("An error occurred. Please try again.");
         }

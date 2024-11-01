@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Procontext } from '../context/Productcontext'
+import { admincontext } from '../context/Admincontext'
 
 
 function Users() {
-  const { Costomers } = useContext(Procontext)
-  const [user, setuser]=useState([])
+  const { Costomers ,fetchuser} = useContext(admincontext)
+  console.log(Costomers)
+  
 
   useEffect(() => {
-    if (Costomers) {
-      setuser(Costomers.filter(customer => customer.admin === false));
-    }
-  }, [Costomers]);
+    fetchuser()
+  }, []);
+  
 
   return (
     <div>
@@ -37,9 +37,9 @@ function Users() {
             </tr>
           </thead>
           <tbody>
-            {user.map((item) => (
+            {Costomers.map((item) => (
 
-              <tr key={item.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <tr key={item._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-500  whitespace-nowrap dark:text-white">
                   {item?.username}
                 </th>
@@ -48,10 +48,10 @@ function Users() {
                   {item?.email}
                 </td>
                 <td className="px-6 py-4">
-                  {item.id}
+                  {item._id}
                 </td>
                 <td className="px-6 py-4">
-                  <Link to={item.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">details</Link>
+                  <Link to={item._id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">details</Link>
                 </td>
               </tr>
             ))}

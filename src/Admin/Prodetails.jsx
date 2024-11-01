@@ -1,17 +1,19 @@
 import React,{useContext,useState,useEffect} from 'react'
 import { useParams,useNavigate, Link } from 'react-router-dom'
-import { Procontext } from '../context/Productcontext'
-
+import { admincontext } from '../context/Admincontext'
 function Prodetails() {
     
     const{id}=useParams()
-    const {products,deletepro}=useContext(Procontext)
+    const { fetchpro,products,deletepro}=useContext(admincontext)
     const [pro,setPro]=useState([])
-   
+    
+    useEffect(() => {
+        fetchpro()
+    }, []);
     
 
     useEffect(()=>{
-        setPro(products.filter((items)=>items.id==id))
+        setPro(products.filter((items)=>items._id==id))
     },[products])
     
 
@@ -38,7 +40,7 @@ function Prodetails() {
                            <p className='text-yellow-700 font-medium'>Rating: {product.rating}</p>
                            <br/>
                         <div>
-                        <Link to={`/products/${product.id}/edit`}>
+                        <Link to={`/products/${product._id}/edit`}>
                         <button className='bg-blue-950 text-white rounded-md py-2 px-4 hover:bg-black' >
                             Edit
                         </button>

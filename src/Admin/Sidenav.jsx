@@ -1,4 +1,4 @@
-import { FaList, FaUser } from 'react-icons/fa';
+import { FaList, FaUser,FaReceipt } from 'react-icons/fa';
 import { MdDashboard} from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
@@ -33,6 +33,14 @@ function Sidenav() {
 								<FaList/>
 							</div>
 							<p className="text-sm font-medium">Products</p>
+						</Link>
+					</li>
+					<li>
+						<Link to={"/Orders"} className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-black hover:text-gray-800">
+							<div className="inline-flex items-center justify-center h-12 w-12 text-lg">
+								<FaReceipt/>
+							</div>
+							<p className="text-sm font-medium">Orders</p>
 						</Link>
 					</li>
 				</ul>

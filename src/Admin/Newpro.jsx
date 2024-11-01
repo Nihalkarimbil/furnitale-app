@@ -1,15 +1,15 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import axiosinstance from '../axiosinstance';
 
 function Newpro() {
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     const [product, setProducts] = useState({
         name: "",
         category: "",
-        image: "",
+        image: null,  // Changed to handle file input
         new_price: "",
         old_price: "",
         description: "",
@@ -18,147 +18,145 @@ function Newpro() {
         topTrends: false,
         newCollections: false,
         detailOne: ""
-    })
+    });
+
     const handlechange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const { name, value, type, checked, files } = e.target;
         setProducts((prevProduct) => ({
             ...prevProduct,
-            [name]: type === "checkbox" ? checked : value,
+            [name]: type === "checkbox" ? checked : type === "file" ? files[0] : value,
         }));
-    }
-    
- 
+    };
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/products",product)
-        .then((res)=>{
-            console.log(res)
-            setTimeout(() => {
-                toast.success('product added')
-                navigate('/products')
-            }, 1000);
-            
-        })
-       
 
-        .catch((error) => {
-            console.error("There was an error adding the product!", error);
+        // Create FormData object to handle both text and file data
+        const formData = new FormData();
+        Object.keys(product).forEach((key) => {
+            formData.append(key, product[key]);
         });
-    }
 
-return (
-    <div className='mt-24 pb-20 pl-11' >
-        <form className='space-y-3' onSubmit={handlesubmit}>
-            <input
-                type='text'
-                name='name'
-                placeholder='product name'
-                value={product.name}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-            />
-            <input
-                type='text'
-                name='category'
-                placeholder='product catogary'
-                value={product.category}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-            />
-            <input
-                type='text'
-                name='image'
-                placeholder='image URL'
-                value={product.image}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-            />
-            <input
-                type='number'
-                name='new_price'
-                placeholder='new price'
-                value={product.new_price}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-            />
-            <input
-                type='number'
-                name='old_price'
-                placeholder='old price'
-                value={product.old_price}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-            />
-            <textarea
-                name='description'
-                placeholder='description of the product'
-                value={product.description}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-            />
-            <input
-                type='number'
-                name='rating'
-                placeholder='rating of product'
-                value={product.rating}
-                onChange={handlechange}
-                className="border border-solid p-2 w-[800px]"
-                required
+        try {
+            const res = await axiosinstance.post("/admin/addproduct", formData);
 
-            />
-            <input
-                type='number'
-                name='reviews'
-                placeholder='review of the product'
-                value={product.reviews}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-            />
-            <br />
-            <label className='mr-3 font-semibold'>
+            if (res.status === 200) {
+                toast.success("Product added successfully");
+                navigate('/products');
+            }
+        } catch (error) {
+            console.error("There was an error adding the product!", error);
+            toast.error("Error adding product. Please try again.");
+        }
+    };
+
+    return (
+        <div className="mt-24 pb-20 pl-11">
+            <form className="space-y-3" onSubmit={handlesubmit}>
                 <input
-                    type="checkbox"
-                    name='topTrends'
-                    checked={product.topTrends}
+                    type="text"
+                    name="name"
+                    placeholder="Product name"
+                    value={product.name}
                     onChange={handlechange}
-                    
+                    className="border p-2 w-[800px]"
+                    required
                 />
-                Top trends
-            </label>
-            <label className='font-semibold'>
                 <input
-                    type='checkbox'
-                    name='newCollections'
-                    checked={product.newCollections}
+                    type="text"
+                    name="category"
+                    placeholder="Product category"
+                    value={product.category}
                     onChange={handlechange}
-                    
+                    className="border p-2 w-[800px]"
+                    required
                 />
-                New collection
-            </label>
-            <br />
-            <textarea
-                name='detailOne'
-                placeholder='details of the product'
-                value={product.detailOne}
-                onChange={handlechange}
-                className="border p-2 w-[800px]"
-                required
-
-            />
-            <br />
-            <button type='submit' className="bg-blue-500 text-white p-2 rounded hover:bg-black">Add product</button>
-        </form>
-
-    </div>
-)
+                <input
+                    type="file"
+                    name="image"
+                    onChange={handlechange}
+                    className="border p-2 w-[800px]"
+                    required
+                />
+                <input
+                    type="number"
+                    name="new_price"
+                    placeholder="New price"
+                    value={product.new_price}
+                    onChange={handlechange}
+                    className="border p-2 w-[800px]"
+                    required
+                />
+                <input
+                    type="number"
+                    name="old_price"
+                    placeholder="Old price"
+                    value={product.old_price}
+                    onChange={handlechange}
+                    className="border p-2 w-[800px]"
+                    required
+                />
+                <textarea
+                    name="description"
+                    placeholder="Description of the product"
+                    value={product.description}
+                    onChange={handlechange}
+                    className="border p-2 w-[800px]"
+                    required
+                />
+                <input
+                    type="number"
+                    name="rating"
+                    placeholder="Rating of product"
+                    value={product.rating}
+                    onChange={handlechange}
+                    className="border p-2 w-[800px]"
+                    required
+                />
+                <input
+                    type="number"
+                    name="reviews"
+                    placeholder="Reviews of the product"
+                    value={product.reviews}
+                    onChange={handlechange}
+                    className="border p-2 w-[800px]"
+                    required
+                />
+                <br />
+                <label className="mr-3 font-semibold">
+                    <input
+                        type="checkbox"
+                        name="topTrends"
+                        checked={product.topTrends}
+                        onChange={handlechange}
+                    />
+                    Top trends
+                </label>
+                <label className="font-semibold">
+                    <input
+                        type="checkbox"
+                        name="newCollections"
+                        checked={product.newCollections}
+                        onChange={handlechange}
+                    />
+                    New collection
+                </label>
+                <br />
+                <textarea
+                    name="detailOne"
+                    placeholder="Details of the product"
+                    value={product.detailOne}
+                    onChange={handlechange}
+                    className="border p-2 w-[800px]"
+                    required
+                />
+                <br />
+                <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-black">
+                    Add product
+                </button>
+            </form>
+        </div>
+    );
 }
 
-export default Newpro
+export default Newpro;
