@@ -133,6 +133,7 @@ function Editpro() {
                     className="border p-2 w-[800px]"
                     required
                 />
+             
                 <label className='mr-3 font-semibold'>
                     <input
                         type="checkbox"
@@ -159,6 +160,7 @@ function Editpro() {
                     className="border p-2 w-[800px]"
                     required
                 />
+                <br/>
                 <button type='submit' className="bg-blue-500 text-white p-2 rounded hover:bg-black">Update</button>
             </form>
         </div>
