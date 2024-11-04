@@ -44,19 +44,22 @@ const UserProvider = ({ children }) => {
                     toast.error("Your account is blocked");
                     return;
                 }
-    
+                
+                // Store tokens in local storage
+                localStorage.setItem('token', userData.token); // Store access token
+                localStorage.setItem('refreshToken', userData.refreshToken); // Store refresh token
+                console.log('aaaaa',userData);
+                
                 if (userData.admin) {
                     // Admin login
                     setIsadmin(userData);
                     localStorage.setItem('adminData', JSON.stringify(userData));
-                    localStorage.setItem('token', userData.token);
                     navigate('/admin');
                     toast.success('Admin logged in');
                 } else {
                     // User login
                     setActivUser(userData);
                     localStorage.setItem('activeuserdata', JSON.stringify(userData));
-                    localStorage.setItem('token', userData.token);
                     navigate("/");
                     toast.success('User logged in');
                 }
@@ -69,10 +72,12 @@ const UserProvider = ({ children }) => {
         }
     };
     
+    
     //logout function when user loged out the local storage data removed
     const handlelogout = async () => {
         localStorage.removeItem('activeuserdata');
         localStorage.removeItem('token')
+        localStorage.removeItem('refreshToken')
         setActivUser(null)
         toast.success('logout succesfully')
     };

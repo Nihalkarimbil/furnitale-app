@@ -90,10 +90,10 @@ function Cart() {
     }
 
     return (
-        <div className='bg-red-100 pt-14'>
-            <div className="font-sans md:max-w-4xl max-md:max-w-xl mx-auto bg-red-100 py-4">
+        <div className='bg-gray-100 pt-14 h-[500px]'>
+            <div className="font-sans md:max-w-4xl max-md:max-w-xl mx-auto bg-gray-100 py-4">
                 <div className="grid md:grid-cols-3 gap-4">
-                    <div className="md:col-span-2 bg-red-50 p-4 rounded-md">
+                    <div className="md:col-span-2 bg-gray-50 p-4 rounded-md">
                         <h2 className="text-2xl font-bold text-gray-800" id='navname'>Cart: </h2>
                         <hr className="border-gray-300 mt-4 mb-8" />
 
@@ -143,7 +143,7 @@ function Cart() {
                         <hr className="border-gray-300 mt-4 mb-8" />
                     </div>
 
-                    <div className="bg-red-50 p-4 rounded-md">
+                    <div className="bg-gray-50 p-4 rounded-md">
                         <h2 className="text-2xl font-bold text-gray-800" id='navname'>Summary</h2>
                         <hr className="border-gray-300 mt-4 mb-8" />
                         <div className="flex justify-between items-center">

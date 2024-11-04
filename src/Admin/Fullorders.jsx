@@ -33,11 +33,13 @@ function Fullorders() {
         ...prevStatus,
         [orderId]: newStatus, 
       }));
-      
-    er
-      await updateShippingStatus(orderId, newStatus); 
+
+      await updateShippingStatus(orderId, newStatus);
+
     } catch (error) {
-      console.error("Error updating shipping status:", error);
+
+     console.log("Error updating shipping status:", error);
+
       
       setShippingStatus((prevStatus) => ({
         ...prevStatus,

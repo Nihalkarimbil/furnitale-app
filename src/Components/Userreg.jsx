@@ -40,7 +40,7 @@ function Userreg() {
 
 
   return (
-    <div className='bg-red-100 p-5 pt-20'>
+    <div className='bg-gray-100 p-5 pt-20'>
       <div className="max-w-md  mx-auto p-6 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl text-center font-serif text-gray-400">Sign Up</h1>
         <form onSubmit={handlesubmit}>

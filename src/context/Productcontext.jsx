@@ -11,7 +11,6 @@ export const Procontext = createContext()
 
 function Productcontext({ children }) {
   const navigate = useNavigate()
- 
   const [living, setliving] = useState([])
   const [products, setProduct] = useState([])
 

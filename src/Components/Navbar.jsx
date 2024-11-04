@@ -25,7 +25,7 @@ const Navbar = () => {
     <div className='position fixed w-full z-50 mb-11'>
         <div className=" flex flex-wrap w-full">
       <section className="relative mx-auto w-full">
-        <nav className="flex justify-between bg-red-50 text-gray-600 shadow-md w-full sticky top-0 z-50">
+        <nav className="flex justify-between bg-gray-200 text-gray-600 shadow-md w-full sticky top-0 z-50">
           <div className="px-4 xl:px-12 py-3 flex w-full items-center justify-between">
             <NavLink to="/" id="myhead" className="text-2xl font-serif font-heading text-red-700">
               FurniTales

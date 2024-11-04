@@ -26,11 +26,11 @@ function Details() {
 
   return (
     
-    <div className='flex flex-col items-center bg-red-100 p-4 pt-14'>
+    <div className='flex flex-col items-center bg-gray-100 p-4 pt-14'>
         <br/>
             {pro.map((product,index) => (
                 
-                <div key={index} className='flex flex-col md:flex-row items-center bg-red-50 rounded-lg shadow-md mb-4 p-4 w-full max-w-4xl'>
+                <div key={index} className='flex flex-col md:flex-row items-center bg-gray-50 rounded-lg shadow-md mb-4 p-4 w-full max-w-4xl'>
                     <img
                         src={product.image}
                         alt={product.name}

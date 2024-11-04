@@ -23,11 +23,35 @@ function Product() {
   };
 
   return (
-    <div className='mt-24 pb-20 pl-24'>
-      <Link to={'/add'}>
-        <button className='bg-blue-900 rounded-md mb-4 p-2 text-white font-semibold hover:bg-black'>Add Products</button>
-      </Link>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
+    <div className='mt-24 pb-20 pl-12 pr-12 w-full'>
+      <div className='mr-36'>
+        <div className='flex flex-col md:flex-row justify-center items-center md:items-start  '>
+          <Link to={'/adDining'}
+            className='bg-slate-100 w-[90%] sm:w-[250px]  ml-0 md:ml-5 h-30 sm:h-20 rounded-lg shadow-lg hover:transition-transform transform scale-100 hover:scale-105'>
+            <h1 className='text-4xl sm:text-5xl text-center sm:mt-4 font-serif opacity-20'>Dining</h1>
+
+          </Link>
+          <Link to={'/adliving'}
+            className='bg-slate-100 w-[90%] sm:w-[250px] ml-0 md:ml-8 h-40 sm:h-20 rounded-lg shadow-lg hover:transition-transform transform scale-100 hover:scale-105'>
+            <h1 className='text-4xl sm:text-5xl text-center sm:mt-4 opacity-20 font-serif'>Livingroom</h1>
+
+          </Link>
+          <Link to={'/adDecor'}
+            className='bg-slate-100 w-[90%] sm:w-[250px] ml-0 md:ml-8 h-40 sm:h-20 rounded-lg shadow-lg hover:transition-transform transform scale-100 hover:scale-105'>
+            <h1 className='text-4xl sm:text-5xl text-center sm:mt-4 opacity-20 font-serif'>Decor</h1>
+
+          </Link>                                                           
+          <Link to={'/adBed'}
+            className='bg-slate-100 w-[90%] sm:w-[250px]  ml-0 md:ml-8 h-40 sm:h-20 rounded-lg shadow-lg hover:transition-transform transform scale-100 hover:scale-105 mb-10'>
+            <h1 className='text-4xl sm:text-5xl text-center sm:mt-4 opacity-20 font-serif'>Bedroom</h1>
+
+          </Link>
+        </div>
+
+      </div>
+
+      
+      <div className="relative overflow-x-auto shadow-md sm:rounded-lg mr-24 ">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead className="text-xs uppercase bg-gray-900 text-white">
             <tr>
@@ -55,7 +79,10 @@ function Product() {
           </tbody>
         </table>
       </div>
-      
+      <Link to={'/add'}>
+        <button className='bg-blue-900 rounded-md mt-4  p-2 text-white font-semibold hover:bg-black '>Add Products</button>
+      </Link>
+
       <div className="flex justify-center mt-4">
         <button
           onClick={() => handlePageChange(currentPage - 1)}

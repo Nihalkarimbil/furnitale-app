@@ -3,6 +3,8 @@ import { Procontext } from '../context/Productcontext'
 import { Link } from 'react-router-dom'
 import { FaHeart,FaShoppingCart } from 'react-icons/fa';
 import { Cartcon } from '../context/Cartcontext';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 
 
 function Decor() {
@@ -10,6 +12,9 @@ function Decor() {
   
   const { addtowishlist,addtocart } = useContext(Cartcon)
 
+  useEffect(()=>{
+    AOS.init()
+  },[])
   
 
   const handlecart = (prod) => {
@@ -21,7 +26,7 @@ function Decor() {
   }
 
   return (
-    <div className='bg-orange-100 pt-14'>
+    <div className='bg-gray-100 pt-14'>
       <br />
       <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800' id='category'>Home Decorations</h1>
       <p className='flex justify-center font-sans text-base text-gray-700 ' id='sub'>Decorate with Passion, Live with Comfort</p>
@@ -29,7 +34,7 @@ function Decor() {
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {decor.map((product) => (
-            <div key={product._id} className="group">
+           <div key={product.id} className="group relative" data-aos="fade-up" data-aos-duration="600" data-aos-easing="ease-in-out">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 shadow-lg">
                 <Link to={product._id}>
                   <img

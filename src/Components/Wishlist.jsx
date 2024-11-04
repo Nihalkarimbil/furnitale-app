@@ -11,9 +11,9 @@ function Wishlist() {
     }
 
     return ( 
-        <div className='bg-red-100  h-full pt-20'>
-            <div className="font-sans md:max-w-4xl max-md:max-w-xl mx-auto bg-red-100 py-4">
-                <div className="md:col-span-2 bg-red-50 p-4 rounded-md">
+        <div className='bg-gray-100  h-[500px] pt-20'>
+            <div className="font-sans md:max-w-4xl max-md:max-w-xl mx-auto bg-gray-50 py-4">
+                <div className="md:col-span-2 bg-gray-50 p-4 rounded-md">
                     <h2 className="text-2xl font-bold text-gray-800" id='navname'>wishlist </h2>
                     <hr className="border-gray-300 mt-4 mb-8" />
                     {wishitem.map((item, index) => (

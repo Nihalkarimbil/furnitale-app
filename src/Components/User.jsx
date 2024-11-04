@@ -11,7 +11,7 @@ const User = () => {
 
     if (!activeuser) {
         return (
-            <div className="bg-gray-100 min-h-[310px] flex flex-col justify-center  items-center pt-20">
+            <div className="bg-gray-100 min-h-[500px] flex flex-col justify-center  items-center pt-20">
                 <p className="text-center font-serif text-gray-400 text-xl sm:text-2xl md:text-3xl">
                     User Not Available!
                 </p>
@@ -55,7 +55,7 @@ const User = () => {
                 </div>
 
                 <div className="bg-gray-700 text-left rounded-lg mt-6 p-4">
-                    <h6 className="text-sm font-semibold mb-2">cart</h6>
+                    
                     <ul className="flex flex-wrap gap-2">
                         {cartitem.map((item, index) => (
                             <li key={index} className="bg-gray-600 text-xs text-gray-200 rounded-full px-3 py-1">
