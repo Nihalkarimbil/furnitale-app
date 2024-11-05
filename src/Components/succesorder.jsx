@@ -59,7 +59,6 @@ const SuccessPage = () => {
                 <p className="text-lg mb-6">Thank you for your order. Your payment has been processed successfully!</p>
                 <p className="text-gray-700 mb-4">We are preparing your order for shipment. Please provide your delivery address below.</p>
 
-                {/* Delivery Address Form */}
                 <form onSubmit={handleSubmitAddress} className="text-left">
                     <label className="block mb-2">
                         Recipient Name:

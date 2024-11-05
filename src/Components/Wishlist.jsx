@@ -38,7 +38,6 @@ function Wishlist() {
                             </div>
                         </div>
                         <div className="ml-auto float-end">
-                            {/* <h4 className="text-base font-bold text-gray-800">₹{(item.new_price * (quantities[item.id]))}</h4> */}
                             <h4 className="text-base font-bold text-gray-800">₹{item.new_price}</h4>
                             <button onClick={()=>handlecart(item)}><FaShoppingCart/></button>
                         </div>

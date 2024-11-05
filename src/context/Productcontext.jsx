@@ -1,19 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { createContext } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import axiosinstance from '../axiosinstance'
 
 export const Procontext = createContext()
 
-// fetching the products from the API
-
 function Productcontext({ children }) {
-  const navigate = useNavigate()
+
   const [living, setliving] = useState([])
   const [products, setProduct] = useState([])
-
   const [decor, setDecor] = useState([])
   const [bed, setBed] = useState([])
   const [dining, setDining] = useState([])
@@ -35,7 +29,6 @@ function Productcontext({ children }) {
       try {
         const respons = await axiosinstance.get("/user/product")
         setProduct(respons.data);
-        console.log(respons.data);
 
       } catch (error) {
         console.error("eror fetching data", error)
@@ -80,12 +73,6 @@ function Productcontext({ children }) {
     fetch()
   }, [])
 
-  //fetching user from API
-
- 
-
-
-  //admin delete product function
  
 
   return (

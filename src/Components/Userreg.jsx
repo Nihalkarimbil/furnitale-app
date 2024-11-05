@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosinstance from '../axiosinstance';
@@ -25,7 +25,6 @@ function Userreg() {
     .then((res) => {
       toast.success("registerd succesfully")
       navigate("/login");
-      // localStorage.setItem('regdata',JSON.stringify(reginput))
     }).catch((err) => {
       toast.error(err)
     })

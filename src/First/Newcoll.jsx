@@ -3,8 +3,8 @@ import { Procontext } from '../context/Productcontext';
 import { Link } from 'react-router-dom';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import { Cartcon } from '../context/Cartcontext';
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos'; 
+import 'aos/dist/aos.css'; 
 
 function Newcoll() {
   const { products } = useContext(Procontext);
@@ -12,17 +12,12 @@ function Newcoll() {
   const { addtowishlist, addtocart } = useContext(Cartcon);
 
   useEffect(() => {
-    // Initialize AOS
-    
-    
     if (products) {
       setColl(products.filter(item => item.newCollections === true));
     }
   }, [products]);
 
-  // useEffect(()=>{
-  //   AOS.init();
-  // },[])
+
   AOS.init();
 
   const handlecart = (prod) => {
@@ -42,7 +37,7 @@ function Newcoll() {
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {coll.map((product) => (
             <div key={product.id} className="group relative" data-aos="fade-up" data-aos-duration="600" data-aos-easing="ease-in-out">
-{/* Add AOS attribute here */}
+
               <Link to={`/product/${product.id}`} className="block aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 shadow-lg xl:aspect-w-7 xl:aspect-h-8">
                 <img
                   src={product.image}

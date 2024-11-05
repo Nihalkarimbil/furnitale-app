@@ -11,13 +11,9 @@ function Trending() {
   const [filt, setFilt] = useState([]);
   const { addtowishlist, addtocart } = useContext(Cartcon);
 
-  // Initialize AOS
-  // useEffect(() => {
-  //   AOS.init();
-  // }, []);
   AOS.init();
 
-  // Filter products where `topTrends` is true
+
   useEffect(() => {
     if (products) {
       setFilt(products.filter(item => item.topTrends === true));

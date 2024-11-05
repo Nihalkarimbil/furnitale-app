@@ -8,7 +8,7 @@ function Sidenav() {
 		<div className="min-h-screen flex flex-row sticky">
 			<div className="flex flex-col w-56 bg-slate-200 rounded-r-3xl overflow-hidden">
 				<div className="flex items-center justify-center h-16 shadow-md">
-					<h1 className="text-3xl  text-red-500">FurniTale</h1>
+					<h1 className="text-3xl  text-red-600 " id="myhead">FurniTale</h1>
 				</div>
 				<ul className="flex flex-col py-4">
 					<li>
@@ -16,7 +16,7 @@ function Sidenav() {
 							<div className="inline-flex items-center justify-center h-12 w-12 text-lg">
 								<MdDashboard/>
 							</div>
-							<p className="text-sm font-medium">Dashboard</p>
+							<p className="text-sm font-medium " id="navname">Dashboard</p>
 						</Link>
 					</li>
 					<li >
@@ -24,7 +24,7 @@ function Sidenav() {
 							<div className="inline-flex items-center justify-center h-12 w-12 text-lg">
 								<FaUser/>
 							</div>
-							<p className="text-sm font-medium">Users</p>
+							<p className="text-sm font-medium" id="navname">Users</p>
 						</Link>
 					</li>
 					<li>
@@ -32,7 +32,7 @@ function Sidenav() {
 							<div className="inline-flex items-center justify-center h-12 w-12 text-lg">
 								<FaList/>
 							</div>
-							<p className="text-sm font-medium">Products</p>
+							<p className="text-sm font-medium" id="navname">Products</p>
 						</Link>
 					</li>
 					<li>
@@ -40,7 +40,7 @@ function Sidenav() {
 							<div className="inline-flex items-center justify-center h-12 w-12 text-lg">
 								<FaReceipt/>
 							</div>
-							<p className="text-sm font-medium">Orders</p>
+							<p className="text-sm font-medium" id="navname">Orders</p>
 						</Link>
 					</li>
 				</ul>

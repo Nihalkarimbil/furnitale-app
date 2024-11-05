@@ -32,8 +32,6 @@ import AdBed from '../Admin/categories/AdBed'
 import AdLiving from '../Admin/categories/AdLiving'
 import AdDining from '../Admin/categories/AdDining'
 import AdDecor from '../Admin/categories/AdDecor'
-// import PaymentPage from '../Components/paymentpage'
-// import SuccessPage from '../Components/succesorder'
 
 function Mainrouter() {
   const { isadmin } = useContext(UserContext)

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -9,7 +8,7 @@ function Newpro() {
     const [product, setProducts] = useState({
         name: "",
         category: "",
-        image: null,  // Changed to handle file input
+        image: null,  
         new_price: "",
         old_price: "",
         description: "",
@@ -30,8 +29,7 @@ function Newpro() {
 
     const handlesubmit = async (e) => {
         e.preventDefault();
-
-        // Create FormData object to handle both text and file data
+        
         const formData = new FormData();
         Object.keys(product).forEach((key) => {
             formData.append(key, product[key]);

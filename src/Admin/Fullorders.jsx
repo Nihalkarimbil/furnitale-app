@@ -10,15 +10,14 @@ function Fullorders() {
   }, []);
 
   useEffect(() => {
-    // Initialize shipping status for each order
     const initialStatus = Orders.reduce((acc, order) => {
-      acc[order._id] = order.shippingStatus; // Change sessionID to order ID
+      acc[order._id] = order.shippingStatus; 
       return acc;
     }, {});
     setShippingStatus(initialStatus);
-  }, [Orders]); // Make sure to add Orders to the dependency array
+  }, [Orders]); 
 
-  // Group orders by userID
+ 
   const ordersByUser = Orders.reduce((acc, order) => {
     if (!acc[order.userID]) {
       acc[order.userID] = [];
@@ -49,18 +48,17 @@ function Fullorders() {
   };
 
   return (
-    <div className='p-2 sm:p-20 bg-gray-50 min-h-screen pt-20'>
+    <div className='p-2 sm:p-20 bg-gray-50 min-h-screen pt-20 w-full'>
       <h1 className='text-3xl font-bold text-center text-gray-800 mb-10'>Order Details</h1>
       {Object.keys(ordersByUser).map((userID) => (
-        <div key={userID} className='mb-10'>
-          {/* Styled User ID */}
+        <div key={userID} className='mb-10 w-full'>
           <div className='mb-4'>
             <span className='inline-block bg-white text-blue-600 text-sm font-semibold px-4 py-2 rounded-md'>
               User ID: {userID}
             </span>
           </div>
 
-          <table className='max-w-full bg-white shadow-lg rounded-lg overflow-hidden'>
+          <table className='w-full bg-white shadow-lg rounded-lg overflow-hidden'>
             <thead>
               <tr className='bg-gray-100 border-b'>
                 <th className='text-left p-4 font-medium text-gray-700'>Order ID</th>

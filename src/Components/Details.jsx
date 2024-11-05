@@ -9,10 +9,7 @@ function Details() {
     const {id}=useParams();
     const {products}=useContext(Procontext)
     const [pro,setPro]=useState([])
-   console.log(pro);
-   
-    
-
+ 
     useEffect(()=>{
         setPro(products.filter((items)=>items._id==id))
     },[products])

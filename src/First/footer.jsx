@@ -7,7 +7,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gray-200 pt-8 pb-6 shadow">
+    <footer className="relative bg-gray-100 pt-8 pb-6 shadow-lg">
       <div className="container mx-auto px-4 ">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full lg:w-6/12 px-4">
@@ -68,7 +68,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-400" />
         <div className="flex flex-wrap items-center md:justify-between justify-center">
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-           <p className='text-lg font-semibold'>All Rights Reserved Copyright © {getCurrentYear()}</p>
+           <p className='text-lg font-semibold'>Furnitales © {getCurrentYear()}</p>
           </div>
         </div>
       </div>

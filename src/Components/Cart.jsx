@@ -1,22 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Cartcon } from '../context/Cartcontext';
-import { UserContext } from '../context/Usercontext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosinstance from '../axiosinstance';
-import Checkoutpayment from './Payment';
+
 
 function Cart() {
     const { cartitem, deletecart, getCartItems, createOrder } = useContext(Cartcon);
-    const { activeuser } = useContext(UserContext);
     const [quantities, setQuantities] = useState({});
     const [price, setPrice] = useState(0);
-    const [loading, setLoading] = useState(true); // Loading state
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCartItems = async () => {
-            await getCartItems(); // Ensure cart items are fetched
+            await getCartItems();
             setLoading(false);
         };
 
@@ -26,7 +24,7 @@ function Cart() {
     useEffect(() => {
         if (cartitem.length) {
             const initialQuantities = cartitem.reduce((acc, item) => {
-                acc[item.productId?._id] = item.productId.quantity || 1; // Default to 1 if quantity is undefined
+                acc[item.productId?._id] = item.productId.quantity || 1;
                 return acc;
             }, {});
             setQuantities(initialQuantities);
@@ -86,23 +84,23 @@ function Cart() {
     };
 
     if (loading) {
-        return <div>Loading...</div>; // Show a loading indicator
+        return <div>Loading...</div>;
     }
 
     return (
-        <div className='bg-gray-100 pt-14 h-[500px]'>
-            <div className="font-sans md:max-w-4xl max-md:max-w-xl mx-auto bg-gray-100 py-4">
-                <div className="grid md:grid-cols-3 gap-4">
-                    <div className="md:col-span-2 bg-gray-50 p-4 rounded-md">
-                        <h2 className="text-2xl font-bold text-gray-800" id='navname'>Cart: </h2>
+        <div className='bg-gray-100 pt-14 min-h-screen'>
+            <div className="font-sans mx-auto py-4 max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="grid lg:grid-cols-3 gap-6">
+                    <div className="lg:col-span-2 bg-gray-50 p-4 rounded-md shadow-sm">
+                        <h2 className="text-2xl font-bold text-gray-800" id='navname'>Cart</h2>
                         <hr className="border-gray-300 mt-4 mb-8" />
 
                         <div className="space-y-4">
-                             {cartitem.map((item, index) => (
-                                <div className="grid grid-cols-3 items-center gap-4" key={index}>
-                                    <div className="col-span-2 flex items-center gap-4">
+                            {cartitem.map((item, index) => (
+                                <div className="grid grid-cols-3 md:grid-cols-4 gap-4 items-center" key={index}>
+                                    <div className="flex items-center gap-4 col-span-2 md:col-span-3">
                                         <div className="w-24 h-24 shrink-0 bg-white p-1 rounded-md">
-                                            <img className='w-24 h-24 '
+                                            <img className='w-full h-full object-cover rounded-md'
                                                 src={item.productId?.image}
                                                 alt={item.productId?.name}
                                             />
@@ -111,31 +109,28 @@ function Cart() {
                                             <h3 className="text-base font-bold text-gray-800">
                                                 {item.productId?.name}
                                             </h3>
-                                            <button className="text-xs text-red-500 cursor-pointer mt-0.5" onClick={() => { deletecart(item) }}>
+                                            <button className="text-xs text-red-500 cursor-pointer mt-0.5" onClick={() => deletecart(item)}>
                                                 Remove
                                             </button>
-                                            <div className="flex gap-4 mt-4">
-                                                <div className="relative group">
-                                                    <button
-                                                        type="button"
-                                                        className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md" onClick={() => { increment(item) }}
-                                                    >
-                                                        +
-                                                    </button>
-                                                </div>
+                                            <div className="flex gap-2 mt-2">
+                                                <button
+                                                    type="button"
+                                                    className="px-2 py-1 border border-gray-300 text-gray-800 text-xs rounded-md" onClick={() => increment(item)}
+                                                >
+                                                    +
+                                                </button>
                                                 <p>{quantities[item.productId?._id]}</p>
-                                                <div>
-                                                    <button
-                                                        type="button"
-                                                        className="flex items-center px-2.5 py-1.5 border border-gray-300 text-gray-800 text-xs outline-none bg-transparent rounded-md" onClick={() => { decrement(item) }}
-                                                    >-
-                                                    </button>
-                                                </div>
+                                                <button
+                                                    type="button"
+                                                    className="px-2 py-1 border border-gray-300 text-gray-800 text-xs rounded-md" onClick={() => decrement(item)}
+                                                >
+                                                    -
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="ml-auto">
-                                        <h4 className="text-base font-bold text-gray-800">₹{(item.productId?.new_price * (quantities[item.productId?._id]))}</h4>
+                                    <div className="text-right">
+                                        <h4 className="text-base font-bold text-gray-800">₹{(item.productId?.new_price * quantities[item.productId?._id])}</h4>
                                     </div>
                                 </div>
                             ))}
@@ -143,11 +138,11 @@ function Cart() {
                         <hr className="border-gray-300 mt-4 mb-8" />
                     </div>
 
-                    <div className="bg-gray-50 p-4 rounded-md">
+                    <div className="bg-gray-50 p-4 rounded-md shadow-sm">
                         <h2 className="text-2xl font-bold text-gray-800" id='navname'>Summary</h2>
                         <hr className="border-gray-300 mt-4 mb-8" />
                         <div className="flex justify-between items-center">
-                            <p className="text-base font-light text-gray-800">shipping charge</p>
+                            <p className="text-base font-light text-gray-800">Shipping charge</p>
                             <p className="text-base font-semibold text-gray-800">₹0.00</p>
                         </div>
                         <hr className="border-gray-300 mt-4 mb-8" />

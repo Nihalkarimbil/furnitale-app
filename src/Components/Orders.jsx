@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { Cartcon } from '../context/Cartcontext';
-import { useNavigate } from 'react-router-dom';
+
 
 const Orders = () => {
     const { orders, cancelOrder, getAllorders } = useContext(Cartcon);
-    const navigate = useNavigate();
-
+  
     const handleCancel = async (orderId) => {
         try {
             await cancelOrder(orderId);

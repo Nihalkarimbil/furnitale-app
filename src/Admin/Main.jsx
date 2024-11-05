@@ -15,10 +15,10 @@ function Mainadmin() {
   }, []);
 
   const revenueData = [
-    { month: 'july', revenue: 3500 },
-    { month: 'August', revenue: 2500 },
-    { month: 'September', revenue: 5000 },
-    { month: 'October', revenue: 4000 },
+    { month: 'july', revenue: 4000 },
+    { month: 'August', revenue: 3000 },
+    { month: 'September', revenue: 5500 },
+    { month: 'October', revenue: 4500 },
     { month: 'November', revenue: revenew.revenew },
   ];
 

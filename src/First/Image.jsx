@@ -1,5 +1,5 @@
 import React from 'react';
-import exampleImage from './image.jpg'; // Replace with your image path
+import exampleImage from './image.jpg';
 
 function Image() {
   

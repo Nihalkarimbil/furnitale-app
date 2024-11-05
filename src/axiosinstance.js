@@ -1,34 +1,32 @@
 import axios from 'axios';
 
 const axiosinstance = axios.create({
-    baseURL: 'http://localhost:5001/api', // Update with your backend base URL
+    baseURL: 'http://localhost:5001/api', 
 });
 
-// Function to refresh the access token
+
 const refreshToken = async () => {
-    const refreshToken = localStorage.getItem('refreshToken');
+    const refreshtoken = localStorage.getItem('refreshToken');
     console.log("Refreshing token with:", refreshToken);
     
     try {
-        const response = await axios.post(`${axiosinstance.defaults.baseURL}/refresh-token`, { refreshToken });
+        const response = await axios.post(`${axiosinstance.defaults.baseURL}/refresh-token`, { refreshtoken });
         const newAccessToken = response.data.accessToken;
 
-        // Update access token in local storage and axios headers
-        localStorage.setItem('token', newAccessToken); // Ensure correct key is used
         axiosinstance.defaults.headers['Authorization'] = `Bearer ${newAccessToken}`;
         
         console.log("New Access Token Set:", newAccessToken);
         return newAccessToken;
     } catch (error) {
         console.error("Error refreshing token:", error);
-        throw error; // Rethrow to be caught in interceptor
+        throw error; 
     }
 };
 
-// Interceptor to catch 401 errors and refresh the token
+
 axiosinstance.interceptors.response.use(
     response => {
-        // Log response for debugging
+     
         console.log("Response:", response);
         return response;
     },
@@ -44,10 +42,10 @@ axiosinstance.interceptors.response.use(
                 originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
                 console.log("Retrying original request with new token.");
 
-                return axiosinstance(originalRequest); // Retry the original request
+                return axiosinstance(originalRequest); 
             } catch (refreshError) {
                 console.error("Failed to refresh token:", refreshError);
-                return Promise.reject(refreshError); // Do not retry if refresh token fails
+                return Promise.reject(refreshError); 
             }
         }
 

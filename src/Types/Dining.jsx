@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect} from 'react'
 import { Procontext } from '../context/Productcontext'
 import { Link } from 'react-router-dom'
 import { FaHeart,FaShoppingCart } from 'react-icons/fa';
 import { Cartcon } from '../context/Cartcontext';
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos'; 
+import 'aos/dist/aos.css'; 
 
 
 

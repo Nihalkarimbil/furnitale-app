@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { createContext } from 'react'
 import { UserContext } from './Usercontext'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import axiosinstance from '../axiosinstance'
@@ -18,7 +17,7 @@ function Cartcontext({ children }) {
   const [orders,setOrders]=useState([])
 
   const navigate = useNavigate()
-  // prevent the clearing of cart page when page refresh
+
   useEffect(() => {
 
     getCartItems()
@@ -76,7 +75,6 @@ function Cartcontext({ children }) {
 
         await getCartItems()
         toast.success(`${items.name} added to cart`)
-        // setNotification((prevCount) => prevCount + 1)
 
       } catch (error) {
         console.error('Fetching error', error);
@@ -104,11 +102,11 @@ function Cartcontext({ children }) {
   const addtowishlist = async (product) => {
     if (activeuser) {
       try {
-        // Check if the item already exists in the wishlist
+      
         const isAlreadyInWishlist = wishitem.some(item => item.productId === product._id);
 
         if (!isAlreadyInWishlist) {
-          // If not in wishlist, proceed to add
+         
           await axiosinstance.post('/user/addwish', {
             productId: product._id
           });
@@ -139,12 +137,9 @@ function Cartcontext({ children }) {
 const createOrder=async()=>{
   try{
     const resp =await axiosinstance.post('/user/addOrder')
-    console.log(resp)
+ 
     setClientSecret(resp.data.data.clientsecret)
-    console.log('nnn',clientSecret);
   
-    
-    toast.success('order created succesfully')
     await getCartItems()
     navigate('/payment')
   }catch(error){

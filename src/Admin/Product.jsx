@@ -5,19 +5,17 @@ import { Link } from 'react-router-dom';
 function Product() {
   const { products, fetchpro } = useContext(admincontext);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // Adjust this value to set the number of items per page
+  const itemsPerPage = 5; 
 
   useEffect(() => {
     fetchpro();
   }, []);
 
-  // Calculate total pages
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
   const startIdx = (currentPage - 1) * itemsPerPage;
   const currentProducts = products.slice(startIdx, startIdx + itemsPerPage);
 
-  // Handler for changing pages
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };

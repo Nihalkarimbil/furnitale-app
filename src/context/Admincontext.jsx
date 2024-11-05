@@ -26,7 +26,6 @@ function AdminContext({ children }) {
         try {
             const respons = await axiosinstance.get("/admin/products")
             setProduct(respons.data);
-            console.log(respons.data);
 
         } catch (error) {
             console.error("eror fetching data", error)
@@ -38,8 +37,7 @@ function AdminContext({ children }) {
     const fetchuser = async () => {
         try {
             const respons = await axiosinstance.get("/admin/users")
-            setCostomers(respons.data);
-            console.log('fdtfyfyf', respons.data)
+            setCostomers(respons.data)
         } catch (error) {
             console.error("eror fetching data", error)
         }
@@ -81,7 +79,7 @@ function AdminContext({ children }) {
     }
 
     const updateShippingStatus = async (orderId, newStatus) => {
-        console.log('33333', orderId)
+
         try {
             const response = await axiosinstance.put(`/admin/shipupdate/${orderId}`, { newStatus });
             return response.data;
@@ -95,9 +93,8 @@ function AdminContext({ children }) {
         try {
             const res = await axiosinstance.get('/admin/revenew')
             setRevenew(res.data)
-            console.log(res.data);
         } catch (error) {
-
+            throw new Error
         }
     }
 
