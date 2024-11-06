@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosinstance from '../axiosinstance';
@@ -68,19 +68,17 @@ const UserProvider = ({ children }) => {
     };
     
     
- 
-
     const handlelogout = async () => {
         try {
             await axiosinstance.post('/user/logout', {}, {
                 withCredentials: true,
             });
-    
-            localStorage.removeItem('activeuserdata');
-            localStorage.removeItem('token');
-            localStorage.removeItem('refreshToken');
-
             setActivUser(null);
+            // localStorage.removeItem('activeuserdata');
+            // localStorage.removeItem('token');
+            // localStorage.removeItem('refreshToken');
+
+            
           
             toast.success('Logout successfully');
         } catch (error) {
@@ -89,7 +87,7 @@ const UserProvider = ({ children }) => {
     };
     
 
-    
+
 const addminlogout = async () => {
     try {
 
@@ -97,12 +95,12 @@ const addminlogout = async () => {
             withCredentials: true, 
         });
 
-    
-        localStorage.removeItem('adminData');
-        localStorage.removeItem('token');
+        setIsadmin(null);
+        // localStorage.removeItem('adminData');
+        // localStorage.removeItem('token');
         
      
-        setIsadmin(null);
+        
         navigate('/');
 
         toast.success('Admin logout successfully');
