@@ -29,7 +29,7 @@ function Cartcontext({ children }) {
   const getCartItems = async () => {
     if (activeuser) {
       try {
-        setLoading(true)
+        
         const res = await axiosinstance.get("/user/cart")
 
         const products = res.data.products || [];
@@ -41,16 +41,14 @@ function Cartcontext({ children }) {
         console.error("Error fetching cart data:", error);
         setCartitem([]);
         setNotification(0);
-      }finally{
-        setLoading(false)
-    }
+      }
     }
   }
 
   const getWishItems = async () => {
     if (activeuser) {
       try {
-        setLoading(true)
+        
         const res = await axiosinstance.get("/user/wishlist")
 
         const products = res.data.products || [];
@@ -63,9 +61,6 @@ function Cartcontext({ children }) {
         setwishitm([]);
         setwishnoti(0);
       }
-      finally{
-        setLoading(false)
-    }
     }
   }
   // 
@@ -88,9 +83,6 @@ function Cartcontext({ children }) {
         console.error('Fetching error', error);
         toast.error('Fetching error')
       }
-      finally{
-        setLoading(false)
-    }
     } else {
       toast.error("Please login");
       navigate('/login');
@@ -162,7 +154,7 @@ const createOrder=async()=>{
 
 const getAllorders = async () => {
   try {
-    setLoading(true)
+    
     const response = await axiosinstance.get("/user/getAllorders");
      setOrders(response.data)
 
@@ -171,9 +163,7 @@ const getAllorders = async () => {
   } catch (error) {
     console.error("Error fetching orders:", error);
     return [];
-  }finally{
-    setLoading(false)
-}
+  }
   
 };
 
