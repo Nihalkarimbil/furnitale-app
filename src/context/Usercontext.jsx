@@ -7,7 +7,7 @@ import axiosinstance from '../axiosinstance';
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-
+  
     const ad = localStorage.getItem('adminData')
     const [isadmin, setIsadmin] = useState(ad ? JSON.parse(ad) : null) 
     const stord = localStorage.getItem('activeuserdata')
@@ -70,13 +70,13 @@ const UserProvider = ({ children }) => {
     
     const handlelogout = async () => {
         try {
-            await axiosinstance.post('/user/logout', {}, {
+            await axiosinstance.post('/user/logout', {
                 withCredentials: true,
             });
             setActivUser(null);
-            // localStorage.removeItem('activeuserdata');
-            // localStorage.removeItem('token');
-            // localStorage.removeItem('refreshToken');
+            localStorage.removeItem('activeuserdata');
+            localStorage.removeItem('token');
+            localStorage.removeItem('refreshToken');
 
             
           
@@ -91,13 +91,13 @@ const UserProvider = ({ children }) => {
 const addminlogout = async () => {
     try {
 
-        await axiosinstance.post('/user/logout', {}, {
+        await axiosinstance.post('/user/logout', {
             withCredentials: true, 
         });
 
         setIsadmin(null);
-        // localStorage.removeItem('adminData');
-        // localStorage.removeItem('token');
+        localStorage.removeItem('adminData');
+        localStorage.removeItem('token');
         
      
         
