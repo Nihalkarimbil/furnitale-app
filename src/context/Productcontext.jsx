@@ -14,12 +14,16 @@ function Productcontext({ children }) {
 
   useEffect(() => {
     const fetch = async () => {
+      
       try {
+        setLoading(true)
         const respons = await axiosinstance.get("/user/products/livingroom")
         setliving(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      }
+      }finally{
+        setLoading(false)
+    }
     }
     fetch()
   }, [])
@@ -27,12 +31,15 @@ function Productcontext({ children }) {
   useEffect(() => {
     const fetch = async () => {
       try {
+        setLoading(true)
         const respons = await axiosinstance.get("/user/product")
         setProduct(respons.data);
 
       } catch (error) {
         console.error("eror fetching data", error)
-      }
+      }finally{
+        setLoading(false)
+    }
     }
     fetch()
   }, [])
@@ -40,11 +47,14 @@ function Productcontext({ children }) {
   useEffect(() => {
     const fetch = async () => {
       try {
+        setLoading(true)
         const respons = await axiosinstance.get("/user/products/decor")
         setDecor(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      }
+      }finally{
+        setLoading(false)
+    }
     }
     fetch()
   }, [])
@@ -52,23 +62,30 @@ function Productcontext({ children }) {
   useEffect(() => {
     const fetch = async () => {
       try {
+        setLoading(true)
         const respons = await axiosinstance.get("/user/products/bedroom")
         setBed(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      }
+      }finally{
+        setLoading(false)
+    }
     }
     fetch()
   }, [])
 
   useEffect(() => {
     const fetch = async () => {
+
       try {
+        setLoading(true)
         const respons = await axiosinstance.get("/user/products/dining")
         setDining(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      }
+      }finally{
+        setLoading(false)
+    }
     }
     fetch()
   }, [])

@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import { Cartcon } from '../context/Cartcontext';
 import AOS from 'aos'; 
-import 'aos/dist/aos.css'; 
+import 'aos/dist/aos.css';
+import LoadingSpinner from '../Spinner'; 
 
 function Newcoll() {
-  const { products } = useContext(Procontext);
+  const {  products } = useContext(Procontext);
   const [coll, setColl] = useState([]);
-  const { addtowishlist, addtocart } = useContext(Cartcon);
+  const {addtowishlist, addtocart } = useContext(Cartcon);
 
   useEffect(() => {
     if (products) {
@@ -30,6 +31,7 @@ function Newcoll() {
 
   return (
     <div className="bg-gray-100 py-8">
+      
       <h1 className="flex justify-center text-4xl text-gray-800 mb-12" id='category'>New Collections</h1>
 
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">

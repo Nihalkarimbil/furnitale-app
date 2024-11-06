@@ -18,17 +18,24 @@ function AdminContext({ children }) {
     const [Bed, setBed] = useState([])
     const [Dining, setDining] = useState([])
     const [Living, setliving] = useState([])
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate()
 
 
     const fetchpro = async () => {
+       
+
         try {
+            setLoading(true)
             const respons = await axiosinstance.get("/admin/products")
             setProduct(respons.data);
 
         } catch (error) {
             console.error("eror fetching data", error)
+        }
+        finally{
+            setLoading(false)
         }
     }
 
@@ -36,15 +43,20 @@ function AdminContext({ children }) {
 
     const fetchuser = async () => {
         try {
+            setLoading(true)
             const respons = await axiosinstance.get("/admin/users")
             setCostomers(respons.data)
         } catch (error) {
             console.error("eror fetching data", error)
         }
+        finally{
+            setLoading(false)
+        }
     }
 
     const deletepro = async (item) => {
         try {
+            
             await axiosinstance.delete(`/admin/deleteproduct/${item._id}`)
             toast.success(`${item.name} succesfully deteted`)
             navigate('/products')
@@ -57,17 +69,21 @@ function AdminContext({ children }) {
 
     const allorders = async () => {
         try {
+            setLoading(true)
             const res = await axiosinstance.get('/admin/orders')
             setOrders(res.data)
         } catch (error) {
             toast.error('error on finding orders')
             console.log(error);
 
+        }finally{
+            setLoading(false)
         }
     }
 
     const finduserOrder = async (userID) => {
         try {
+            setLoading(true)
             const response = await axiosinstance.get(`/admin/orderofuser/${userID}`)
             setuserOrder(response.data)
 
@@ -75,37 +91,47 @@ function AdminContext({ children }) {
         } catch (error) {
             console.log(error)
 
+        }finally{
+            setLoading(false)
         }
     }
 
     const updateShippingStatus = async (orderId, newStatus) => {
 
         try {
+           
             const response = await axiosinstance.put(`/admin/shipupdate/${orderId}`, { newStatus });
             return response.data;
         } catch (error) {
             console.error('Error updating shipping status:', error);
             throw error;
         }
+      
     };
 
     const totalrevenew = async () => {
         try {
+           
             const res = await axiosinstance.get('/admin/revenew')
             setRevenew(res.data)
         } catch (error) {
             throw new Error
         }
+      
     }
 
     useEffect (() => {
         const fetch = async () => {
             try {
+                setLoading(true)
                 const respons = await axiosinstance.get("/admin/productss/bedroom")
                 setBed(respons.data);
             } catch (error) {
                 console.error("eror fetching data", error)
             }
+            finally{
+                setLoading(false)
+            }
         }
         fetch()
     }, [])
@@ -113,22 +139,14 @@ function AdminContext({ children }) {
     useEffect(() => {
         const fetch = async () => {
             try {
+                setLoading(true)
                 const respons = await axiosinstance.get("/admin/productss/decor")
                 setDecor(respons.data);
             } catch (error) {
                 console.error("eror fetching data", error)
             }
-        }
-        fetch()
-    }, [])
-
-    useEffect(() => {
-        const fetch = async () => {
-            try {
-                const respons = await axiosinstance.get("/admin/productss/dining")
-                setDining(respons.data);
-            } catch (error) {
-                console.error("eror fetching data", error)
+            finally{
+                setLoading(false)
             }
         }
         fetch()
@@ -137,10 +155,28 @@ function AdminContext({ children }) {
     useEffect(() => {
         const fetch = async () => {
             try {
+                setLoading(true)
+                const respons = await axiosinstance.get("/admin/productss/dining")
+                setDining(respons.data);
+            } catch (error) {
+                console.error("eror fetching data", error)
+            }finally{
+                setLoading(false)
+            }
+        }
+        fetch()
+    }, [])
+
+    useEffect(() => {
+        const fetch = async () => {
+            try {
+                setLoading(true)
                 const respons = await axiosinstance.get("/admin/productss/livingroom")
                 setliving(respons.data);
             } catch (error) {
                 console.error("eror fetching data", error)
+            }finally{
+                setLoading(false)
             }
         }
         fetch()
@@ -151,7 +187,7 @@ function AdminContext({ children }) {
 
     return (
         <div>
-            <admincontext.Provider value={{ Living,Decor,Bed,Dining,totalrevenew, revenew, updateShippingStatus, finduserOrder, userOrders, Orders, allorders, fetchpro, products, Costomers, fetchuser, deletepro }}>
+            <admincontext.Provider value={{ loading,Living,Decor,Bed,Dining,totalrevenew, revenew, updateShippingStatus, finduserOrder, userOrders, Orders, allorders, fetchpro, products, Costomers, fetchuser, deletepro }}>
                 {children}
             </admincontext.Provider>
         </div>

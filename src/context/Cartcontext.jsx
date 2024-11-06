@@ -15,7 +15,7 @@ function Cartcontext({ children }) {
   const [notification, setNotification] = useState(0)
   const [wishitem, setwishitm] = useState([])
   const [orders,setOrders]=useState([])
-
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -29,6 +29,7 @@ function Cartcontext({ children }) {
   const getCartItems = async () => {
     if (activeuser) {
       try {
+        setLoading(true)
         const res = await axiosinstance.get("/user/cart")
 
         const products = res.data.products || [];
@@ -40,13 +41,16 @@ function Cartcontext({ children }) {
         console.error("Error fetching cart data:", error);
         setCartitem([]);
         setNotification(0);
-      }
+      }finally{
+        setLoading(false)
+    }
     }
   }
 
   const getWishItems = async () => {
     if (activeuser) {
       try {
+        setLoading(true)
         const res = await axiosinstance.get("/user/wishlist")
 
         const products = res.data.products || [];
@@ -59,6 +63,9 @@ function Cartcontext({ children }) {
         setwishitm([]);
         setwishnoti(0);
       }
+      finally{
+        setLoading(false)
+    }
     }
   }
   // 
@@ -68,6 +75,7 @@ function Cartcontext({ children }) {
 
     if (activeuser) {
       try {
+        
         await axiosinstance.post('/user/addtocart', {
           productId: items._id,
           quantity: 1
@@ -80,6 +88,9 @@ function Cartcontext({ children }) {
         console.error('Fetching error', error);
         toast.error('Fetching error')
       }
+      finally{
+        setLoading(false)
+    }
     } else {
       toast.error("Please login");
       navigate('/login');
@@ -151,6 +162,7 @@ const createOrder=async()=>{
 
 const getAllorders = async () => {
   try {
+    setLoading(true)
     const response = await axiosinstance.get("/user/getAllorders");
      setOrders(response.data)
 
@@ -159,7 +171,10 @@ const getAllorders = async () => {
   } catch (error) {
     console.error("Error fetching orders:", error);
     return [];
-  }
+  }finally{
+    setLoading(false)
+}
+  
 };
 
 const cancelOrder=async(orderID)=>{
@@ -177,7 +192,7 @@ const cancelOrder=async(orderID)=>{
 
   return (
     <div>
-      <Cartcon.Provider value={{ cancelOrder,getAllorders,orders,clientSecret,createOrder,removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
+      <Cartcon.Provider value={{ loading,cancelOrder,getAllorders,orders,clientSecret,createOrder,removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
         {children}
       </Cartcon.Provider>
     </div>

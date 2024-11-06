@@ -3,19 +3,20 @@ import { Cartcon } from '../context/Cartcontext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosinstance from '../axiosinstance';
+import LoadingSpinner from '../Spinner';
 
 
 function Cart() {
-    const { cartitem, deletecart, getCartItems, createOrder } = useContext(Cartcon);
+    const {loading, cartitem, deletecart, getCartItems, createOrder } = useContext(Cartcon);
     const [quantities, setQuantities] = useState({});
     const [price, setPrice] = useState(0);
-    const [loading, setLoading] = useState(true);
+    
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCartItems = async () => {
             await getCartItems();
-            setLoading(false);
+            
         };
 
         fetchCartItems();
@@ -89,6 +90,7 @@ function Cart() {
 
     return (
         <div className='bg-gray-100 pt-14 min-h-screen'>
+            
             <div className="font-sans mx-auto py-4 max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="grid lg:grid-cols-3 gap-6">
                     <div className="lg:col-span-2 bg-gray-50 p-4 rounded-md shadow-sm">
