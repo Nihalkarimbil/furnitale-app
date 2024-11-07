@@ -84,9 +84,7 @@ function Cart() {
         }
     };
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
+
 
     return (
         <div className='bg-gray-100 pt-14 min-h-screen'>
@@ -115,19 +113,21 @@ function Cart() {
                                                 Remove
                                             </button>
                                             <div className="flex gap-2 mt-2">
-                                                <button
-                                                    type="button"
-                                                    className="px-2 py-1 border border-gray-300 text-gray-800 text-xs rounded-md" onClick={() => increment(item)}
-                                                >
-                                                    +
-                                                </button>
-                                                <p>{quantities[item.productId?._id]}</p>
+                                               
                                                 <button
                                                     type="button"
                                                     className="px-2 py-1 border border-gray-300 text-gray-800 text-xs rounded-md" onClick={() => decrement(item)}
                                                 >
                                                     -
                                                 </button>
+                                                <p>{quantities[item.productId?._id]}</p>
+                                                <button
+                                                    type="button"
+                                                    className="px-2 py-1 border border-gray-300 text-gray-800 text-xs rounded-md" onClick={() => increment(item)}
+                                                >
+                                                    +
+                                                </button>
+                                               
                                             </div>
                                         </div>
                                     </div>

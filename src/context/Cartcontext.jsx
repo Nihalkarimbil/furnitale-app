@@ -15,7 +15,7 @@ function Cartcontext({ children }) {
   const [notification, setNotification] = useState(0)
   const [wishitem, setwishitm] = useState([])
   const [orders,setOrders]=useState([])
-  const [loading, setLoading] = useState(true);
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -182,7 +182,7 @@ const cancelOrder=async(orderID)=>{
 
   return (
     <div>
-      <Cartcon.Provider value={{ loading,cancelOrder,getAllorders,orders,clientSecret,createOrder,removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
+      <Cartcon.Provider value={{cancelOrder,getAllorders,orders,clientSecret,createOrder,removewish, wishnotification, getCartItems, cartitem, addtocart, deletecart, notification, addtowishlist, wishitem }}>
         {children}
       </Cartcon.Provider>
     </div>
