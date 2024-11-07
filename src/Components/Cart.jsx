@@ -3,11 +3,11 @@ import { Cartcon } from '../context/Cartcontext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosinstance from '../axiosinstance';
-import LoadingSpinner from '../Spinner';
+
 
 
 function Cart() {
-    const {loading, cartitem, deletecart, getCartItems, createOrder } = useContext(Cartcon);
+    const { cartitem, deletecart, getCartItems, createOrder } = useContext(Cartcon);
     const [quantities, setQuantities] = useState({});
     const [price, setPrice] = useState(0);
     

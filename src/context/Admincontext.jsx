@@ -69,7 +69,7 @@ function AdminContext({ children }) {
             const res = await axiosinstance.get('/admin/orders')
             setOrders(res.data)
         } catch (error) {
-            toast.error('error on finding orders')
+
             console.log(error);
 
         }
@@ -80,7 +80,6 @@ function AdminContext({ children }) {
 
             const response = await axiosinstance.get(`/admin/orderofuser/${userID}`)
             setuserOrder(response.data)
-
 
         } catch (error) {
             console.log(error)
@@ -170,7 +169,7 @@ function AdminContext({ children }) {
 
     return (
         <div>
-            <admincontext.Provider value={{ loading, Living, Decor, Bed, Dining, totalrevenew, revenew, updateShippingStatus, finduserOrder, userOrders, Orders, allorders, fetchpro, products, Costomers, fetchuser, deletepro }}>
+            <admincontext.Provider value={{ Living, Decor, Bed, Dining, totalrevenew, revenew, updateShippingStatus, finduserOrder, userOrders, Orders, allorders, fetchpro, products, Costomers, fetchuser, deletepro }}>
                 {children}
             </admincontext.Provider>
         </div>

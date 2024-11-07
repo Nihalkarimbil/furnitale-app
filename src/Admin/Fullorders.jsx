@@ -11,13 +11,13 @@ function Fullorders() {
 
   useEffect(() => {
     const initialStatus = Orders.reduce((acc, order) => {
-      acc[order._id] = order.shippingStatus; 
+      acc[order._id] = order.shippingStatus;
       return acc;
     }, {});
     setShippingStatus(initialStatus);
-  }, [Orders]); 
+  }, [Orders]);
 
- 
+
   const ordersByUser = Orders.reduce((acc, order) => {
     if (!acc[order.userID]) {
       acc[order.userID] = [];
@@ -30,19 +30,19 @@ function Fullorders() {
     try {
       setShippingStatus((prevStatus) => ({
         ...prevStatus,
-        [orderId]: newStatus, 
+        [orderId]: newStatus,
       }));
 
       await updateShippingStatus(orderId, newStatus);
 
     } catch (error) {
 
-     console.log("Error updating shipping status:", error);
+      console.log("Error updating shipping status:", error);
 
-      
+
       setShippingStatus((prevStatus) => ({
         ...prevStatus,
-        [orderId]: shippingStatus[orderId], 
+        [orderId]: shippingStatus[orderId],
       }));
     }
   };
@@ -81,10 +81,12 @@ function Fullorders() {
                   <td className='p-4 text-sm font-medium'>
                     {shippingStatus[order._id] === 'cancelled' ? (
                       <p className="text-red-500 font-semibold">Cancelled</p>
+                    ) : shippingStatus[order._id] === 'shipped' ? (
+                      <p className="text-green-500 font-semibold">Shipped</p>
                     ) : (
                       <select
-                        value={shippingStatus[order._id] || order.shippingStatus} // Change sessionID to order ID
-                        onChange={(e) => handleShippingStatusChange(order._id, e.target.value)} // Use order ID here
+                        value={shippingStatus[order._id] || order.shippingStatus}
+                        onChange={(e) => handleShippingStatusChange(order._id, e.target.value)}
                         className={`rounded-md px-2 py-1 ${shippingStatus[order._id] === 'shipped' ? 'text-green-500' : 'text-red-500'}`}
                       >
                         <option value="pending">Pending</option>
