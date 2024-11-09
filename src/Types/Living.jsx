@@ -3,17 +3,18 @@ import { Procontext } from '../context/Productcontext'
 import { Link } from 'react-router-dom'
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import { Cartcon } from '../context/Cartcontext';
-import AOS from 'aos'; 
-import 'aos/dist/aos.css'; 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import LoadingSpinner from '../Spinner';
 
 function Living() {
-  const { living } = useContext(Procontext)
- 
+  const { loading, living } = useContext(Procontext)
+
   const { addtowishlist, addtocart } = useContext(Cartcon)
 
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init()
-  },[])
+  }, [])
 
   const handlewish = (prod) => {
     addtowishlist(prod)
@@ -23,7 +24,7 @@ function Living() {
   }
 
   return (
-    <div className='bg-gray-100 pt-14'>
+    <>{loading ? (<LoadingSpinner />) : (<div className='bg-gray-100 pt-14'>
       <br />
       <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800' id='category'>Living Room furniture</h1>
       <p className='flex justify-center font-sans text-base text-gray-700 ' id='sub'>Transform Your Living Room, with the best</p>
@@ -67,6 +68,8 @@ function Living() {
         </div>
       </div>
     </div>
+    )}</>
+
   )
 }
 

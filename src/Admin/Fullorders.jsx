@@ -87,7 +87,7 @@ function Fullorders() {
                       <select
                         value={shippingStatus[order._id] || order.shippingStatus}
                         onChange={(e) => handleShippingStatusChange(order._id, e.target.value)}
-                        className={`rounded-md px-2 py-1 ${shippingStatus[order._id] === 'shipped' ? 'text-green-500' : 'text-red-500'}`}
+                        className={`rounded-md px-2 py-1 ${shippingStatus[order._id] === "shipped" ? 'text-green-500' : 'text-red-500'}`}
                       >
                         <option value="pending">Pending</option>
                         <option value="shipped">Shipped</option>
@@ -116,3 +116,4 @@ function Fullorders() {
 }
 
 export default Fullorders;
+

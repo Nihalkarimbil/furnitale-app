@@ -9,19 +9,20 @@ function Home() {
   const { loading } = useContext(Procontext);
 
   return (
-    <div>
-      <Image />
-      <div>
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <>
-            <Newcoll />
-            <Trending />
-          </>
-        )}
-      </div>
-    </div>
+    <>
+
+
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <Image />
+          <Newcoll />
+          <Trending />
+        </>
+      )}
+
+    </>
   );
 }
 

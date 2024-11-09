@@ -1,21 +1,22 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Procontext } from '../context/Productcontext'
 import { Link } from 'react-router-dom'
-import { FaHeart,FaShoppingCart } from 'react-icons/fa';
+import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import { Cartcon } from '../context/Cartcontext';
-import AOS from 'aos'; 
-import 'aos/dist/aos.css'; 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import LoadingSpinner from '../Spinner';
 
 
 
 function Dining() {
- 
-  const { dining } = useContext(Procontext)
+
+  const { loading, dining } = useContext(Procontext)
   const { addtowishlist, addtocart } = useContext(Cartcon)
 
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init()
-  },[])
+  }, [])
 
   const handlewish = (prod) => {
     addtowishlist(prod)
@@ -25,8 +26,7 @@ function Dining() {
   }
 
   return (
-
-    <div className='bg-gray-100 pt-14'>
+    <>{loading ? (<LoadingSpinner />) : (<div className='bg-gray-100 pt-14'>
       <br />
       <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800' id='category'>Dinind Area furniture</h1>
       <p className='flex justify-center font-sans text-base text-gray-700 ' id='sub'>Dining in Comfort, Dining in Elegance</p>
@@ -71,6 +71,9 @@ function Dining() {
         </div>
       </div>
     </div>
+    )}
+    </>
+
   )
 }
 
