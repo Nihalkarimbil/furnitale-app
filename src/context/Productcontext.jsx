@@ -15,16 +15,16 @@ function Productcontext({ children }) {
 
   useEffect(() => {
     const fetch = async () => {
-      
+
       try {
         setLoading(true)
         const respons = await axiosinstance.get("/user/products/livingroom")
         setliving(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      }finally{
+      } finally {
         setLoading(false)
-    }
+      }
     }
     fetch()
   }, [])
@@ -35,12 +35,13 @@ function Productcontext({ children }) {
         setLoading(true)
         const respons = await axiosinstance.get("/user/product")
         setProduct(respons.data);
-
+        console.log(respons.data);
+        
       } catch (error) {
         console.error("eror fetching data", error)
-      }finally{
+      } finally {
         setLoading(false)
-    }
+      }
     }
     fetch()
   }, [])
@@ -53,9 +54,9 @@ function Productcontext({ children }) {
         setDecor(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      }finally{
+      } finally {
         setLoading(false)
-    }
+      }
     }
     fetch()
   }, [])
@@ -68,9 +69,9 @@ function Productcontext({ children }) {
         setBed(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      } finally{
+      } finally {
         setLoading(false)
-    }
+      }
     }
     fetch()
   }, [])
@@ -84,18 +85,18 @@ function Productcontext({ children }) {
         setDining(respons.data);
       } catch (error) {
         console.error("eror fetching data", error)
-      }finally{
+      } finally {
         setLoading(false)
-    }
+      }
     }
     fetch()
   }, [])
 
- 
+
 
   return (
     <div>
-      <Procontext.Provider value={{  loading,dining, bed, decor, products, living   }}>
+      <Procontext.Provider value={{ loading, dining, bed, decor, products, living }}>
         {children}
       </Procontext.Provider>
     </div>
