@@ -27,7 +27,7 @@ function Bed() {
     <>
       {loading ? (<LoadingSpinner />) : (
         <div className='bg-gray-100 pt-20'>
-          <h1 className='flex justify-center font-extralight text-4xl text-gray-800' id='category'>Bed Room Furnitures</h1>
+          <h1 className='flex justify-center font-extralight text-4xl text-gray-800' id='neww'>BedRoom</h1>
           <p className='flex justify-center font-sans text-base text-gray-700' id='sub'>Beautiful Bedrooms, Beautiful Lives</p>
 
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">

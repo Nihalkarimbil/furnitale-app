@@ -8,7 +8,7 @@ function Login() {
   const {handleSubmit,handlechange,login}=useContext(UserContext)
 
   return (
-    <div className="flex items-center justify-center p-6 bg-gray-50 pt-20">
+    <div className="flex items-center justify-center p-6 bg-gray-50 pt-20 h-[600px]">
       <div className="w-full max-w-md p-8 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-bold mb-6 text-center font-serif text-gray-400">Sign In</h2>
         <form onSubmit={handleSubmit} className="space-y-4">

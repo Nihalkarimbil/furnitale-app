@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosinstance = axios.create({
-    baseURL: 'https://funitale-backend.onrender.com/api', 
+    baseURL: 'http://localhost:5001/api', 
 });
 
 
