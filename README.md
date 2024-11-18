@@ -1,6 +1,3 @@
-Here’s a comprehensive README template for your MERN stack furniture e-commerce app. This template highlights key aspects of the project and provides a clear structure for potential contributors and users.
-
----
 
 # 🛋️ Furniture E-Commerce App
 
