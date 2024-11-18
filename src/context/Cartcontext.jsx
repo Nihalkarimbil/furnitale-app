@@ -131,7 +131,7 @@ function Cartcontext({ children }) {
       await axiosinstance.delete(`/user/removewish`, {
         data: { productId: item }
       });
-      await getWishItems(); // Refresh wishlist items after deletion
+      await getWishItems(); 
     } catch (error) {
       console.log('Error removing from wishlist:', error);
     }

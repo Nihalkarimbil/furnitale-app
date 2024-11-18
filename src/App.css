@@ -1,6 +1,6 @@
 
-span{
-    display: none;
+#err{
+    color: red;
     font-size: 10px;
 }
 input:invalid~span{

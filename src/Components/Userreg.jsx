@@ -2,9 +2,37 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosinstance from '../axiosinstance';
+import { useFormik } from 'formik';
+import { schema } from '../Schema/Validation';
+
+const initialValues = {
+  username: "",
+  email: "",
+  password: "",
+  confpassword: ""
+}
 
 function Userreg() {
   const navigate = useNavigate()
+
+  const { touched, errors, values, handleBlur, handleSubmit, handleChange } = useFormik({
+    initialValues: initialValues,
+    validationSchema: schema,
+
+    onSubmit: (values) => {
+      values.preventDefault();
+
+      axiosinstance.post("/user/signup", values)
+        .then((res) => {
+          toast.success("registerd succesfully")
+          navigate("/login");
+        }).catch((err) => {
+          toast.error(err)
+        })
+
+
+    }
+  })
 
   const [input, setInput] = useState({
     username: "",
@@ -15,21 +43,6 @@ function Userreg() {
     blocked: false,
   });
 
-  const handlesubmit = (e) => {
-    e.preventDefault();
-    const reginput = {
-      ...input,
-      blocked: false
-    };
-    axiosinstance.post("/user/signup",reginput) 
-    .then((res) => {
-      toast.success("registerd succesfully")
-      navigate("/login");
-    }).catch((err) => {
-      toast.error(err)
-    })
-
-  };
   const handlechange = (e) => {
     const { name, value } = e.target;
     setInput((previnput) => ({
@@ -42,58 +55,67 @@ function Userreg() {
     <div className='bg-gray-100 p-5 pt-20'>
       <div className="max-w-md  mx-auto p-6 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl text-center font-serif text-gray-400">Sign Up</h1>
-        <form onSubmit={handlesubmit}>
+        <form onSubmit={handleSubmit}>
           <div>
-            <label className='font-mono text-gray-500'>User Name:</label>
-            <input
-              type="text"
-              pattern="^[A-Za-z0-9].{3,15}"
-              name='username'
-              onChange={handlechange}
-              value={input.username}
-              placeholder="Enter your name"
-              className='mt-1 p-1 border-2 rounded w-full text-black'
-              required
-            />
-            <span className='text-red-600'>Username should have 3-15 characters</span>
+            <div>
+              <label className='font-mono text-gray-500'>User Name:</label>
+              <input
+                type="text"
+                name='username'
+                onChange={handleChange}
+                value={values.username}
+                placeholder="Enter your name"
+                className='mt-1 p-1 border-2 rounded w-full text-black'
 
-            <label className='font-mono text-gray-500 mt-2'>Email:</label>
-            <input
-              type="email"
-              name='email'
-              placeholder="Enter your email"
-              value={input.email}
-              onChange={handlechange}
-              className='mt-1 p-1 border-2 rounded w-full text-black'
-              required
-            />
-            <span className='text-red-600'>Enter a valid email id</span>
+              />
+              {errors.username && touched.username ? (<p id='err'>{errors.username}</p>) : null}
 
-            <label className='font-mono text-gray-500 mt-2'>Password:</label>
-            <input
-              type='password'
-              pattern="(?=.*\d)(?=.*[A-Z]).{5,}"
-              placeholder='Enter your password'
-              name='password'
-              value={input.password}
-              onChange={handlechange}
-              required
-              className="mt-1 p-1 border-2 rounded w-full text-black"
-            />
-            <span className='text-red-600'>Password must have at least 5 characters and include at least one digit and one uppercacse </span>
+            </div>
 
-            <label className='font-mono text-gray-500 mt-2'>Confirm Password:</label>
-            <input
-              type='password'
-              pattern={input.password}
-              placeholder='Confirm your password'
-              name='confpassword'
-              value={input.confpassword}
-              onChange={handlechange}
-              required
-              className="mt-1 p-1 border-2 rounded w-full text-black"
-            />
-            <span className='text-red-600'>Passwords do not match</span>
+            <div>
+              <label className='font-mono text-gray-500 mt-2'>Email</label>
+              <input
+                type="email"
+                name='email'
+                placeholder="Enter your email"
+                value={values.email}
+                onChange={handleChange}
+                className='mt-1 p-1 border-2 rounded w-full text-black'
+
+              />
+              {errors.email && touched.email ? (<p id='err'>{errors.email}</p>) : null}
+
+            </div>
+            <div>
+              <label className='font-mono text-gray-500 mt-2'>Password:</label>
+              <input
+                type='password'
+                placeholder='Enter your password'
+                name='password'
+                value={values.password}
+                onChange={handleChange}
+
+                className="mt-1 p-1 border-2 rounded w-full text-black"
+              />
+              {errors.password && touched.password ? (<p id='err'>{errors.password}</p>) : null}
+
+            </div>
+
+            <div>
+
+              <label className='font-mono text-gray-500 mt-2'>Confirm Password:</label>
+              <input
+                type='password'
+                placeholder='Confirm your password'
+                name='confpassword'
+                value={values.confpassword}
+                onChange={handleChange}
+
+                className="mt-1 p-1 border-2 rounded w-full text-black"
+              />
+
+              {errors.confpassword && touched.confpassword ? (<p id='err'>{errors.confpassword}</p>) : null}
+            </div>
 
             <button className='bg-blue-100 border-3px rounded-full mt-2 h-9 w-full hover:bg-green-400 font-bold text-gray-600' type='submit'>Sign Up</button>
             <br /><br />
