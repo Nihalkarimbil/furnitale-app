@@ -28,7 +28,7 @@ function Dining() {
   return (
     <>{loading ? (<LoadingSpinner />) : (<div className='bg-gray-100 pt-14'>
       <br />
-      <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800' id='neww'>Dinind Area</h1>
+      <h1 className='flex justify-center font-extralight  text-4xl  text-gray-800' id='neww'>Dining Area</h1>
       <p className='flex justify-center font-sans text-base text-gray-700 ' id='sub'>Dining in Comfort, Dining in Elegance</p>
 
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py- lg:max-w-7xl lg:px-8">
